@@ -28,7 +28,7 @@
     <script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark meter nav output progress section summary subline time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
     <![endif]-->
 </head>
-<body>
+<body   @if (Request::path() == 'procedures')  background="assets/images/watercolor-939784_960_720.jpg" @endif style="background-size: 100%;">
 
 <div class="preloader">
     <div class="spinner"></div>
@@ -88,191 +88,9 @@
         </div>
     </div>
 </header>
-
-@if (Request::path() != 'procedures')
-
-
-<section class="banner-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
-                <h4>Caring for better life</h4>
-                <h1>Leading the way in medical excellence</h1>
-                <p>Earth greater grass for good. Place for divide evening yielding them that. Creeping beginning over gathered brought.</p>
-                <a href="{{ url('procedures')}}" class="template-btn mt-3">take appointment</a>
-{{--                <div class="dropdown">--}}
-{{--                    <button type="button" class="btn btn-primary dropdown-toggle template-btn mt-3" data-toggle="dropdown">--}}
-{{--                        Pick a procedure--}}
-{{--                    </button>--}}
-{{--                    <div class="dropdown-menu">--}}
-{{--                        <a class="dropdown-item" onclick="goTo('tonsillectomy')"  >Tonsillectomy</a>--}}
-{{--                        <a class="dropdown-item" onclick="goTo('knee replacement')"  >Knee Replacement</a>--}}
-{{--                        <a class="dropdown-item" onclick="goTo('ventilation tubes')"  >Ventilation Tubes</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-            </div>
-        </div>
-    </div>
-
-</section>
-@endif
 @yield('content')
-
-<section class="feature-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature text-center item-padding">
-                    <img src="{{asset('assets/images/feature1.png')}}" alt="">
-                    <h3>advance technology</h3>
-                    <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature text-center item-padding mt-4 mt-md-0">
-                    <img src="{{asset('assets/images/feature2.png')}}" alt="">
-                    <h3>comfortable place</h3>
-                    <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature text-center item-padding mt-4 mt-lg-0">
-                    <img src="{{asset('assets/images/feature3.png')}}" alt="">
-                    <h3>quality equipment</h3>
-                    <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature text-center item-padding mt-4 mt-lg-0">
-                    <img src="{{asset('assets/images/feature4.png')}}" alt="">
-                    <h3>friendly staff</h3>
-                    <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="department-area section-padding4">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="section-top text-center">
-                    <h2>Popular department</h2>
-                    <p>Green above he cattle god saw day multiply under fill in the cattle fowl a all, living, tree word link available in the service for subdue fruit.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="department-slider owl-carousel">
-                    <div class="single-slide">
-                        <div class="slide-img">
-                            <img src="{{asset('assets/images/department1.jpg')}}" alt="" class="img-fluid">
-                            <div class="hover-state">
-                                <a href="#"><i class="fa fa-stethoscope"></i></a>
-                            </div>
-                        </div>
-                        <div class="single-department item-padding text-center">
-                            <h3>cardiac clinic</h3>
-                            <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="slide-img">
-                            <img src="{{asset('assets/images/department2.jpg')}}" alt="" class="img-fluid">
-                            <div class="hover-state">
-                                <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
-                            </div>
-                        </div>
-                        <div class="single-department item-padding text-center">
-                            <h3>plastic surgery</h3>
-                            <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="slide-img">
-                            <img src="{{asset('assets/images/department3.jpg')}}" alt="" class="img-fluid">
-                            <div class="hover-state">
-                                <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
-                            </div>
-                        </div>
-                        <div class="single-department item-padding text-center">
-                            <h3>dental clinic</h3>
-                            <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="slide-img">
-                            <img src="{{asset('assets/images/department1.jpg')}}" alt="" class="img-fluid">
-                            <div class="hover-state">
-                                <a href="departments.html"><i class="fa fa-stethoscope"></i></a>
-                            </div>
-                        </div>
-                        <div class="single-department item-padding text-center">
-                            <h3>cardiac clinic</h3>
-                            <p>Hath creeping subdue he fish gred face whose spirit that seasons today multiply female midst upon</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="patient-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="section-top text-center">
-                    <h2>Patient are saying</h2>
-                    <p>Green above he cattle god saw day multiply under fill in the cattle fowl a all, living, tree word link available in the service for subdue fruit.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="single-patient mb-4">
-                    <img src="{{asset('assets/images/patient1.png')}}" alt="">
-                    <h3>daren jhonson</h3>
-                    <h5>hp specialist</h5>
-                    <p class="pt-3">Elementum libero hac leo integer. Risus hac road parturient feugiat. Litora cursus hendrerit bib elit Tempus inceptos posuere metus.</p>
-                </div>
-                <div class="single-patient">
-                    <img src="{{asset('assets/images/patient2.png')}}" alt="">
-                    <h3>black heiden</h3>
-                    <h5>hp specialist</h5>
-                    <p class="pt-3">Elementum libero hac leo integer. Risus hac road parturient feugiat. Litora cursus hendrerit bib elit Tempus inceptos posuere metus.</p>
-                </div>
-            </div>
-            <div class="col-lg-5 offset-lg-1 align-self-center">
-                <div class="appointment-form text-center mt-5 mt-lg-0">
-                    <h3 class="mb-5">appointment now</h3>
-                    <form action="#">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Your Name'" required data-cf-modified-ed77345db1d323e1b61dccec-="">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Your Email'" required data-cf-modified-ed77345db1d323e1b61dccec-="">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="datepicker" placeholder="Date" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Date'" required data-cf-modified-ed77345db1d323e1b61dccec-="">
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" cols="20" rows="7" placeholder="Message" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Message'" required data-cf-modified-ed77345db1d323e1b61dccec-=""></textarea>
-                        </div>
-                        <a href="#" class="template-btn">appointment now</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="specialist-area section-padding">
+@if (Request::path() != 'procedures')
+<section class="specialist-area section-padding" style="background-color: rgba(0,0,0,0)">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
@@ -374,9 +192,9 @@
         </div>
     </div>
 </section>
+@endif
 
-
-<section class="hotline-area text-center section-padding">
+<section class="hotline-area text-center section-padding" style="background-color: rgba(0,0,0,0)">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -532,10 +350,11 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 <script src="{{asset('assets/js/main.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="ed77345db1d323e1b61dccec-text/javascript"></script>
+@yield('script')
 <script type="ed77345db1d323e1b61dccec-text/javascript">
-function goTo(title){
-    goToSection(title);
-}
+{{--function goTo(title){--}}
+{{--    goToSection(title);--}}
+{{--}--}}
 
 
 
@@ -547,15 +366,15 @@ function goTo(title){
         return match.toUpperCase();
     });
 }
- function goToSection(title) {
-  title = toTitleCase(title)
-$(".procedures-section-title").text(title);
-//alert($(location).attr("href"));
+{{-- function goToSection(title) {--}}
+{{--  title = toTitleCase(title)--}}
+{{--$(".procedures-section-title").text(title);--}}
+{{--//alert($(location).attr("href"));--}}
 
-    $('html,body').animate({
-        scrollTop: $(".procedures-section").offset().top -300 },
-        'slow');
-}
+{{--    $('html,body').animate({--}}
+{{--        scrollTop: $(".procedures-section").offset().top -300 },--}}
+{{--        'slow');--}}
+{{--}--}}
   gtag('config', 'UA-23581568-13');
 </script>
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="ed77345db1d323e1b61dccec-|49" defer=""></script>

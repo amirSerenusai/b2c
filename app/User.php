@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isLabeler()
+    {
+        return $this->id == 101;
+    }
+    public function isHorizon()
+    {
+        return $this->client_id == 18;
+    }
+
 }

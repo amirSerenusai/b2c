@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Procedure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProceduresController extends Controller
 {
@@ -40,12 +42,16 @@ class ProceduresController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $title
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($title)
     {
-        //
+
+        $procedure =  Procedure::where('title', $title )->first();
+
+        return view('procedures.procedure')->with(compact('procedure'));
+
     }
 
     /**

@@ -39,10 +39,17 @@ Route::get('index', 'HomeController@index')->name('home');
 Auth::routes();
 //Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
 
-Route::resource('procedures', 'ProceduresController');
-Route::get('/{any?}', function () {
+Route::resource('procedures', 'ProceduresController', [
+    'names' => [
+        'index' => 'procedures',
+        'store' => 'faq.new',
+    ]   ]);
+//Route::get('/{any?}', function () {
+//
+//    return view('home');
+//});
 
-    return view('main');
-});
+Route::get('create-scenario/{proc_id}', ['as' => 'createScenario', 'uses' => 'TeachController@createScenario']);
+Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'QuestionnaireReportsController@show']);
 
 
