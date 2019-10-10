@@ -17,10 +17,12 @@ use Illuminate\Http\JsonResponse;
 //use function Psy\debug;
 //use Stringy\Stringy;
 //use function Stringy\create as s;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 
 //use App\Http\Controllers\MailController;
@@ -1338,7 +1340,7 @@ class Questionnaire extends Model
 
                 if (array_key_exists('combined',$reportAnswer))
 
-                    return $this->mapAnswer(array_except($reportAnswer, $except),true ) ;
+                    return $this->mapAnswer(Arr::except($reportAnswer, $except),true ) ;
 
 
                 else if(!collect($reportAnswer)->has('id') )
@@ -1391,7 +1393,7 @@ class Questionnaire extends Model
         return array_map(function($v)
         {
             if(  !array_key_exists('question_id' ,$v)  )   { $v=['title'=>$v[0]['display_groups'][0],'characteristics' => $this->removeRedundantQuestionValues(collect($v))]; }
-            return array_except($v, ['question_id' ,'question_title']);
+            return Arr::except($v, ['question_id' ,'question_title']);
         },$mappedQuestion->toArray() );
     }
 
@@ -1403,9 +1405,9 @@ class Questionnaire extends Model
             if ( $mappedAnswer['sub_answer'] =="_no" or  $mappedAnswer['sub_answer'] =="_unknown" ) {
                 if (array_key_exists("params", $mappedAnswer) )  $mappedAnswer['params'] =   $this->removeUnitsValue($mappedAnswer['params']);
 
-                $mappedAnswer['sub_answer'] = Answer::find($id)->getParam("global{$mappedAnswer['sub_answer']}_label") ?: studly_case($mappedAnswer['sub_answer']);//$mappedAnswer['sub_answer'] =$this->mapNoUnknown($mappedAnswer['sub_answer'],  $id, 'global');  // $answer->getParam("global{$mappedAnswer['sub_answer'] }_label") ?: studly_case($mappedAnswer['sub_answer']) ;
+                $mappedAnswer['sub_answer'] = Answer::find($id)->getParam("global{$mappedAnswer['sub_answer']}_label") ?: Str::studly($mappedAnswer['sub_answer']);//$mappedAnswer['sub_answer'] =$this->mapNoUnknown($mappedAnswer['sub_answer'],  $id, 'global');  // $answer->getParam("global{$mappedAnswer['sub_answer'] }_label") ?: studly_case($mappedAnswer['sub_answer']) ;
             }
-            return    array_except($mappedAnswer,['ids' ,'key']) ;
+            return    Arr::except($mappedAnswer,['ids' ,'key']) ;
 
         }
         else  {

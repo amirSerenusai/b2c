@@ -93,7 +93,7 @@ class QuestionnaireQuestionsController extends ApiController
                 try {
                     return $this->initialResponse($questionnaire);
                 }
-                catch(NoQuestionInProcedure $exception) {
+                catch(NoQuestionInProcedure $exception) { dd(18);
                     return   response()->json(['error' => $exception->getMessage()],  $exception->getStatusCode() );
                 }
             }
@@ -123,7 +123,7 @@ class QuestionnaireQuestionsController extends ApiController
             //$Time_11 = microtime(true) - $Time_11;
             //info("Time_5.1 = {$Time_11}");
 
-        } catch (QuestionnaireShouldEndException $exception) {
+        } catch (QuestionnaireShouldEndException $exception) { dd(16);
           if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
         } catch (InvalidKeysException $exception) {
@@ -211,16 +211,16 @@ class QuestionnaireQuestionsController extends ApiController
            // }
         } catch (InvalidKeysException $exception) {
 
-            return $this->responseNotAcceptable($exception->getMessage(), $exception->getExpression(), $exception->getOriginalExpression(), $exception->getSource());
+            dd ( $this->responseNotAcceptable($exception->getMessage(), $exception->getExpression(), $exception->getOriginalExpression(), $exception->getSource()) );
         } catch (NoMoreQuestionsException $exception) {
 
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
-        } catch (QuestionnaireShouldEndException $exception) {
+        } catch (QuestionnaireShouldEndException $exception) { dd(14);
 
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
-        } catch (NoRelevantAnswersException $exception) {
+        } catch (NoRelevantAnswersException $exception) { dd(15);
 
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId())  MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());

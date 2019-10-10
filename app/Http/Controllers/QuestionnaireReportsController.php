@@ -16,6 +16,7 @@ use App\Answer;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use App\Exceptions\ClientMismatch;
+use Illuminate\Support\Str;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 /** @noinspection PhpClassNamingConventionInspection */
@@ -36,7 +37,7 @@ class QuestionnaireReportsController extends Controller
 
         $this->middleware('auth');
         $this->isAdmin= optional(Auth::user())->hasRole('admin')  ;
-        $this->isAdminPivot =  Auth::user()->roles()->get()[0]->name == "admin" ? true : false;
+//        $this->isAdminPivot =  Auth::user()->roles()->get()[0]->name == "admin" ? true : false;
     }
     protected $isAdmin,$ml_force_score_search,$isAdminPivot; //
 
@@ -164,7 +165,7 @@ class QuestionnaireReportsController extends Controller
 
         $params = [ 'invertedVerdict' =>  $invertedVerdict,
             'short_desc' =>  $questionnaire->procedure->short_desc,
-            'dont_show_final_result' => str_contains(  strtolower( $questionnaire->procedure->short_desc ) , "do not show final result")
+            'dont_show_final_result' => STR::contains(  strtolower( $questionnaire->procedure->short_desc ) , "do not show final result")
         ];
         /** @noinspection PhpUndefinedMethodInspection */
 

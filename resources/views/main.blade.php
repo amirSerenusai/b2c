@@ -28,14 +28,14 @@
     <script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark meter nav output progress section summary subline time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
     <![endif]-->
 </head>
-<body   @if (Request::path() == 'procedures')  background="assets/images/watercolor-939784_960_720.jpg" @endif style="background-size: 100%;">
+<body   @if (Request::path() == 'procedures')  background="assets/images/watercolor-939784_960_720.jpg" @endif style="background-size: 100%;" >
 
 <div class="preloader">
     <div class="spinner"></div>
 </div>
 
 
-<header class="header-area">
+<header class="header-area max-height-30">
     <div class="header-top">
         <div class="container">
             <div class="row">
@@ -266,8 +266,6 @@
         </div>
     </div>
 </section>
-
-
 <footer class="footer-area section-padding">
     <div class="footer-widget">
         <div class="container">
@@ -316,8 +314,8 @@
             <div class="row">
                 <div class="col-lg-8 col-md-6">
 <span>
+Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> Colorlib
 
-Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 
 </span>
                 </div>
@@ -351,11 +349,22 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="ed77345db1d323e1b61dccec-text/javascript"></script>
 @yield('script')
-<script type="ed77345db1d323e1b61dccec-text/javascript">
+<script>
+    // type="ed77345db1d323e1b61dccec-text/javascript"
 {{--function goTo(title){--}}
 {{--    goToSection(title);--}}
 {{--}--}}
+$(document).ready(() => {
+    startEcho();
+});
+function startEcho(){
+        //alert("startEcho");
+    window.Echo.channel('adminserenus').listen('QuestionAnswered', e => {
+        console.log({ e });
+    if((typeof alertHi === "function") ) alertHi(e);
+      });
 
+}
 
 
   window.dataLayer = window.dataLayer || [];
@@ -379,7 +388,8 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 </script>
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="ed77345db1d323e1b61dccec-|49" defer=""></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="e61d56bd17d79316e759fdbd-text/javascript"></script>
-<script src="{{asset('assets/js/vendor/products.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>
+{{--<script src="{{asset('assets/js/vendor/products.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>--}}I
 <script src="{{asset('assets/js/vendor/application.min.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="e61d56bd17d79316e759fdbd-|49" defer=""></script></body>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="e61d56bd17d79316e759fdbd-|49" defer=""></script>
+</body>
 </html>

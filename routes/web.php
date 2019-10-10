@@ -27,6 +27,7 @@
 |
 */
 
+use App\Events\QuestionAnswered;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -44,12 +45,23 @@ Route::resource('procedures', 'ProceduresController', [
         'index' => 'procedures',
         'store' => 'faq.new',
     ]   ]);
-//Route::get('/{any?}', function () {
-//
-//    return view('home');
-//});
 
 Route::get('create-scenario/{proc_id}', ['as' => 'createScenario', 'uses' => 'TeachController@createScenario']);
+Route::get('q-answered', function (){ QuestionAnswered::dispatch(['amirarray' => rand(1,1000)]);
+
+return 'q-answered';});
+
+Route::get('/amir', function (){ return view('test'); });
+Route::get('run-procedure/{procedure}', 'RedirectController@runTest')->name('procedures.run');
+Route::get('run-combination/{combination}', 'RedirectController@runCombination')->name('combination.run');
+Route::get('/questionnaire', function (){ return view('questionnaire'); });
+
+Route::get('/{any?}', function () {
+
+    return view('home');
+});
+
+
 Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'QuestionnaireReportsController@show']);
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 //use App\User;
 use App\Answer;
 use App\DisplayGroup;
+use App\Events\QuestionAnswered;
 use App\Question;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Log;
@@ -378,6 +379,7 @@ class TeachController extends Controller
      * @return \Illuminate\Http\JsonResponse|mixed
      */
     public function getNextQuestion($test_id, $payLoad = []){
+
         //$time_getNextQuestion = microtime(true);
         $this->removedAnswers=[];
         $qqc = new QuestionnaireQuestionsController();
@@ -616,10 +618,10 @@ class TeachController extends Controller
         // FIRST QUESTION
 
         $response = $this->getNextQuestion($test_id);
+
         $this->countCurrentAnswers=0;
         $question = $response['question'];
         $answers = $response['answers'];
-
         $loop = 0;
 
         $done = false;
@@ -632,11 +634,17 @@ class TeachController extends Controller
             $loop ++ ;
 
             $this->logTime("Question {$question['id']} {$question['title_doctor']} ");
+
             $this->log[] = "<b>Question ID:</b> {$question['id']} <br> <b>title_doctor: </b>{$question['title_doctor']}<br> <b>question_answers_type:</b> {$question['answers_type']}<br>";
             info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             info("----------------------------------------------------------------------------- Start a new question -----------------------------------------------------------------------------------------");
             info("Question {$question['id']} {$question['title_doctor']}");
+            QuestionAnswered::dispatch([
+                'qTitle' => $question['title_doctor'],
+                'qID' => $question['id'],
+                'answers' =>  Arr::pluck($answers,'title')
+            ]);
 
             // randomize answers
             $answered = [];
@@ -1112,7 +1120,8 @@ class TeachController extends Controller
                             $countAnswered -- ;
                             continue;
                         }
-                    } else {
+                    }
+                    else {
                         // if belongs to group - check group size
                         $display_group = $randomAnswered['display_group'];
                         // check if we can reduce all group and dont affect limit.
@@ -1195,6 +1204,7 @@ class TeachController extends Controller
             $this->logTime(" before loading next question ");
 
             $response = $this->getNextQuestion($test_id, $answersPayload);
+
             $this->logTime(" after loading next question ");
 
             // echo "<br> getting response from next question:<br>";
@@ -1254,8 +1264,8 @@ class TeachController extends Controller
 
         return response()->json([
            // 'count_tags' => $this->showTeach($user->id),
-            'log' => $this->log , // $time_elapsed_secs,,
-            'dblog' => $this->dblog , // $time_elapsed_secs,,
+         //   'log' => $this->log , // $time_elapsed_secs,,
+         //   'dblog' => $this->dblog , // $time_elapsed_secs,,
             'test_id' => $test_id,
             'indications' => $indications,
             'decisionCodes' => $decisionCodes,

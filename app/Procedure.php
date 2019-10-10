@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use PhpParser\Builder;
 
 /**
@@ -176,14 +177,16 @@ class Procedure extends Model
                 return $proc -> getIndications();
             })  //*2.filter duplicate:
             ->collapse()
-            ->filter(function($ind) {return  !starts_with($ind, '*'); })
+            ->filter(function($ind) {return  !Str::startsWith($ind, '*'); })
             ->unique() ;
         //*3.merge them to score keys:
 
     }
-    public function getIDs ($title) {
-        return $this->WhereIn('title',$title)->pluck('id');
+    public function getIDs($titles) {
+        if (!$titles) return [$this->id];
+        return $this->WhereIn('title',$titles)->pluck('id');
     }
+
     public function keys()
     {
         $questions = Question::where('proc_id', $this->id)

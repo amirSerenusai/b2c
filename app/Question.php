@@ -4,6 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Arr;
 use Log;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -114,7 +115,7 @@ class Question extends Model
         $ansParams=$this->ansParams->map(function($item) {
             // if (!empty($item->toArray()['answer_param'] ) ){
             $array = $item->toArray()['answer_param'];
-            $array=array_pluck($array, 'pivot.value','title');
+            $array=Arr::pluck($array, 'pivot.value','title'); //array_pluck($array, 'pivot.value','title');
 
             foreach ($array as $key => $value) {
                 $item[$key]=$value;

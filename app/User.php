@@ -44,5 +44,9 @@ class User extends Authenticatable
     {
         return $this->client_id == 18;
     }
+    public function isHartford()
+    {
+        return $this->client_id == 26;
+    }
 
 }
