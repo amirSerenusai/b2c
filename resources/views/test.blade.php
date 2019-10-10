@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layout')
 @section("content")
 <div style="min-height:1000px;width:1000px;margin-top:300px">
 <div class="echo-div"></div></div>

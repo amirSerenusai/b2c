@@ -1,4 +1,4 @@
-@extends ('main')
+@extends ('layout')
 @section ('content')
 
 {{--    <div class="jumbotron">--}}

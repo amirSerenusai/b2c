@@ -1,4 +1,4 @@
-@extends ('main')
+@extends ('layout')
 @section ('content')
 {{--        <img src="{{asset('assets/images/banner.jpg')}}" alt="" class="procedures-section">--}}
 {{--    </div>--}}
@@ -78,9 +78,15 @@
 
 
 @section ('script')
+
+
     <script>
+
+
+
         let cItem =1;
         // let up = false;
+
         function show(className){
             $('html,body').animate({scrollTop:0},0);
         // $(".section-padding3").css({"-webkit-animation-duration": "2000ms"}).addClass('animated zoomOut').slideUp();

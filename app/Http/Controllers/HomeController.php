@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,12 +19,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return Renderable
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $user = User::find(227);
-        return view('main');
-//        return view('mail.user-created')->with(['user' => $user]);
+        return view('home');
     }
 }

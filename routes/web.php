@@ -37,7 +37,7 @@ Route::get('original', function () {
 });
 
 Route::get('index', 'HomeController@index')->name('home');
-Auth::routes();
+
 //Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
 
 Route::resource('procedures', 'ProceduresController', [
@@ -55,13 +55,19 @@ Route::get('/amir', function (){ return view('test'); });
 Route::get('run-procedure/{procedure}', 'RedirectController@runTest')->name('procedures.run');
 Route::get('run-combination/{combination}', 'RedirectController@runCombination')->name('combination.run');
 Route::get('/questionnaire', function (){ return view('questionnaire'); });
+Route::get('/validate-email', function (){ return ['validate-email' =>true]; });
 
 Route::get('/{any?}', function () {
 
-    return view('home');
+    return view('main');
 });
 
 
 Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'QuestionnaireReportsController@show']);
 
 
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
