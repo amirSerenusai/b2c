@@ -1,20 +1,23 @@
 <div class="enter-email ">
     <div class="container">
 {{--        <h2>Vertical (basic) form</h2>--}}
-        <form action="/action_page.php" class="form-inline">
-            <div class="form-group">
-                <label for="email">Email:</label>
+        <form action="/action_page.php"  >
+            <div class="form-group ">
+{{--                <label for="email">Email:</label>--}}
                 <input type="email" class="form-control"  id="email" placeholder="Enter email" name="email">
             </div>
+
             <div class="form-group">
-            <div class="checkbox">
-                <label><input type="checkbox" name="remember"> Remember me</label>
+{{--            <div class="checkbox">--}}
+{{--                <label><input type="checkbox" name="remember"> Remember me</label>--}}
+{{--            </div>--}}
+{{--                <button type='button' id='validate'>Validate!</button>--}}
+
             </div>
-            </div>
+            <h3 id='result'></h3>
 {{--            <a   class="template-btn mt-3 next-step2 ml-5" >next step2</a>--}}
         </form>
     </div>
-
 </div>
 
 {{--@section('enter-email-script')--}}

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -835,10 +835,10 @@ try {
 
 /***/ }),
 
-/***/ "./resources/js/api_calls.js":
-/*!***********************************!*\
-  !*** ./resources/js/api_calls.js ***!
-  \***********************************/
+/***/ "./resources/js/custom_functions.js":
+/*!******************************************!*\
+  !*** ./resources/js/custom_functions.js ***!
+  \******************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -852,69 +852,89 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function validateEmailDB(_x) {
-  return _validateEmailDB.apply(this, arguments);
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 }
 
-function _validateEmailDB() {
-  _validateEmailDB = _asyncToGenerator(
-  /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(email) {
-    var response, _email;
+var email = $("#email");
 
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return axios.post("/validate-email", {
-              email: email
-            });
+function validate() {
+  console.log("inside validate");
+  var $result = $("#result");
+  var email = $("#email").val();
+  $result.text("");
+  if (email.length < 1) return;
 
-          case 3:
-            response = _context.sent;
-            $("#info").text('');
-            $("#forgotPwd").show(); // console.log(email+" exist");
+  if (validateEmail(email)) {
+    $result.text(email + " is valid :)");
+    $result.css("color", "green");
+    $("#email").prop('disabled', false);
+  } else {
+    $("#email").prop('disabled', true);
+    $result.text(email + " is not valid :(");
+    $result.css("color", "red");
+  }
 
-            console.log(response); //}catch({ response :{data :{message}} }){
-
-            _context.next = 16;
-            break;
-
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context["catch"](0);
-            _email = _context.t0.response.data.errors.email;
-            _email = _.head(_email);
-            $("#forgotPwd").hide();
-            console.log(_email);
-            $("#info").text(_email);
-
-          case 16:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, null, [[0, 9]]);
-  }));
-  return _validateEmailDB.apply(this, arguments);
+  return false;
 }
 
-$("#email").on('blur', function (email) {
-  validateEmailDB(email.target.value);
+$("#validate").on("click", validate);
+email.hover(validate, validate);
+$(".step1").on("click", function () {
+  var email = $("#email").val();
+  console.log("slick on step1");
 });
+$(".next-step").on("click",
+/*#__PURE__*/
+_asyncToGenerator(
+/*#__PURE__*/
+_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+  var email, $result;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          email = $("#email").val();
+          $result = $("#result");
+
+          if (email) {
+            _context.next = 4;
+            break;
+          }
+
+          return _context.abrupt("return", $result.text('Please enter a valid email'));
+
+        case 4:
+          _context.next = 6;
+          return validate();
+
+        case 6:
+          $("#email").prop('disabled', true);
+          $(".carousel-control-next")[0].click(); //console.log($(`.progressbar  li c${cItem}`));
+
+          $(".progressbar  li.c".concat(cItem)).removeClass('shadow');
+          cItem = cItem === 3 ? 1 : cItem + 1;
+          $(".progressbar  li.c".concat(cItem)).addClass('active shadow');
+
+        case 11:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _callee);
+})));
 
 /***/ }),
 
-/***/ 2:
-/*!*****************************************!*\
-  !*** multi ./resources/js/api_calls.js ***!
-  \*****************************************/
+/***/ 1:
+/*!************************************************!*\
+  !*** multi ./resources/js/custom_functions.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/b2c/resources/js/api_calls.js */"./resources/js/api_calls.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/b2c/resources/js/custom_functions.js */"./resources/js/custom_functions.js");
 
 
 /***/ })

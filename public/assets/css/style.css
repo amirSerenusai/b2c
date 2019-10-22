@@ -146,8 +146,15 @@
 }
 
 .next-step {
+    cursor: pointer;
     border-bottom-right-radius : 30px;
     border-top-right-radius : 30px;
+}
+
+.prev-step {
+    cursor: pointer;
+    border-bottom-left-radius : 30px;
+    border-top-left-radius : 30px;
 }
 .i-frame {
 
@@ -183,3 +190,10 @@ width: 100%;
 }
 button:focus { outline: none; }
 
+.progress-bar-flex {
+    display: flex;
+    justify-content: center;
+}
+input::placeholder {
+    color: darkred !important;
+}

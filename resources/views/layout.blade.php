@@ -8,7 +8,7 @@
     <title>Colorlib | Free Bootstrap Website Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
+{{--    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">--}}
 
 {{--    <link href="{{asset('assets/css/template.css')}}" rel="stylesheet" media="screen">--}}
     <script type="e61d56bd17d79316e759fdbd-text/javascript">if ( top !== self ) top.location.replace( self.location.href );// Hey, don't iframe my iframe!</script>
@@ -340,7 +340,7 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 {{--<script src="{{asset('assets/js/vendor/bootstrap-4.1.3.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>--}}
 <script src="{{asset('assets/js/vendor/wow.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
 <script src="{{asset('assets/js/vendor/owl-carousel.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
 <script src="{{asset('assets/js/vendor/jquery.datetimepicker.full.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
@@ -393,7 +393,7 @@ function validateEmailExists(myalert){alert(myalert)}
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="ed77345db1d323e1b61dccec-|49" defer=""></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="e61d56bd17d79316e759fdbd-text/javascript"></script>
 {{--<script src="{{asset('assets/js/vendor/products.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>--}}I
-<script src="{{asset('assets/js/vendor/application.min.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>
+{{--<script src="{{asset('assets/js/vendor/application.min.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>--}}
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="e61d56bd17d79316e759fdbd-|49" defer=""></script>
 </body>
 </html>

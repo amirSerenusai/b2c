@@ -31,16 +31,16 @@
 <div class="spinner  " ></div>
 </div>
 
-<div class="login-steps">
-    <div class="container"  style="width: 100%;">
-        <ul class="progressbar">
+<div class="login-steps" >
+
+        <ul class="progressbar progress-bar-flex">
             <li class="c1 active shadow">Enter email</li>
             <li class="c2">Choose password</li>
             <li class="c3">Fill case</li>
 {{--            <li>View map</li>--}}
         </ul>
-    </div>
-    <div id="carouselExampleControls" class="carousel slide "  data-ride="carousel"   data-interval="false">
+
+    <div id="carouselExampleControls" class="carousel slide mt-4"  data-ride="carousel"   data-interval="false">
 
         <div class="carousel-inner">
             <div class="carousel-item  active">
@@ -57,7 +57,10 @@
             </div>
 
         </div>
-        <button     class="template-btn mt-3 next-step position-absolute" style="left:49%" onclick="clickNext()">next step</button>
+        <div class=" position-absolute" style="left:42.35%; " >
+        <button     class="template-btn mt-3 prev-step step1" onclick="clickBack()">step back</button>
+        <button     class="template-btn mt-3 next-step step1" >next step</button>
+        </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" style="display: none"   data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -119,13 +122,20 @@
                 console.log( $(".carousel-control-next")[0].click())
             });
         });
-  clickNext = () => { $(".carousel-control-next")[0].click();
-  //console.log($(`.progressbar  li c${cItem}`));
-      $(`.progressbar  li.c${cItem}`).removeClass('shadow');
-      cItem = cItem === 3 ? 1 : cItem+1;
-      $(`.progressbar  li.c${cItem}`).addClass('active shadow');
-  };
+  // clickNext = () => { $(".carousel-control-next")[0].click();
+  //
+  // //console.log($(`.progressbar  li c${cItem}`));
+  //
+  //     $(`.progressbar  li.c${cItem}`).removeClass('shadow');
+  //     cItem = cItem === 3 ? 1 : cItem+1;
+  //     $(`.progressbar  li.c${cItem}`).addClass('active shadow');
+  // };
 
+  clickBack = () => { $(".carousel-control-prev")[0].click();
+            $(`.progressbar  li.c${cItem}`).removeClass('active shadow');
+            cItem = cItem === 1 ? 3 : cItem-1;
+            $(`.progressbar  li.c${cItem}`).addClass('active shadow');
+  };
         // $(".next-step").on("click" , function () {
         //     $('html, body').css('overflowY', 'hidden');
         //     $(".quick-login").removeClass('fadeInRightBig').addClass("animated fadeOutRightBig d-inline-block overflow-hidden");
@@ -151,5 +161,7 @@
 
         }
         @yield('enter-email-script')
+
     </script>
+    <script src="{{asset('js/custom_functions.js')}}"></script>
 @endsection
