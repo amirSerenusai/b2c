@@ -6,6 +6,7 @@ use App\Answer;
 use App\DisplayGroup;
 use App\Events\QuestionAnswered;
 use App\Question;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Log;
 //use Illuminate\Validation\Rule;
@@ -378,7 +379,7 @@ class TeachController extends Controller
 
      * @return \Illuminate\Http\JsonResponse|mixed
      */
-    public function getNextQuestion($test_id, $payLoad = []){
+    public function getNextQuestion($test_id, $payLoad = []) {
 
         //$time_getNextQuestion = microtime(true);
         $this->removedAnswers=[];
@@ -389,7 +390,14 @@ class TeachController extends Controller
         if(is_array($payLoad) AND count($payLoad)) $request->replace($payLoad);
 
         $time_temp = microtime(true);
-        $response = $qqc->create($request, $test_id);
+        //$response = $qqc->create($request, $test_id);
+
+        try {
+            $response = $this->addAnswers($request, $this->questionnaire );
+        }
+        catch(ModelNotFoundException $e) {
+            return $this->teachInitialResponse();
+        }
         $time_temp = microtime(true) - $time_temp;
         info("time_create = {$time_temp}, LINE: ".__LINE__);
 
@@ -595,7 +603,7 @@ class TeachController extends Controller
         }
 
         $teachResponse=[];
-        // create new test (questioneire)
+        // create new test (questionnaire)
         $request = new Request();
         $request->replace(['user_id'=>$user->id, 'procedure' => $proc_id,'email' => 'teach@gmail.com']);
         $q = new QuestionnairesController();
@@ -620,6 +628,7 @@ class TeachController extends Controller
         $response = $this->getNextQuestion($test_id);
 
         $this->countCurrentAnswers=0;
+
         $question = $response['question'];
         $answers = $response['answers'];
         $loop = 0;
@@ -645,7 +654,8 @@ class TeachController extends Controller
                 'qID' => $question['id'],
                 'answers' =>  Arr::pluck($answers,'title')
             ]);
-
+            $dispatchAnswers = collect($answers)->map(function($a) {return $a;});
+            if(head($answers[0]['display_groups'])) dd($questionnaire->answered($dispatchAnswers)    );
             // randomize answers
             $answered = [];
             if(count($answers) == 0 ) {
@@ -1023,7 +1033,7 @@ class TeachController extends Controller
 
                             $this->countCurrentAnswers++;
                             //$answer->display_groups
-                            $this->displayGroupOfLastQuestion=head($answer->display_groups);
+                            //$this->displayGroupOfLastQuestion=head($answer->display_groups);
                             $this->log []= "<div style='text-decoration: underline;'>Added Answer {$answer->id} , sub answer = {$sub_answer}</div>";
                             $this->log []= "<div>count Current Answers: {$this->countCurrentAnswers}</div>";
                             $current_keys = $questionnaire->updateKeys($answer, $current_keys, $sub_answer);
@@ -1197,6 +1207,7 @@ class TeachController extends Controller
                 ['question' => $question["id"],
                     'answers' => $answered
                 ];
+
             // $this->log []= "<div style='color:brown'><b> @@@@@@answersPayload@@@@@ : ".json_encode($answersPayload)."</b>></div>";
             // show answered
             // $this->displayQuestionAndAnswers($question,$answered);
@@ -1270,6 +1281,25 @@ class TeachController extends Controller
             'indications' => $indications,
             'decisionCodes' => $decisionCodes,
         ], 200);
+    }
+    public function addAnswers($request, Questionnaire $questionnaire )
+    {
+            $parser = new ExpressionParser($questionnaire->procedure,  $questionnaire->combinationProceduresNames());
+            $latest = $questionnaire->latestAnswer();
+
+             $question = Question::findOrFail($request->input('question'));
+                $questionnaire->addAnswers(
+                $request->input('answers'),
+                $question,
+                $questionnaire->keys($latest),
+                $questionnaire->indications($latest),
+                $parser
+            );
+
+    }
+    public function teachInitialResponse( )
+    {
+
     }
 }
 ?>

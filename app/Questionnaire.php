@@ -1012,59 +1012,65 @@ class Questionnaire extends Model
     }
 
     /**
+     * @param null $answers
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function answered()
+    public function answered($answers = null)
     {
 
         $questions = [];
+        $answers = $answers ?: $this->answers()->get();
+       try {
+           return $answers
 
-        return $this->answers()
-            ->get()
-            ->transform(function (Answer $answer) use (&$questions) {
+               ->transform(function (Answer $answer) use (&$questions) {
 
-                /** @var TYPE_NAME $answer */
-
-
-
-                $answer->question =  $question = Question::find($answer->question_id)->load('polyParams');
-                $answer->question_short_title  =  $question->getParam('short_title');
-
-                //start Preview ML SHORT TITLE
+                   /** @var TYPE_NAME $answer */
 
 
-                $answer->title =  trim($answer->getParam('short_title')) ?:  $answer->title  ;
 
-                //end Preview
+                   $answer->question =  $question = Question::find($answer->question_id)->load('polyParams');
+                   $answer->question_short_title  =  $question->getParam('short_title');
 
-                if (in_array($answer->question_id, $questions)) {
-                    $answer->question_title = optional($question)->title_doctor ;
-                    //$answer->question_title = $short_title ?: optional($question)->title_doctor ;
+                   //start Preview ML SHORT TITLE
 
-                    $answer->question_indication = [];
-                    $answer->question_auto = optional($question)->is_auto;
-                } else {
-                    //  $answer->question_title =isset( $question->title_doctor);
-                    $answer->question_title =optional($question)->title_doctor ?? $question['title_doctor']  ;
-                    //   $answer->question_title =  $short_title ?: $answer->question_title ;
-                    //print_r($question->title_doctor);die;
-                    $answer->question_indication = optional($question)->indication  ?? $question['indication'] ;
-                    $answer->question_auto = optional($question)->is_auto ??  $question['is_auto'] ;
-                    $questions[] = $answer->question_id;
-                }
 
-                $sub_answer = $answer->pivot->sub_answer;
+                   $answer->title =  trim($answer->getParam('short_title')) ?:  $answer->title  ;
 
-                if ($answer->isVas()) {
+                   //end Preview
+
+                   if (in_array($answer->question_id, $questions)) {
+                       $answer->question_title = optional($question)->title_doctor ;
+                       //$answer->question_title = $short_title ?: optional($question)->title_doctor ;
+
+                       $answer->question_indication = [];
+                       $answer->question_auto = optional($question)->is_auto;
+                   } else {
+                       //  $answer->question_title =isset( $question->title_doctor);
+                       $answer->question_title =optional($question)->title_doctor ?? $question['title_doctor']  ;
+                       //   $answer->question_title =  $short_title ?: $answer->question_title ;
+                       //print_r($question->title_doctor);die;
+                       $answer->question_indication = optional($question)->indication  ?? $question['indication'] ;
+                       $answer->question_auto = optional($question)->is_auto ??  $question['is_auto'] ;
+                       $questions[] = $answer->question_id;
+                   }
+
+                   $sub_answer = $answer->pivot->sub_answer;
+
+                   if ($answer->isVas()) {
 //                    if ($answer->title=="Size") {print_r($this->vasWeight($answer, $sub_answer));die;}
-                    $answer->weight = $this->vasWeight($answer, $sub_answer);
+                       $answer->weight = $this->vasWeight($answer, $sub_answer);
 
-                }
-                $answer->isPositive = $answer->weight > 0 ? true : false;
+                   }
+                   $answer->isPositive = $answer->weight > 0 ? true : false;
 //                $answer->original_weight =  $answer->weight;
 //                $answer->weight = $answer->weight!= 0 ?   $answer->weight - 59 : 0;
-                return  $answer ;
-            });
+                   return  $answer ;
+               });
+       }catch(\Throwable $e){
+
+           dd($answers);
+       }
     }
 
 

@@ -69,5 +69,5 @@ Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'Que
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 

@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        $this->app->bind('HelpSpot\API', function ($app) {
+            dd("123");
+            return new HelpSpot\API($app->make('HttpClient'));
+        });
+
+
     }
 
     /**

@@ -362,7 +362,7 @@ $(document).ready(() => {
     startEcho();
 });
 function startEcho(){
-        //alert("startEcho");
+
     window.Echo.channel('adminserenus').listen('QuestionAnswered', e => {
         console.log({ e });
     if((typeof alertHi === "function") ) alertHi(e);

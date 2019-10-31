@@ -839,11 +839,12 @@ try {
 /*!***********************************!*\
   !*** ./resources/js/api_calls.js ***!
   \***********************************/
-/*! no exports provided */
+/*! exports provided: connectUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "connectUser", function() { return connectUser; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -852,6 +853,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+var newUser = false;
+var password,
+    g_email = null;
+
 function validateEmailDB(_x) {
   return _validateEmailDB.apply(this, arguments);
 }
@@ -859,51 +864,151 @@ function validateEmailDB(_x) {
 function _validateEmailDB() {
   _validateEmailDB = _asyncToGenerator(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(email) {
-    var response, _email;
-
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(email) {
+    var response, emailResponse;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
+            _context3.prev = 0;
+            _context3.next = 3;
             return axios.post("/validate-email", {
               email: email
             });
 
           case 3:
-            response = _context.sent;
+            response = _context3.sent;
             $("#info").text('');
-            $("#forgotPwd").show(); // console.log(email+" exist");
+            $("#forgotPwd").hide().delay(300).show(); // console.log(email+" exist");
 
-            console.log(response); //}catch({ response :{data :{message}} }){
+            console.log(response);
+            return _context3.abrupt("return", response);
 
-            _context.next = 16;
-            break;
-
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context["catch"](0);
-            _email = _context.t0.response.data.errors.email;
-            _email = _.head(_email);
+          case 10:
+            _context3.prev = 10;
+            _context3.t0 = _context3["catch"](0);
+            emailResponse = _context3.t0.response.data.errors.email;
+            emailResponse = _.head(emailResponse);
             $("#forgotPwd").hide();
-            console.log(_email);
-            $("#info").text(_email);
+            console.log(emailResponse);
 
-          case 16:
+            if (emailResponse === "new-user") {
+              newUser = true;
+              $("#info").text('Hello new user , type a password of 8 chars ');
+              $("#pwd").attr("placeholder", "Type a password");
+              password = $("#pwd").val();
+              console.log($("#pwd").attr('placeholder'));
+            }
+
+          case 17:
           case "end":
-            return _context.stop();
+            return _context3.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee3, null, [[0, 10]]);
   }));
   return _validateEmailDB.apply(this, arguments);
 }
 
 $("#email").on('blur', function (email) {
-  validateEmailDB(email.target.value);
+  g_email = email.target.value;
+  validateEmailDB(g_email);
 });
+$(".step1").on("click", function () {
+  // var email = $("#email").val();
+  validateEmailDB(g_email);
+  console.log("ssssslick on step1");
+}); // $(".next-step").on("click", function (){
+//      if( $(this).hasClass('step2') ) alert("step2")
+// });
+
+function connectUser() {
+  if (newUser) registerNewUser().then($(".carousel-item").delay(500).animate({
+    height: 700
+  }, 600));else loginUser().then($(".carousel-item").delay(500).animate({
+    height: 700
+  }, 600));
+}
+
+var registerNewUser =
+/*#__PURE__*/
+function () {
+  var _ref = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    var name;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!(!g_email || !password)) {
+              _context.next = 2;
+              break;
+            }
+
+            return _context.abrupt("return", console.log("no email to send or password"));
+
+          case 2:
+            name = g_email.substr(0, g_email.indexOf('@'));
+            _context.next = 5;
+            return axios.post("/register", {
+              email: g_email,
+              name: name,
+              password: password
+            });
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function registerNewUser() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var loginUser =
+/*#__PURE__*/
+function () {
+  var _ref2 = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    var userDetails;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            // if (!g_email || !password)return console.log("no email to send or password");
+            // let name =    g_email.substr(0, g_email.indexOf('@'));
+            password = $("#pwd").val();
+            _context2.next = 3;
+            return axios.post("/login", {
+              email: g_email,
+              name: name,
+              password: password
+            });
+
+          case 3:
+            userDetails = _context2.sent;
+            console.log({
+              userDetails: userDetails
+            });
+
+          case 5:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function loginUser() {
+    return _ref2.apply(this, arguments);
+  };
+}();
 
 /***/ }),
 

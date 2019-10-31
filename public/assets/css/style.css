@@ -157,7 +157,7 @@
     border-top-left-radius : 30px;
 }
 .i-frame {
-
+height: 100px;
 width: 100%;
 }
 .enter-email {}

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Teach\CreateQuestion;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Mail;
 use App\Exceptions\NoRelevantAnswersException;
@@ -53,10 +54,12 @@ class QuestionnaireQuestionsController extends ApiController
     /**
      * @param Request $request
      * @param $questionnaire_id
+     * @param CreateQuestion $createQuestion
      * @return JsonResponse
      */
     public function create(Request $request, $questionnaire_id)
     {
+
 
 
         /** @var Questionnaire $questionnaire */
@@ -123,7 +126,7 @@ class QuestionnaireQuestionsController extends ApiController
             //$Time_11 = microtime(true) - $Time_11;
             //info("Time_5.1 = {$Time_11}");
 
-        } catch (QuestionnaireShouldEndException $exception) { dd(16);
+        } catch (QuestionnaireShouldEndException $exception) {
           if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
         } catch (InvalidKeysException $exception) {
@@ -149,66 +152,33 @@ class QuestionnaireQuestionsController extends ApiController
 
                  }
        }
-       //$Time_1 = microtime(true) - $Time_1;
-       //info("Time_6 = {$Time_1}");
-
-
-        //$Time_1 = microtime(true);
 
         $latest = $answered->last()->pivot;
 
         $indications = $questionnaire->indications($latest);
-         //return ['latest' => json_decode($latest['indications'],true) ,    'indications ' => $indications ];
+
         $keys = $parser->generateSystemKeys($questionnaire->keys($latest), $indications);
 
         if ( $questionnaire->combination_instance_id && $questionnaire->someIsDone()  )
         {
 
-           // $keys = toObject( $questionnaire->voidKeys($questionnaire->proc_id) ,'_void' )->merge($keys);
+
 
             $keys =  collect($questionnaire->getCombinationKeys())->merge($keys) ;
         }
-        //$Time_1 = microtime(true) - $Time_1;
-        //info("Time_7 = {$Time_1}");
 
-        //
-
-        //$Time_1 = microtime(true);
         try {
-            //$Time_11 = microtime(true);
+
             $possible = $questionnaire->nextPossibleQuestions($question, $indications);
-            //$Time_11 = microtime(true) - $Time_11;
-            //info("Time_8.1 = {$Time_11}");
 
-            //$Time_11 = microtime(true);
             $question = $questionnaire->nextQuestion($possible, $keys, $parser)->load('answers.params');
-            //$Time_11 = microtime(true) - $Time_11;
-            //info("Time_8.2 = {$Time_11}");
 
-            //$Time_11 = microtime(true);
             $answers = $questionnaire->filterAnswersByKeys($question->answers, $keys, $parser);
-            //$Time_11 = microtime(true) - $Time_11;
-            //info("Time_8.3 = {$Time_11}");
 
-            //$Time_11 = microtime(true);
             if ($question->is_auto == 1) {
                 return $questionnaire->resolveAutoQuestion($question, $answers, $keys, $indications, $parser);
             }
-            //$Time_11 = microtime(true) - $Time_11;
-            //info("Time_8.4 = {$Time_11}");
 
-            //$possible = $questionnaire->nextPossibleQuestions($question, $indications);
-
-            //$question = $questionnaire->nextQuestion($possible, $keys, $parser)->load('answers.params');
-
-            //   $questionAnswers = $question->answers->map(function($a) {return ['vas'=>$a->vas_max_display ,  'parsed' => $a->parseAnswerVas($a->vas_max_display) ] ;});
-
-            //$answers = $questionnaire->filterAnswersByKeys($question->answers, $keys, $parser);
-
-            //if ($question->is_auto == 1) {
-
-             //   return $questionnaire->resolveAutoQuestion($question, $answers, $keys, $indications, $parser);
-           // }
         } catch (InvalidKeysException $exception) {
 
             dd ( $this->responseNotAcceptable($exception->getMessage(), $exception->getExpression(), $exception->getOriginalExpression(), $exception->getSource()) );
@@ -216,7 +186,7 @@ class QuestionnaireQuestionsController extends ApiController
 
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
-        } catch (QuestionnaireShouldEndException $exception) { dd(14);
+        } catch (QuestionnaireShouldEndException $exception) {
 
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
@@ -225,44 +195,26 @@ class QuestionnaireQuestionsController extends ApiController
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId())  MailController::endTestMail($questionnaire_id);
             return $this->responseNotFound($exception->getMessage());
         }
-        //$Time_1 = microtime(true) - $Time_1;
-        //info("Time_8 = {$Time_1}");
-        //$combinationKeys  = $questionnaire->getCombinationKeys();
 
         $allKeys  = $parser->allCurrentKeys($questionnaire->keys($latest));
 
         $Time_9 = microtime(true);
-        //$get_display_group = $questionnaire->getDisplayGroups($questionnaire->answered(),$questionnaire->answered() );   # ???
-        //$combineReportAnswers = $questionnaire->combineReportAnswers($get_display_group,$questionnaire->answered());
-        //$cl_style = $questionnaire->mapApi($combineReportAnswers);
-
-        //$Time_11 = microtime(true);
-        //number_format($questionnaire->scenarios($possible));
-        //$Time_11 = microtime(true) - $Time_11;
-        //info("Time_9.1 = {$Time_11}");
 
         $cache_scenarios = $questionnaire->scenarios($possible);
-        //$cache_scenarios = Cache::remember("", 10, function () use ($possible) {
-        //    return $questionnaire->scenarios($possible);
-        //});
 
         $get_display_group = $questionnaire->getDisplayGroups($questionnaire->answered());
         $combineReportAnswers = $questionnaire->combineReportAnswers($get_display_group,$questionnaire->answered());
         $cl_style = $questionnaire->mapApi($combineReportAnswers);
         $return = [
             'create-after-changes' => true,
-            //'test_ANswers' =>$testAnswers,
-            //        'initialCombinationKeys' => $initialCombinationKeys,
-            //'combinationKeys' => $combinationKeys  ,
+
             'question' => $question,
-            //      'c_i_i' =>  $questionnaire->combinationInstance->answered(),
-            // '234' => ( $questionnaire->combination_instance_id && $questionnaire->someIsDone()  ),
-            //'someIsDone' =>   $questionnaire->someIsDone()  ,
+
             'answered' => $questionnaire->answered(),
-            //'map_answered' =>  $get_display_group,
+
             'cl_style' => $cl_style,
             'answers' => $question->getAnswersWithParams($answers) ,//$answers, // $question->pluckAnsParams(),// $answers,
-            //'$questionAnswers'=>$questionAnswers,
+
             'keys' => $keys->reverse(),
             'allKeys' => $allKeys,
             'indications' => $indications,

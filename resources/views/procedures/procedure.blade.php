@@ -49,10 +49,11 @@
             <div class="carousel-item ">
                 <div class="w-100" >@component("components.login_quick")@endcomponent</div>
             </div>
-            <div class="carousel-item  ">
-                <div class="w-100  bg-danger" >
-                    <div  class="i-frame">
-                        <iframe  ></iframe>
+            <div class="carousel-item bg-secondary">
+                <div class="w-100" >
+                    <div  class="i-frame bg-dark">
+                        loading case, please wait.....
+                        <iframe></iframe>
                     </div></div>
             </div>
 

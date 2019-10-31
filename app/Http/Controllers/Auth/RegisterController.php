@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,10 +51,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+       // dd(request()->header('x-xsrf-token') );
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8']//, 'confirmed'],
+//            '_token' => ['required']
         ]);
     }
 
@@ -65,16 +68,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+//        return User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
+//        ]);
+
+        info("name!!{$data['name']}");
+        $id =  User::create([
+            'token' =>  '1234556',
+            'first_name' => $data['name'],
+            'client_id' => 30, //consumer
+            'last_name' => ' ',
+            'category_id' => 1,
+            'title' => ' ',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ])->id;
+
+        $user = User::find($id);
+
+        $user->secret_password = $data['password'];
+        \Illuminate\Support\Facades\Mail::to('amir1004@gmail.com')->send( new \App\Mail\UserCreated($user));
+//        return redirect('/home');
+        return $user;
     }
     protected function emailExists(Request $request)
     {
         $messages = [
-            'exists' => 'Hello new User',
+            'exists' => 'new-user',
         ];
 
        $request->validate([
