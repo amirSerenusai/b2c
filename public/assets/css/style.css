@@ -197,3 +197,11 @@ button:focus { outline: none; }
 input::placeholder {
     color: darkred !important;
 }
+.vl {
+    border-left: 1px solid #d6d6d6;
+    height: 22px;
+    display: inline-block;
+    margin: -4px;
+}
+
+
