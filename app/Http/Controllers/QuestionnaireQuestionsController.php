@@ -123,6 +123,7 @@ class QuestionnaireQuestionsController extends ApiController
                 $questionnaire->indications($latest),
                 $parser
             );
+
             //$Time_11 = microtime(true) - $Time_11;
             //info("Time_5.1 = {$Time_11}");
 
@@ -181,7 +182,7 @@ class QuestionnaireQuestionsController extends ApiController
 
         } catch (InvalidKeysException $exception) {
 
-            dd ( $this->responseNotAcceptable($exception->getMessage(), $exception->getExpression(), $exception->getOriginalExpression(), $exception->getSource()) );
+            dd ( $exception);
         } catch (NoMoreQuestionsException $exception) {
 
             if(Auth::user()->isHartford()  && !$questionnaire->isDummyPatientId()) MailController::endTestMail($questionnaire_id);
@@ -289,24 +290,24 @@ class QuestionnaireQuestionsController extends ApiController
         //
         /** @var Questionnaire $questionnaire */
 
-        $question = $questionnaire->firstQuestion();
+       return   $questionnaire->firstQuestion();
 
 
 
+//
+//       if(!$question)   // abort(403, 'notsss');
+//        throw new NoQuestionInProcedure( "No Question. please check procedure {$questionnaire->proc_id}.", 400  );
 
-       if(!$question)   // abort(403, 'notsss');
-        throw new NoQuestionInProcedure( "No Question. please check procedure {$questionnaire->proc_id}.", 400  );
-
-           return response()->json([
-               '$questionnaire' =>$questionnaire,
-               'question' => $question,
-               'combinationKeys' => $questionnaire->getCombinationKeys(),
-               'staging' => true,
-               'firstQuestion' => true,
-             //  'count_tags' => Auth::user()->isLabeler() ?  $this->showTeachTags($questionnaire->user_id) : '',
-               'answers' => optional($question)->answersWithParams()->get(),
-
-           ], 200);
+//           return response()->json([
+//               '$questionnaire' =>$questionnaire,
+//               'question' => $question,
+//               'combinationKeys' => $questionnaire->getCombinationKeys(),
+//               'staging' => true,
+//               'firstQuestion' => true,
+//             //  'count_tags' => Auth::user()->isLabeler() ?  $this->showTeachTags($questionnaire->user_id) : '',
+//               'answers' => optional($question)->answersWithParams()->get(),
+//
+//           ], 200);
     }/** @noinspection PhpMethodNamingConventionInspection */
 
     /**

@@ -5,6 +5,7 @@ namespace App;
 //use Illuminate\Http\Request;
 //use App\Exceptions\InvalidKeysException;
 use App\Exceptions\NoMoreQuestionsException;
+use App\Exceptions\NoQuestionInProcedure;
 use App\Exceptions\NoRelevantAnswersException;
 use App\Exceptions\QuestionnaireShouldEndException;
 use Carbon\Carbon;
@@ -267,11 +268,13 @@ class Questionnaire extends Model
 
     /**
      * Get the last answer that was answered
-     * @return Collection
+     * @return Model|\Illuminate\Database\Query\Builder|object
      */
     public function latestAnswer()
     {
-        return DB::table('tests_answers')->where('test_id', $this->id)->latest('id')->first();
+
+       return  DB::table('tests_answers')->where('test_id', $this->id)->latest('id')->first();
+
     }/** @noinspection PhpMethodNamingConventionInspection */
 
     /**
@@ -286,6 +289,8 @@ class Questionnaire extends Model
      */
     public function updateIndications($question, $answer, $current_indications, $sub_answer)
     {
+
+
         collect($question->indication)
             ->merge($answer->indication)
             ->unique()
@@ -539,15 +544,18 @@ class Questionnaire extends Model
      *
      * @return void
      */
-    public function addAnswers($answers, $question, $keys, $indications, $parser)
+    public function addAnswers($answers, $question, $keys, $indications, $parser )
     {
 
         $end_test = false;
         $message = "";
+
         //$test_answers =TestAnswer::where('test_id', $this->id)->where('question_id',$question->id)->first();
-        foreach ($answers as ['id' => $id, 'sub_answer' => $sub_answer]) {
+        foreach ($answers as ['id' => $id, 'sub_answer' => $sub_answer  , 'answer' => $answer]) {
             /** @var Answer $answer */
-            $answer = Answer::findOrFail($id);
+             //dd($answer);
+           // $answer = Answer::findOrFail($id);
+           $systemValues =  $this->updateSystemValues($question, $answer, $indications, $sub_answer ,  $parser->generateSystemKeys($keys, $indications) );
 
             $indications = $this->updateIndications($question, $answer, $indications, $sub_answer);
             //$indications = Cache::remember("", 10, function () use ($question, $answer, $indications, $sub_answer) {
@@ -838,7 +846,7 @@ class Questionnaire extends Model
      * @param Collection $indications the current indications this test has
      * @param ExpressionParser $parser
      *
-     * @return JsonResponse
+     * @return array
      */
     public function resolveAutoQuestion($question, $answers, $keys, $indications, $parser)
     {
@@ -849,12 +857,18 @@ class Questionnaire extends Model
         if($answers) $this->doubleQuestionsError($question,$this->id);
         $end_test = false;
         $message = "";
+
+
         foreach ($this->autoAnswers($answers, $keys, $parser) as $answer) {
+
             /** @var Answer $answer */
 
             $sub_answer = $answer->isVas() && $answer->vas_auto_answer_formula ? $parser->parse($answer->vas_auto_answer_formula, $keys, $answer) : 0;
+
             $sub_answer = $sub_answer == Questionnaire::VAS_LESS ? '_less' : $sub_answer== Questionnaire::VAS_MORE ? "_more" : $sub_answer;
+
             $indications = $this->updateIndications($question, $answer, $indications, $sub_answer);
+
 
             $keys = $this->updateKeys($answer, $parser->generateSystemKeys($keys, $indications), $sub_answer);
 
@@ -877,6 +891,7 @@ class Questionnaire extends Model
         $question = $this->nextQuestion($possible, $keys, $parser)->load('answers');
 
         if ($question && $question->is_auto) {
+
             $answers = $this->filterAnswersByKeys($question->answers, $keys, $parser);
 
 //              $ids = collect($answers)->pluck('id');
@@ -895,14 +910,19 @@ class Questionnaire extends Model
 
         $answers = $this->filterAnswersByKeys($question->answers()->get(), $keys, $parser);
         // trying to fix!
-        $answers=$question->getAnswersWithParams($answers,$question);
+
+       // $answers=$question->getAnswersWithParams($answers,$question);
+        $answers->transform(function($a) {return $a->load('params');});
+
         $latest = $this->answers()->with('question')->get()->last()->pivot;
 
         $get_display_group = $this->getDisplayGroups($this->answered(),$this->answered() );
         $combineReportAnswers = $this->combineReportAnswers($get_display_group,$this->answered());
         $cl_style = $this->mapApi($combineReportAnswers);
         array_pop($cl_style);
-        return response()->json([
+
+
+        return [
             //  'test' =>  $question->ansParams ,
             'resolve_auto_question' => true,
             'cl_style' =>$cl_style ,
@@ -916,7 +936,7 @@ class Questionnaire extends Model
             'answered' => $this->answered(),
             'possible' => $possible->count(),
             'scenarios' => number_format($this->scenarios($possible)),
-        ]);
+        ];
     }
 
     /**
@@ -949,15 +969,31 @@ class Questionnaire extends Model
 
     /**
      * The highest priority question in this test
-     * @return Question
+     * @return array
      */
     public function firstQuestion()
     {
-        return Question::where('proc_id', $this->proc_id)
+
+         $question =  Question::where('proc_id', $this->proc_id)
             //->where('is_deleted', 0)
             ->whereNull('deleted_at')
             ->orderByDesc('priority')
             ->first();
+
+        if(!$question)   // abort(403, 'notsss');
+            throw new NoQuestionInProcedure( "No Question. please check procedure {$this->proc_id}.", 400  );
+        return  [
+            //'questionnaire' =>$this,
+            'question' => $question,
+            'combinationKeys' => $this->getCombinationKeys(),
+            //'staging' => true,
+            'firstQuestion' => true,
+            //  'count_tags' => Auth::user()->isLabeler() ?  $this->showTeachTags($questionnaire->user_id) : '',
+            'answers' => optional($question)->answersWithParams()->get(),
+
+        ];
+
+
     }/** @noinspection PhpMethodNamingConventionInspection */
 
     /**
@@ -1145,7 +1181,9 @@ class Questionnaire extends Model
     protected function autoAnswers($answers, $keys, $parser)
     {
 
+
         return $answers->filter(function ($answer) use ($keys, $parser) {
+
             if (empty($answer->auto_keys)) return false;
 
             return $parser->parse($answer->auto_keys, $keys, $answer);
@@ -1314,14 +1352,14 @@ class Questionnaire extends Model
 
     public  function  prioritize($questionsArray)
     {
-        //dd($questionsArray);
+
         return collect($questionsArray)->map(function ( $answers, $question_title){
 
             return collect($answers)->sortByDesc(function ($answer, $key) {
                 if (array_key_exists('combined',$answer))return $answer['priority']; //Todo Combined!
                 else if (collect($answer)->has('priority'))return  $answer->priority;
                 else return $answer[0]->priority;
-                //if(is_array($answer))dd($answer);
+
 
 
             })->values();
@@ -1333,7 +1371,7 @@ class Questionnaire extends Model
 
         if ($clApi) {
             $user = User::find(228);
-//         dd(  optional($user->client )->getParam('show_final_result_api')  );
+//
 //           Auth::Login('228');
             $this->show_final_result_api = optional($user->client )->getParam('show_final_result_api');
             $this->answerProps=['id','title', 'sub_answer','question_id','question_title','display_groups'];
@@ -1575,5 +1613,9 @@ class Questionnaire extends Model
             if ( in_array($item['question_id']   ,  $duplicated_questions_list ) ) $item['question_title'] = Question::find($item['question_id'])->getParam('short_title') ?: $item['question_title'];
             return $item;
         });
+    }
+    public function updateSystemValues ($method, $parameters)
+    {
+
     }
 }

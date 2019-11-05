@@ -62,67 +62,6 @@ class QuestionnairesController extends Controller
         }
         catch(\Exception $exception){
         }
-//        if ($request->has('combination')) {
-//
-//            $client_id = $user->client_id;
-//            // info('CLIENTID:'.$client_id );
-//            $queries = DB::getQueryLog();
-//            $combination = Combination::where(function($q) use ($request) {
-//                $q->where('code',$request->input('combination'))
-//                    ->orWhere('id',$request->input('combination'));
-//            })->where('client_id',$client_id)
-//                ->first();
-//
-//            if (!$combination || empty($combination->client_id)){
-//
-//                try {
-//                    throw new CareCodeDoesntExist( "Care code does not exist".$combination , 400  );
-//                }
-//                catch(CareCodeDoesntExist $exception) {
-//                    MailController::error(['message'=> 'Care code does not exist', 'request_params' => $request->all() ]);
-//                    return   response()->json(['error' => $exception->getMessage()],  $exception->getStatusCode() );
-//                }
-//                //return ["Care code does not exist.", $combination];
-//            }
-//
-//            $patient_id = !empty($request->input('patient_id')) ? $request->input('patient_id') : "no patient id";
-//
-//            $user_role=$user->role;
-//            if ($client_id != $combination->client_id &&  $user_role!='admin'){
-//
-//                return "You are not authorized to view combination (client: {$client_id} and correct one is  {$combination->client_id} user role is :  {$user_role} ";
-//            }
-//
-//            $combination_instance = CombinationInstance::create([
-//                'combination_id' => $combination->id,
-//                'patient_id' => $patient_id,
-//                'client_id' => Auth::user()->client_id
-//            ]);
-//
-//            collect($combination->procedures)->map(function ($procedure_title) {
-//                return Procedure::where('title', $procedure_title)
-//                    ->with('category')
-//                    ->where('is_deleted', 0)
-//                    ->orderByDesc('version')
-//                    ->first();
-//            })->each(function ($procedure) use ($request, $combination_instance, $user_id) {
-//                if(!empty($procedure->id)) {
-//                    Questionnaire::create([
-//                        'proc_id' => $procedure->id,
-//                        'user_id' => $user_id,
-//                        'email' => $request->email,
-//                        'combination_instance_id' => $combination_instance->id
-//                    ]);
-//                }
-//            });
-//
-//            $test = $combination_instance->questionnaires()->with('procedure')->first();
-//            //$test = $combination_instance->questionnaires()->latest()->get()->first();
-//            $test->combination = $combination ?? null;
-//            return $test;
-//        }
-//
-
         $new = Questionnaire::create([
 
             // 'proc_id' => $request->procedure ,

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\DisplayGroup;
 use App\Events\QuestionAnswered;
+use App\Exceptions\InvalidKeysException;
+use App\Exceptions\NoMoreQuestionsException;
+use App\Exceptions\NoRelevantAnswersException;
+use App\Exceptions\QuestionnaireShouldEndException;
 use App\Question;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -34,11 +38,11 @@ use function GuzzleHttp\json_encode;
  * Class TeachController
  * @package App\Http\Controllers
  */
-class TeachController extends Controller
+class TeachController extends ApiController
 {
     protected $questionnaire;
     protected $log= [] ;
-    protected $dblog= [] ;
+    protected $parser= null ;
 
     protected $countCurrentAnswers;
     protected $questionDisplayGroups;
@@ -139,8 +143,8 @@ class TeachController extends Controller
 
         $questionnaire = $this->questionnaire;
 
-        $parser = new ExpressionParser($questionnaire->procedure );
-
+        //$parser = new ExpressionParser($questionnaire->procedure );
+        $parser = $this->parser;
         $latest = $questionnaire->latestAnswer();
 
         $indications = $questionnaire->indications($latest);
@@ -375,33 +379,31 @@ class TeachController extends Controller
     }
 
     /**
-     * @param $test_id
-
+     * @param array $payLoad
+     * @param null $loop
      * @return \Illuminate\Http\JsonResponse|mixed
      */
-    public function getNextQuestion($test_id, $payLoad = []) {
-
-        //$time_getNextQuestion = microtime(true);
-        $this->removedAnswers=[];
-        $qqc = new QuestionnaireQuestionsController();
-        $request = new Request();
-        $payLoad['teach'] = true;
-
-        if(is_array($payLoad) AND count($payLoad)) $request->replace($payLoad);
+    public function getNextQuestion($payLoad, $loop) {
 
         $time_temp = microtime(true);
-        //$response = $qqc->create($request, $test_id);
+        if(!$payLoad)
+            $response =  $this->questionnaire->firstQuestion();
+       else
+       {
 
-        try {
-            $response = $this->addAnswers($request, $this->questionnaire );
-        }
-        catch(ModelNotFoundException $e) {
-            return $this->teachInitialResponse();
-        }
-        $time_temp = microtime(true) - $time_temp;
-        info("time_create = {$time_temp}, LINE: ".__LINE__);
+           $request =  collect($payLoad) ;
 
-        $response = json_decode($response->getContent(), true);
+
+           $response = $this->fillToQuestionnaire($request, $this->questionnaire ,$loop);
+
+
+       }
+
+
+
+
+
+      //  $response = json_decode($response->getContent(), true);
         //$time_temp = microtime(true) - $time_getNextQuestion;
         //info("time_getNextQuestion = {$time_temp}");
         return $response;
@@ -471,6 +473,7 @@ class TeachController extends Controller
 
     public function filterAnswers($answers){
         foreach($answers as $key=>$ans) {
+
             $answer = Answer::find($ans['id']);
             //$time_checkKeyForShowingAnswerTeach = microtime(true);
             $result = $this->checkKeyForShowingAnswerTeach($answer);
@@ -528,7 +531,8 @@ class TeachController extends Controller
      * @return array
      */
     public function ChooseSingleAnsByProb($answers){
-
+        $answersCollection = $answers;
+        $answers = $answers->toArray();
         if (count($answers) == 1) return array_search(true, $answers);
 
         $this->log[] = "<br><b>Single Answer case: Compute probability and choose one answer</b>, LINE:".__LINE__."<br>";
@@ -536,7 +540,13 @@ class TeachController extends Controller
         $AnsVec = [];
         foreach($answers as $key => $ans_i){
             $this->log[] = "<br>Answer ID = {$ans_i['id']}";
-            $single_answer_probability = trim(Answer::find($ans_i['id'])->getParam('single_answer_probability')) ?: 0;
+
+            //$single_answer_probability = trim(Answer::find($ans_i['id'])->getParam('single_answer_probability')) ?: 0;
+            $single_answer_probability = $answersCollection->where('id', $ans_i['id'] )->first()->getParam('single_answer_probability') ?: 0; ;
+
+                //->getParam('single_answer_probability')) ?: 0;
+
+
             $ans_i_vec = [];
             $ans_index = $key;
             info("Answer_ID = {$ans_i['id']}, single_answer_probability = {$single_answer_probability}, ans_index = {$ans_index}");
@@ -562,6 +572,7 @@ class TeachController extends Controller
      * @return \Illuminate\Http\JsonResponse|string
      */
     public function createScenario($proc_id){
+        $start = microtime(true);
         info("****************************************************************************************************************************************************************************************************");
         info("****************************************************************************************************************************************************************************************************");
         info("****************************************************************************************************************************************************************************************************");
@@ -570,10 +581,10 @@ class TeachController extends Controller
         //$time_DB_connection = microtime(true);
         DB::connection()->enableQueryLog();
 
-        $this->logTime('start');
+      //  $this->logTime('start');
         // $this->log = "";
         //$user = Auth::user();
-        $user =Auth::loginUsingId(227, TRUE);
+        $user = Auth::loginUsingId(227, TRUE);
     //    if (!$user) return "Not authorized.";
         // get procedure indications
         //$indicationsClass = new Indications($proc_id);
@@ -590,9 +601,10 @@ class TeachController extends Controller
                 $indications = array_keys(json_decode($indications, true));
                 unset($indications['final_decision']);
                 return response()->json([
+                    'TIME'=> $time_elapsed_secs = microtime(true) - $start,
                     //'count_tags' => $this->showTeach($user->id),
                     'log' => $this->log , // $time_elapsed_secs
-                    'dblog' => $this->dblog , // $time_elapsed_secs
+                    //'dblog' => $this->dblog , // $time_elapsed_secs
                     'test_id' => $test_id,
                     '$user_id' => $user_id,
                     'indications' => $indications,
@@ -604,11 +616,8 @@ class TeachController extends Controller
 
         $teachResponse=[];
         // create new test (questionnaire)
-        $request = new Request();
-        $request->replace(['user_id'=>$user->id, 'procedure' => $proc_id,'email' => 'teach@gmail.com']);
-        $q = new QuestionnairesController();
-        $q->user_id = $user->id;
-        $test = $q->store($request);
+        $request = null;
+        $test = $this->createTest($proc_id , $user->id);
         $test_id = $test->id;
 
 
@@ -617,55 +626,58 @@ class TeachController extends Controller
         info("TEST ID: {$test_id}");
         $questionnaire = Questionnaire::findOrFail($test_id);
         $this->questionnaire = $questionnaire;
-        $parser = new ExpressionParser($questionnaire->procedure);
+       // $parser = new ExpressionParser($questionnaire->procedure);
+           $parser = $this->parser = new ExpressionParser($questionnaire->procedure, $questionnaire->combinationProceduresNames());
 
         //$time_DB_connection = microtime(true) - $time_DB_connection;
         //info("time_DB_connection = {$time_DB_connection}");
 
 
         // FIRST QUESTION
-
-        $response = $this->getNextQuestion($test_id);
+        $loop = 0;
+        $response = $this->getNextQuestion(false, $loop);
 
         $this->countCurrentAnswers=0;
 
         $question = $response['question'];
+
         $answers = $response['answers'];
-        $loop = 0;
+
 
         $done = false;
 
         while(!$done) { //Start the LOOP
+
 
             $this->tempKeys = [];
 
             $this->countCurrentAnswers=0;
             $loop ++ ;
 
-            $this->logTime("Question {$question['id']} {$question['title_doctor']} ");
 
-            $this->log[] = "<b>Question ID:</b> {$question['id']} <br> <b>title_doctor: </b>{$question['title_doctor']}<br> <b>question_answers_type:</b> {$question['answers_type']}<br>";
+
+
             info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             info("----------------------------------------------------------------------------- Start a new question -----------------------------------------------------------------------------------------");
-            info("Question {$question['id']} {$question['title_doctor']}");
+//            info("Question {$question['id']} {$question['title_doctor']}");
             QuestionAnswered::dispatch([
                 'qTitle' => $question['title_doctor'],
                 'qID' => $question['id'],
                 'answers' =>  Arr::pluck($answers,'title')
             ]);
+
             $dispatchAnswers = collect($answers)->map(function($a) {return $a;});
-            if(head($answers[0]['display_groups'])) dd($questionnaire->answered($dispatchAnswers)    );
-            // randomize answers
+
+
             $answered = [];
             if(count($answers) == 0 ) {
-                $this->log []= "<br><b>did not find answers</b><br>";
                 info("did not find answers, LINE:").__LINE__;
             }
 
-            $answers_ids = Arr::pluck($answers,'id');
+        //    $answers_ids = Arr::pluck($answers,'id');
 
-            info("answers_ids:".print_r($answers_ids,1));
+          //  info("answers_ids:".print_r($answers_ids,1));
 
             info("++++++++++++++++++++++++++ Build ans_array & check Key For Showing Answer Teach +++++++++++++++++++++++++");
             $Ans_KeyForShowingAnswerTeach_list = [];
@@ -674,20 +686,30 @@ class TeachController extends Controller
             $Group_array = [];
             $displayGroup_array = [];
             $SingleSubAns_displayGroup_array = [];
-            foreach($answers_ids as $ans){
-                $answer = Answer::find($ans);
-                info("Checking Answer ID {$answer->id}: {$answer->title}, LINE:".__LINE__);
+              foreach($answers as   $answer){
+            //foreach($answers_ids as $ans){
+
+              //  $answer = Answer::find($ans);
+
+
+               // info("Checking Answer ID {$answer->id}: {$answer->title}, LINE:".__LINE__);
+               //   if($loop == 2)dd($answer ,__LINE__);
                 //$time_checkKeyForShowingAnswerTeach = microtime(true);
                 $checkKeyForShowingAnswerTeach = $this->checkKeyForShowingAnswerTeach($answer);
                 info("checkKeyForShowingAnswerTeach = {$checkKeyForShowingAnswerTeach}");
-                //$time_checkKeyForShowingAnswerTeach = microtime(true) - $time_checkKeyForShowingAnswerTeach;
-                //info("time_checkKeyForShowingAnswerTeach = {$time_checkKeyForShowingAnswerTeach}");
+
+
+
                 $answerGroup = $answer->answerGroups();
+
                 $displayGroupName = $answer->displayGroup()['name'];
+
                 $displayGroupProbability = $answer->displayGroup()['probability'];
+
                 $ANSWER_TYPE = false;
                 $single_sub_answer_prob = 0;
                 if(!empty($displayGroupName)){
+
                     $ANSWER_TYPE = strtolower(trim($answer->getParam('answer_type'))) == 'single sub-answer' ? 'single_sub_answer' : false; // if single sub-ans
                     if($ANSWER_TYPE == 'single_sub_answer'){
                         $single_sub_answer_prob = trim($answer->getParam('single_answer_probability')) ?: 0; // the probability of 'yes'
@@ -695,11 +717,13 @@ class TeachController extends Controller
 
                     }
                 }
+
                 //info("ANSWER_TYPE = {$ANSWER_TYPE}");
 
 
                 //info("answerGroup: ".print_r($answerGroup,1));
                 if(empty($answerGroup)){
+
                     $ans_array[] = array('Ans_ID' => $answer->id, 'checkKeyForShowingAnswerTeach' => $checkKeyForShowingAnswerTeach,
                         'answerGroupName' =>  false, 'answerGroupProbability' => false,
                         'displayGroupName' => $displayGroupName, 'displayGroupProbability' => $displayGroupProbability,
@@ -715,6 +739,7 @@ class TeachController extends Controller
                         }
                     }
                 }else{
+
                     foreach($answerGroup as $answerGroup_i){
                         //$answerGroupName[] = $answerGroup_i['name'];
                         //$answerGroupProb[] = $answerGroup_i['probability'];
@@ -736,23 +761,23 @@ class TeachController extends Controller
                         }
                     }
                 }
-                //$ans_array[] = array('Ans_ID' => $answer->id, 'checkKeyForShowingAnswerTeach' => $checkKeyForShowingAnswerTeach,
-                //                               'answerGroupName' => $answerGroupName, 'answerGroupProbability' => $answerGroupProb,
-                //                               'displayGroupName' => $answer->displayGroup()['name'], 'displayGroupProbability' => $answer->displayGroup()['probability']);
 
                 if($checkKeyForShowingAnswerTeach){
-                    $Ans_KeyForShowingAnswerTeach_list[] = $ans;
+                 //   $Ans_KeyForShowingAnswerTeach_list[] = $ans;
+                    $Ans_KeyForShowingAnswerTeach_list[] = $answer;
+
                 }
                 else{
-                    $Ans_false_KeyForShowingAnswerTeach_list[] = $ans;
+                    //$Ans_false_KeyForShowingAnswerTeach_list[] = $ans;
+                    $Ans_false_KeyForShowingAnswerTeach_list[] = $answer;
+
                 }
             }
             $Group_array = array_unique($Group_array, SORT_REGULAR);
+
             $displayGroup_array = array_unique($displayGroup_array, SORT_REGULAR);
             $SingleSubAns_displayGroup_array = array_unique($SingleSubAns_displayGroup_array, SORT_REGULAR);
 
-            //info("Ans_KeyForShowingAnswerTeach_list: ".print_r($Ans_KeyForShowingAnswerTeach_list,1));
-            //info("Ans_false_KeyForShowingAnswerTeach_list: ".print_r($Ans_false_KeyForShowingAnswerTeach_list,1));
             info("ans_array: ".print_r($ans_array,1));
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -806,9 +831,6 @@ class TeachController extends Controller
                         $DisplayGroupsArray[] = $displayGroup_Name;
                         info("displayGroup_name = {$displayGroup_Name}, LINE = ".__LINE__);
                         info("display group probability = {$Prob}, random number = {$randA}, displayGroup_chooseByProbability = {$displayGroup_chooseByProbability}");
-                        $this->log[] = "<b>displayGroup_Name: {$displayGroup_Name}</b><br>";
-                        $this->log[] = "DisplayGroup_probability: {$Prob} <br>";
-                        $this->log[] = "random number: {$randA}, DisplayGroup_probability: {$Prob}, displayGroup_chooseByProbability: {$displayGroup_chooseByProbability}<br>";
                         $count = $count ++;
                     }
                 }
@@ -825,6 +847,7 @@ class TeachController extends Controller
             //$SingleSubAns_displayGroup_array
             $Choosen_SingleSubAns = [];
             $NotChoosen_SingleSubAns = [];
+
             if(empty($SingleSubAns_ChoosenDisplayGroupsArray)){
                 info("SingleSubAns_ChoosenDisplayGroupsArray is empty.");
             }else{
@@ -856,6 +879,7 @@ class TeachController extends Controller
 
             $Answer_ID = [];
             $EmptyAnswer_ID = [];
+
             foreach($ans_array as $ans_i){
                 //info("ans_i: ".print_r($ans_i,1));
                 if($ans_i['checkKeyForShowingAnswerTeach']){
@@ -869,7 +893,7 @@ class TeachController extends Controller
                                 $EmptyAnswer_ID[] = $ans_i['Ans_ID'];
                             }
                         }
-                    }else{
+                    }else {
                         if($ans_i['answerGroupName'] == $randomGroup && !in_array($ans_i['Ans_ID'],$NotChoosen_SingleSubAns)){
                             if(empty($DisplayGroupsArray) || empty($ans_i['displayGroupName'])){
                                 $Answer_ID[] = $ans_i['Ans_ID'];
@@ -884,6 +908,7 @@ class TeachController extends Controller
                     }
                 }
             }
+
             info("Should answer this answer ID: ".print_r($Answer_ID,1));
             info("Empty answer ID: ".print_r($EmptyAnswer_ID,1));
 
@@ -895,7 +920,9 @@ class TeachController extends Controller
 
                 // filter answer
                 //  $answers = $this->filterAnswers($answers); // old filter..
+
                 foreach($answers as $key=>$ans) {
+
                     //info("ans_ID = ".print_r($ans['id'],1));
                     if(!in_array($ans['id'], $Answer_ID)){
                         info("Removed Answer: {$ans['id']}, LINE: ".__LINE__);
@@ -903,17 +930,18 @@ class TeachController extends Controller
                     }
                 }
 
-                //$time_ChooseSingleAnsByProb = microtime(true);
-                $randomAnswerKey = $this->ChooseSingleAnsByProb($answers); // choose only one single answer
-                //$time_ChooseSingleAnsByProb = microtime(true) - $time_ChooseSingleAnsByProb;
-                //info("time_ChooseSingleAnsByProb = {$time_ChooseSingleAnsByProb}");
-                info("randomAnswerKey = {$randomAnswerKey}");
-                $this->log[] = "<br><b> randomAnswerKey: {$randomAnswerKey}</b><br>";
-                //info(print_r($answers,1));
-                $answer = Answer::find($answers[$randomAnswerKey]['id']);
 
+                $randomAnswerKey = $this->ChooseSingleAnsByProb($answers); // choose only one single answer
+
+
+
+                info("randomAnswerKey = {$randomAnswerKey}");
+
+              //Preview  $answer = Answer::find($answers[$randomAnswerKey]['id']);
+                $answer =  $answers[$randomAnswerKey];
                 //$time_randomSubAnswer = microtime(true);
                 $sub_answer = $this->randomSubAnswer($answer, $answered, '', true);
+
                 //$time_randomSubAnswer = microtime(true) - $time_randomSubAnswer;
                 //info("time_randomSubAnswer = {$time_randomSubAnswer}");
                 $answered[] = [
@@ -923,9 +951,8 @@ class TeachController extends Controller
                     'title' => $answer->title,
                     'sub_answer' => $sub_answer
                 ];
+
                 info("Chosen_random_answer_ID: {$answer->id}, Chosen_Sub_Answer: {$sub_answer}, Chosen_answer_title: {$answer->title}");
-                $this->log[] = "<br><b> Single Answer: </b><br>";
-                $this->log[] = "<br><b>Chosen_random_answer_ID:</b> {$answer->id}, <br>Chosen_Sub_Answer</b>: {$sub_answer}, <br>Chosen_answer_title:</b> {$answer->title}. LINE: ".__LINE__."<br>";
             }
             else {
                 // Multiple Answers
@@ -940,6 +967,7 @@ class TeachController extends Controller
                 //$current_keys = $parser->generateSystemKeys($questionnaire->keys($latest), $indications);
 
                 $current_keys = Cache::remember("generate_system_keys", 10, function () use ($parser, $questionnaire,$latest, $indications) {
+
                     return $parser->generateSystemKeys($questionnaire->keys($latest), $indications);
                 });
 
@@ -953,13 +981,13 @@ class TeachController extends Controller
                     info("while loop number = {$whilecount}");
                     $whilecount = $whilecount + 1;
 
-                    foreach($answers_ids as $ans){
+                    //foreach($answers_ids as $ans){
+                    foreach($answers as $answer){
                         info("********************************************************************************************");
                         info("************************************ Start a new answer ************************************");
-
+                     //   dd($ans);
                         $force_sub_answer = "";
-                        $answer = Answer::find($ans);
-                        $this->log[]= "<div>Checking Answer {$answer->id} : {$answer->title}</div>";
+                        //$answer = Answer::find($ans);
                         info("Checking Answer ID {$answer->id}: {$answer->title}, LINE:".__LINE__);
 
                         if(!in_array($answer->id,array_merge($EmptyAnswer_ID,$Answer_ID))){
@@ -990,8 +1018,6 @@ class TeachController extends Controller
                                         )
                                     )
                                 ){
-                                    // $this->log[]= "<div style='background-color:lightblue; color:orange'>global no*** ".$answer->getParam('vas_dont_show_global_no') ."</div>";
-                                    // $this->log []= '<div style="background-color: blue;"> see answers before'.json_encode($this->group_kfsat).'</div>';
                                     $shouldAnswerThisAnswer = true;
                                     $force_sub_answer = "_no";
                                 }
@@ -1029,13 +1055,10 @@ class TeachController extends Controller
                             }
 
                             $this->tempKeys[$answer->createdKeys()] = $sub_answer ? $sub_answer : 1;
-                            $this->log[]= "temp keys ".print_r($this->tempKeys,1);
 
                             $this->countCurrentAnswers++;
                             //$answer->display_groups
                             //$this->displayGroupOfLastQuestion=head($answer->display_groups);
-                            $this->log []= "<div style='text-decoration: underline;'>Added Answer {$answer->id} , sub answer = {$sub_answer}</div>";
-                            $this->log []= "<div>count Current Answers: {$this->countCurrentAnswers}</div>";
                             $current_keys = $questionnaire->updateKeys($answer, $current_keys, $sub_answer);
                         }
                     }
@@ -1043,7 +1066,8 @@ class TeachController extends Controller
 
 
                     // check if all answer = _no: delete $answered and choose again
-                    $no_as_answer = trim(Question::find($question['id'])->getParam("no_as_answer"));
+                    $no_as_answer = trim( $question->getParam("no_as_answer") );
+                    //$no_as_answer = trim(Question::find($question['id'])->getParam("no_as_answer"));
                     $no_as_answer = $no_as_answer == 1 ? True : False;
                     info("no_as_answer  {$no_as_answer}");
                     if(!$no_as_answer){
@@ -1071,11 +1095,9 @@ class TeachController extends Controller
             })->toArray();
             // number of answers are the number of display groups + answers without group
             $countAnswered = sizeof($groupedAnswered);
-            $this->log[]= "<div>Q_id: {$question['id']} : groupedAnswered : {$countAnswered} </div>";
 
             if ($countAnswered > $question['teach_max_answers'] && $question['teach_max_answers'] > 0) {
-                $this->log[]= "<div>deleting answers to reach {$question['teach_max_answers']} answers (right now ".count($answered)." answers) </div>";
-                $this->log[]= "<div> First, delete answers with subanswer = _no</div>";
+
 
 
                 // delete answer with sub-answer = _no
@@ -1088,11 +1110,10 @@ class TeachController extends Controller
                 }
 
 
-                //$time_teach_max_answers = microtime(true);
+
                 $tries = 0;
                 while($countAnswered > $question['teach_max_answers'] && $tries<50){
                     $tries ++;
-                    $this->log[]= "<div>Try {$tries}</div>";
 
                     $randomKey = array_rand($answered);
 
@@ -1100,14 +1121,11 @@ class TeachController extends Controller
 
                     // do not remove answers that were selected by keyForShowAnswerTeach
                     if (in_array( $answered[$randomKey]['id'] , $this->showAnswers ) ){
-                        $this->log[]= "<div><b>should show this answer </b> - {$answered[$randomKey]['title']} {$answered[$randomKey]['id']} </div>";
                         continue;
                     }
 
                     // check if does not belong to group
                     if (trim($randomAnswered['display_group']) == ""){
-
-                        $this->log[]= "<div><b>deleting answer (no group)</b> - {$answered[$randomKey]['title']} {$answered[$randomKey]['id']} | Sub Answer: {$answered[$randomKey]['sub_answer']} </div>";
 
                         if ((string)$answered[ $randomKey ]['sub_answer'] != "_no"){
 
@@ -1120,11 +1138,9 @@ class TeachController extends Controller
                                 //&& !$answered[ $randomKey ]['answer']->getParam('vas_dont_show_global_no')
                             ) {
                                 $answered[ $randomKey ]['sub_answer'] = "_no";
-                                $this->log[]= "<div><b>deleted - set to _NO</b> </div>";
 
                             } else {
                                 unset( $answered[ $randomKey ] );
-                                $this->log[]= "<div><b>deleted - physically deleted.</b> </div>";
                             }
 
                             $countAnswered -- ;
@@ -1135,7 +1151,6 @@ class TeachController extends Controller
                         // if belongs to group - check group size
                         $display_group = $randomAnswered['display_group'];
                         // check if we can reduce all group and dont affect limit.
-                        $this->log[]= "<div>checking to delete group <b>{$display_group}</b> members</div>";
 
                         $answeredCollection = collect($answered);
                         $groupedAnswered = $answeredCollection->groupBy(function ($item, $key) {
@@ -1145,7 +1160,6 @@ class TeachController extends Controller
                         if (is_array( $groupedAnswered[ $display_group ] ) ){
                             // if sizeof(answered) - groupSize > teach max answers , lets remove group
                             //if ( $countAnswered - sizeof($groupedAnswered[ $display_group ]) >= $question['teach_max_answers'] ){
-                            $this->log[]= "<div>deleting group <b>{$display_group}</b> members</div>";
 
                             foreach( $groupedAnswered[ $display_group ] as $groupAnswer ){
 
@@ -1158,7 +1172,6 @@ class TeachController extends Controller
                                 }
 
 
-                                $this->log[]= "<div><b>deleting answer</b> - {$answered[$keyToDelete]['title']} (id {$answered[$keyToDelete]['id']}) </div>";
 
                                 // if group global no does not exist for this group, create it.
                                 if ( !isset($this->group_global_no[ $display_group ]) )
@@ -1179,11 +1192,9 @@ class TeachController extends Controller
                                 ) {
                                     $answered[ $keyToDelete ]['sub_answer'] = "_no";
 
-                                    $this->log[]= "<div><b>deleted - set to _NO</b> </div>";
 
                                 } else {
                                     unset( $answered[ $keyToDelete ] );
-                                    $this->log[]= "<div><b>deleted - physically deleted.</b> </div>";
                                     $physicalDeleteGroup[$display_group] = true;
                                     // if we delelte answer from group, we should delete all other answers of the same group:
 
@@ -1204,7 +1215,7 @@ class TeachController extends Controller
 
 
             $answersPayload =
-                ['question' => $question["id"],
+                ['question' => $question,
                     'answers' => $answered
                 ];
 
@@ -1212,38 +1223,30 @@ class TeachController extends Controller
             // show answered
             // $this->displayQuestionAndAnswers($question,$answered);
             // call getNextQuestion
-            $this->logTime(" before loading next question ");
 
-            $response = $this->getNextQuestion($test_id, $answersPayload);
+            $response = $this->getNextQuestion($answersPayload, $loop);
 
-            $this->logTime(" after loading next question ");
+            if (isset($response['question'] ) && isset($response['answers']) ){
 
-            // echo "<br> getting response from next question:<br>";
-            // print_r($response);
-            if (isset($response['question']) && isset($response['answers']) ){
+
                 $question = $response['question'];
                 $answers = $response['answers'];
 
-                // if answers have display groups<><><><><><>!!!
-                //-------------------------------------------
-
-                $this->log[]= "<hr><h3>{$question['id']} - {$question['title_doctor']} - Loop {$loop}</h3>";
-                $this->log []= "<div style='color:blue'>Type: ".$question['answers_type']."</div>";
-                $this->log []= "<div style='color:brown'> Required Key: ".$question['tag']."</div>";
-                $this->log []= "<div style='color:purple'> Auto? : ".$question['is_auto']."</div>";
-
-
             } else{
+
                 $done = true;
             }
 
-            $teachResponse[$question['title_doctor']]=$answers;
-        } // main looop
-        $queries = DB::getQueryLog();
-        foreach ($queries as $query){
-            // if ($query['time'] > 100)
-            $this->dblog[] = $query;
+            $teachResponse[$question->title_doctor] = $answers;
+
         }
+
+        // main looop
+    //    $queries = DB::getQueryLog();
+//        foreach ($queries as $query){
+//            // if ($query['time'] > 100)
+//            $this->dblog[] = $query;
+//        }
 
         // get last indications
 
@@ -1272,34 +1275,127 @@ class TeachController extends Controller
         } catch (\Exception $exception) {
             $this->log[]="<hr> couldnt save file {$questionnaire->id}.html";
         }
-
+//dd($time_elapsed_secs = microtime(true) - $start);
         return response()->json([
            // 'count_tags' => $this->showTeach($user->id),
          //   'log' => $this->log , // $time_elapsed_secs,,
          //   'dblog' => $this->dblog , // $time_elapsed_secs,,
+
             'test_id' => $test_id,
             'indications' => $indications,
             'decisionCodes' => $decisionCodes,
         ], 200);
     }
-    public function addAnswers($request, Questionnaire $questionnaire )
+    public function fillToQuestionnaire($request, Questionnaire $questionnaire ,$loop )
     {
-            $parser = new ExpressionParser($questionnaire->procedure,  $questionnaire->combinationProceduresNames());
-            $latest = $questionnaire->latestAnswer();
 
-             $question = Question::findOrFail($request->input('question'));
-                $questionnaire->addAnswers(
-                $request->input('answers'),
+//        $parser = new ExpressionParser($questionnaire->procedure, $questionnaire->combinationProceduresNames());
+        $parser = $this->parser;
+        $latest = $questionnaire->latestAnswer();
+        $question = $request->get('question');
+
+
+
+
+        echo("LOOP-->$loop");
+        echo("<br>");
+
+            $questionnaire->addAnswers(
+                $request->get('answers'),
                 $question,
                 $questionnaire->keys($latest),
                 $questionnaire->indications($latest),
-                $parser
+                $parser,
+                true
             );
+        $latest = $questionnaire->latestAnswer();
+
+
+            $request =   $this->answerNextQuestion($questionnaire , $latest, $question , $parser);
+            $question  = $request->get('question');
+
+
+
+
+            return [
+                'question' => $question,
+                'answers' =>  $request->get('answers') ,
+                'answered' => $questionnaire->answered()
+            ];
+
 
     }
-    public function teachInitialResponse( )
+
+    /**
+     * @param $questionnaire
+     * @param $latest
+     * @param $question
+     * @param $parser
+     * @return mixed
+     */
+    public function answerNextQuestion(Questionnaire $questionnaire , $latest , $question ,ExpressionParser $parser )
     {
 
+          $indications = $questionnaire->indications($latest);
+
+          $keys = $parser->generateSystemKeys($questionnaire->keys($latest), $indications);
+        $return = [];
+        try {
+            $possible = $questionnaire->nextPossibleQuestions($question, $indications);
+
+            $question = $questionnaire->nextQuestion($possible, $keys, $parser)->load('answers.params');
+            $answers = $questionnaire->filterAnswersByKeys($question->answers, $keys, $parser);
+            $return = ['answers'=> $answers , 'question' => $question , 'possible' => $possible ] ;
+            if ($question->is_auto == 1) {
+
+                $return = $questionnaire->resolveAutoQuestion($question, $answers, $keys, $indications, $parser);
+
+            }
+
+            // }
+        } catch (InvalidKeysException $exception) {
+
+            $return = $this->responseNotAcceptable($exception->getMessage(), $exception->getExpression(), $exception->getOriginalExpression(), $exception->getSource());
+        } catch (NoMoreQuestionsException $exception) {
+
+            $return = $this->responseNotFound($exception->getMessage());
+        } catch (QuestionnaireShouldEndException $exception) {
+
+            $return = $this->responseNotFound($exception->getMessage());
+        } catch (NoRelevantAnswersException $exception) {
+
+            $return = $this->responseNotFound($exception->getMessage());
+        }
+
+        return collect($return);
+
+    }
+
+    public function createTest($proc_id , $user_id)
+    {
+
+        $user_id = 0;
+//        if (isset($request->user_id)) $user_id = $request->user_id;
+//        $user_id = isset($request->user_id['id']) ? $request->user_id['id'] : $user_id;
+        //$user= Auth::user();
+//        try {
+//            $user_id=$user->id;
+//        }
+//        catch(\Exception $exception){
+//        }
+        $new = Questionnaire::create([
+
+            // 'proc_id' => $request->procedure ,
+            'decision_code' => 0,
+            'physician_name' => 'amir',
+            'is_done' => 0,
+            'combination_instance_id'=>0,
+            'proc_id' => $proc_id,
+            'user_id' => $user_id,
+            'email' => 'teach@gmail.com',
+        ]);
+
+        return Questionnaire::whereId($new->id)->with('combinationInstance')->with('procedure')->first();
     }
 }
 ?>

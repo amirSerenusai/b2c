@@ -69,7 +69,7 @@ class ExpressionParser
 
                 });
         //info('FORMATED expression');
-        //info($formatted_condition);
+
 
         preg_match_all('/@\w+/', $formatted_condition, $matches);
 
