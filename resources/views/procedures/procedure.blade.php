@@ -18,7 +18,9 @@
                         <h2 class="procedures-section-title mb-1">  {{$procedure->title}} </h2>
                         <p class="pt-3">Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were.</p>
                         <p>Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were the boring.</p>
+                        <h4 id='result'></h4>
                         <input type="email" class="form-control  delay2s  animated pulse  w-75"  id="email" placeholder="Enter email" name="email">
+
                         <span id="info"></span>
                         <input type="password" class="form-control w-75 mt-3 " id="pwd" placeholder="Enter password" name="pwd">
                       <div class="for-new-user w-75 mt-1">
@@ -29,15 +31,16 @@
                           <a class="btn btn-link " id="newUser" href="#new-user">
                               New user
                           </a></div>
-                        <div class="for-existing-user" style="display: none">
-                            <a class="btn btn-link " id="loginUser" href="#login-user">
+                        <div class="for-existing-user w-75 text-center" style="display: none; ">
+                            <a class="btn btn-link" id="loginUser" href="#login-user">
                                 Login existing user
                             </a>
                         </div>
 {{--                        <button id="pwdLink" class="template-btn mt-1 disabled w-75" style="display: none"><b style="color:white;font-size: 15px;">send me a password link</b></button>--}}
-                        <button id="pwdLink" type="button" class="btn btn-outline-success w-75 mb-2" style="display: none"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <button id="pwdLink" disabled type="button" class="btn btn-outline-success w-75 mb-2" style="display: none"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             send me a password link</button>
-                        <button onclick="show('progressbar')" disabled class="template-btn mt-1 disabled w-75   "><b style="color:white;font-size: 15px">Get immediate second opinion!</b></button>
+{{--                        onclick="show('progressbar')"--}}
+                        <button   disabled class="template-btn mt-1 disabled w-75   "><b style="color:white;font-size: 15px">Get immediate second opinion!</b></button>
                     </div>
 
                     </div>
@@ -60,41 +63,6 @@
             <li class="c3">Fill case</li>
 {{--            <li>View map</li>--}}
         </ul>
-
-{{--    <div id="carouselExampleControls" class="carousel slide mt-4"  data-ride="carousel"   data-interval="false">--}}
-
-{{--        <div class="carousel-inner">--}}
-{{--            <div class="carousel-item  active">--}}
-{{--                <div class="w-100">@component("components.enter_email")@endcomponent </div>--}}
-{{--            </div>--}}
-{{--            <div class="carousel-item ">--}}
-{{--                <div class="w-100" >@component("components.login_quick")@endcomponent</div>--}}
-{{--            </div>--}}
-{{--            <div class="carousel-item bg-secondary">--}}
-{{--                <div class="w-100" >--}}
-{{--                    <div  class="i-frame bg-dark">--}}
-{{--                        loading case, please wait.....--}}
-{{--                        <iframe></iframe>--}}
-{{--                    </div></div>--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--        <div class=" position-absolute" style="left:42.35%; " >--}}
-{{--        <button     class="template-btn mt-3 prev-step step1" onclick="clickBack()">step back</button>--}}
-{{--        <button     class="template-btn mt-3 next-step step1" >next step</button>--}}
-{{--        </div>--}}
-{{--        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" style="display: none"   data-slide="prev">--}}
-{{--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--            <span class="sr-only">Previous</span>--}}
-{{--        </a>--}}
-{{--        <a class="carousel-control-next" href="#carouselExampleControls" role="button" style="display: none" data-slide="next">--}}
-{{--            <span class="carousel-control-next-icon bg-success" aria-hidden="true"></span>--}}
-{{--            <span class="sr-only">Next</span>--}}
-{{--        </a>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-
 
 </div>
 
@@ -167,11 +135,7 @@
             $("#pwd").slideDown(300);
             $("#pwdLink").slideUp(300);
         });
-            $("#email").on('input', function()  {
-            console.log(this);
 
-
-        });
     </script>
     <script src="{{asset('js/custom_functions.js')}}"></script>
 @endsection

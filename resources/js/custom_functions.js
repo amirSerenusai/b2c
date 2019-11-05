@@ -23,6 +23,9 @@ function validate() {
     }
     return false;
 }
+
+$("#email").on('input', validate );
+
 $("#validate").on("click", validate);
 email.hover(validate, validate);
 
