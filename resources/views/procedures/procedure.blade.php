@@ -21,9 +21,9 @@
                         <h4 id='result'></h4>
                         <input type="email" class="form-control  delay2s  animated pulse  w-75"  id="email" placeholder="Enter email" name="email">
 
-                        <span id="info"></span>
-                        <input type="password" class="form-control w-75 mt-3 " id="pwd" placeholder="Enter password" name="pwd">
-                      <div class="for-new-user w-75 mt-1">
+{{--                        <span id="info"></span>--}}
+                        <input type="password" class="form-control w-75 mt-3 "  style="display: none" id="pwd" placeholder="Enter password" name="pwd">
+                      <div class="for-new-user w-75 mt-1" style="display: none;>
                           <a class="btn btn-link ml-3" id="forgotPwd" href="http://localhost/b2c/public/password/reset">
                               Forgot Your Password?
                           </a>
@@ -31,16 +31,16 @@
                           <a class="btn btn-link " id="newUser" href="#new-user">
                               New user
                           </a></div>
-                        <div class="for-existing-user w-75 text-center" style="display: none; ">
-                            <a class="btn btn-link" id="loginUser" href="#login-user">
+                        <div class="for-existing-user w-75 text-center"  >
+                            <a class="btn btn-link" id="loginUser" href="#login-user" style="display: none">
                                 Login existing user
                             </a>
                         </div>
 {{--                        <button id="pwdLink" class="template-btn mt-1 disabled w-75" style="display: none"><b style="color:white;font-size: 15px;">send me a password link</b></button>--}}
-                        <button id="pwdLink" disabled type="button" class="btn btn-outline-success w-75 mb-2" style="display: none"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <button id="pwdLink"  type="button" class="btn btn-outline-success w-75 mb-2 mt-3" > <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             send me a password link</button>
 {{--                        onclick="show('progressbar')"--}}
-                        <button   disabled class="template-btn mt-1 disabled w-75   "><b style="color:white;font-size: 15px">Get immediate second opinion!</b></button>
+                        <a  href="{{route('procedures.run', $procedure->id)}}" ><button id="getDecision"  class="template-btn mt-1 w-75 "  ><b style="color:white;font-size: 15px">Get immediate second opinion!</b></button></a>
                     </div>
 
                     </div>
@@ -119,6 +119,7 @@
 
         $("#newUser").on('click', function()  {
         //    alert("234234");
+
             $("#email").attr("placeholder", "Enter a new email");
             $("#pwd").slideUp(300);
             $(".for-new-user").hide();
@@ -128,6 +129,9 @@
 
 
 
+        function goAmir2() {
+            alert("pwdlink")
+        }
         $("#loginUser").on('click', function()  {
             $(".for-new-user").show();
             $(".for-existing-user").hide();
@@ -135,6 +139,8 @@
             $("#pwd").slideDown(300);
             $("#pwdLink").slideUp(300);
         });
+
+
 
     </script>
     <script src="{{asset('js/custom_functions.js')}}"></script>

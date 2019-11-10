@@ -1,30 +1,42 @@
-import { connectUser } from './api_calls';
+import {connectUser, validateEmailDB} from './api_calls';
+var $result;
+function msg(msg){
 
+   return console.log('%c '+msg, 'background: white; color: green; display: block;');
+}
 
 function validateEmail(email) {
+
+    if(!email) email = $("#email").val();
+    console.log({email});
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
 var email = $("#email");
 function validate() {
-    console.log("inside validate");
-    var $result = $("#result");
+    msg("inside validate");
+      $result = $("#result");
     var email = $("#email").val();
     $result.text("");
-    if(email.length < 1) return ;
+    if(email.length < 1) throw('EMAIL IS EMPTY');
     if (validateEmail(email)) {
+
+
+
         $result.text(email + " is valid :)");
         $result.css("color", "green");
         $(".next-step").prop('disabled', false).css({cursor:'pointer'});
+
     } else {
         $(".next-step").prop('disabled', true).css({cursor:'not-allowed'});
         $result.text(email + " is not valid :(");
         $result.css("color", "red");
+
     }
-    return false;
+
 }
 
-$("#email").on('input', validate );
+// $("#email").on('input', validate );
 
 $("#validate").on("click", validate);
 email.hover(validate, validate);
@@ -46,4 +58,28 @@ $(".next-step").on("click",async function() {
     $(`.progressbar  li.c${cItem}`).addClass('active shadow');
 });
 
+$("#getDecision").on('click', function()  {
+    console.log("getdecision");
+    validate();
+});
 
+$(".welcome-text").on('click' , "#pwdLink" ,async  function () {
+
+  let checkEmail =  await validateEmail();
+  console.log(checkEmail);
+  if(!checkEmail) return  $result.text("email is not valid");
+   validateEmailDB().then( res =>  {
+       shakeLoginUser(res);
+       $result.text( res ? 'User exists in system' : 'sending mail.....');
+   });
+
+} );
+
+function shakeLoginUser(res) {
+    if(!res) return;
+    let login =  $("#loginUser");
+    if(login.hasClass('shake')) return ;
+    login.addClass('animated shake');
+    setTimeout(() => { login.removeClass('animated shake')} , 2000 );
+
+}

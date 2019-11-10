@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 //use phpDocumentor\Reflection\Types\Object_;
 //use phpDocumentor\Reflection\Types\Self_;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use App\Queries\Indications;
@@ -661,13 +662,13 @@ class TeachController extends ApiController
             info("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             info("----------------------------------------------------------------------------- Start a new question -----------------------------------------------------------------------------------------");
 //            info("Question {$question['id']} {$question['title_doctor']}");
-            QuestionAnswered::dispatch([
-                'qTitle' => $question['title_doctor'],
-                'qID' => $question['id'],
-                'answers' =>  Arr::pluck($answers,'title')
-            ]);
-
-            $dispatchAnswers = collect($answers)->map(function($a) {return $a;});
+//            QuestionAnswered::dispatch([
+//                'qTitle' => $question['title_doctor'],
+//                'qID' => $question['id'],
+//                'answers' =>  Arr::pluck($answers,'title')
+//            ]);
+//
+//            $dispatchAnswers = collect($answers)->map(function($a) {return $a;});
 
 
             $answered = [];
@@ -1275,7 +1276,7 @@ class TeachController extends ApiController
         } catch (\Exception $exception) {
             $this->log[]="<hr> couldnt save file {$questionnaire->id}.html";
         }
-//dd($time_elapsed_secs = microtime(true) - $start);
+        dd($time_elapsed_secs = microtime(true) - $start);
         return response()->json([
            // 'count_tags' => $this->showTeach($user->id),
          //   'log' => $this->log , // $time_elapsed_secs,,
@@ -1286,7 +1287,7 @@ class TeachController extends ApiController
             'decisionCodes' => $decisionCodes,
         ], 200);
     }
-    public function fillToQuestionnaire($request, Questionnaire $questionnaire ,$loop )
+    public function fillToQuestionnaire(Collection $request, Questionnaire $questionnaire ,$loop )
     {
 
 //        $parser = new ExpressionParser($questionnaire->procedure, $questionnaire->combinationProceduresNames());
@@ -1300,14 +1301,13 @@ class TeachController extends ApiController
         echo("LOOP-->$loop");
         echo("<br>");
 
-            $questionnaire->addAnswers(
+
+        $questionnaire->addAnswers(
                 $request->get('answers'),
                 $question,
                 $questionnaire->keys($latest),
                 $questionnaire->indications($latest),
-                $parser,
-                true
-            );
+                $parser );
         $latest = $questionnaire->latestAnswer();
 
 

@@ -839,11 +839,12 @@ try {
 /*!***********************************!*\
   !*** ./resources/js/api_calls.js ***!
   \***********************************/
-/*! exports provided: connectUser */
+/*! exports provided: validateEmailDB, connectUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateEmailDB", function() { return validateEmailDB; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "connectUser", function() { return connectUser; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -856,10 +857,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var newUser = false;
 var password,
     g_email = null;
-
 function validateEmailDB(_x) {
   return _validateEmailDB.apply(this, arguments);
-}
+} // $("#email").on('blur', function(email){
+//     g_email = email.target.value;
+//     validateEmailDB(g_email); }
+//     );
+// $(".step1").on("click", function (){
+//    // var email = $("#email").val();
+//     validateEmailDB(g_email);
+//     console.log("ssssslick on step1");
+// });
+// $(".next-step").on("click", function (){
+//      if( $(this).hasClass('step2') ) alert("step2")
+// });
 
 function _validateEmailDB() {
   _validateEmailDB = _asyncToGenerator(
@@ -870,23 +881,23 @@ function _validateEmailDB() {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            _context3.prev = 0;
-            _context3.next = 3;
+            if (!email) email = $("#email").val();
+            _context3.prev = 1;
+            _context3.next = 4;
             return axios.post("/validate-email", {
               email: email
             });
 
-          case 3:
+          case 4:
             response = _context3.sent;
             $("#info").text('');
             $("#forgotPwd").hide().delay(300).show(); // console.log(email+" exist");
 
-            console.log(response);
-            return _context3.abrupt("return", response);
+            return _context3.abrupt("return", true);
 
           case 10:
             _context3.prev = 10;
-            _context3.t0 = _context3["catch"](0);
+            _context3.t0 = _context3["catch"](1);
             emailResponse = _context3.t0.response.data.errors.email;
             emailResponse = _.head(emailResponse);
             $("#forgotPwd").hide();
@@ -897,30 +908,20 @@ function _validateEmailDB() {
               $("#info").text('Hello new user , type a password of 8 chars ');
               $("#pwd").attr("placeholder", "Type a password");
               password = $("#pwd").val();
-              console.log($("#pwd").attr('placeholder'));
+              $("#pwd").attr('placeholder');
             }
 
-          case 17:
+            return _context3.abrupt("return", false);
+
+          case 18:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[0, 10]]);
+    }, _callee3, null, [[1, 10]]);
   }));
   return _validateEmailDB.apply(this, arguments);
 }
-
-$("#email").on('blur', function (email) {
-  g_email = email.target.value;
-  validateEmailDB(g_email);
-});
-$(".step1").on("click", function () {
-  // var email = $("#email").val();
-  validateEmailDB(g_email);
-  console.log("ssssslick on step1");
-}); // $(".next-step").on("click", function (){
-//      if( $(this).hasClass('step2') ) alert("step2")
-// });
 
 function connectUser() {
   if (newUser) registerNewUser().then($(".carousel-item").delay(500).animate({

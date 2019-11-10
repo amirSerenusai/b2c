@@ -1,8 +1,8 @@
 
 let newUser = false;
 let password , g_email =null;
-async function validateEmailDB(email) {
-
+export async function validateEmailDB(email) {
+if(!email) email = $("#email").val();
 
 
     try {
@@ -13,8 +13,8 @@ async function validateEmailDB(email) {
         $("#forgotPwd").hide().delay(300).show();
 
       // console.log(email+" exist");
-console.log(response);
-        return response;
+        return true;
+
     //}catch({ response :{data :{message}} }){
   }catch({ response :{data :{errors : {email : emailResponse}}} }){
 
@@ -26,23 +26,26 @@ console.log(response);
             $("#info").text('Hello new user , type a password of 8 chars ');
             $("#pwd").attr("placeholder", "Type a password");
             password = $("#pwd").val();
-            console.log($("#pwd").attr('placeholder'));
+            $("#pwd").attr('placeholder');
+
         }
 
+        return false;
     }
 
 }
 
 
-$("#email").on('blur', function(email){
-    g_email = email.target.value;
-    validateEmailDB(g_email); }  );
+// $("#email").on('blur', function(email){
+//     g_email = email.target.value;
+//     validateEmailDB(g_email); }
+//     );
 
-$(".step1").on("click", function (){
-   // var email = $("#email").val();
-    validateEmailDB(g_email);
-    console.log("ssssslick on step1");
-});
+// $(".step1").on("click", function (){
+//    // var email = $("#email").val();
+//     validateEmailDB(g_email);
+//     console.log("ssssslick on step1");
+// });
 
 // $(".next-step").on("click", function (){
 //      if( $(this).hasClass('step2') ) alert("step2")
