@@ -74,6 +74,14 @@ let loginUser = async () => {
  console.log({userDetails})
 };
 
+export let sendPwdLink = async () => {
+    if(!g_email) g_email = $("#email").val();
+    console.log(g_email);
+    let userDetails =    await  axios
+        .post(`/pwd-link`, {email : g_email});
+    console.log({userDetails})
+};
+
 
 
 

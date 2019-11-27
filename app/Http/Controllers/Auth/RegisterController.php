@@ -104,4 +104,12 @@ class RegisterController extends Controller
         ], $messages);
       //  Validator::make($request->all(),$rules);
     }
+
+    public function  pwdLink(Request $request){
+        $this->emailExists($request);
+        $user=User::find(227);
+        \Illuminate\Support\Facades\Mail::to('amir1004@gmail.com')->send( new \App\Mail\ProcedureLink(170));
+        return ['message' =>'we have sent you a password link!'];
+    }
+
 }

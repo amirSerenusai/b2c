@@ -7,22 +7,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserCreated extends Mailable
+class _StartProcedureLink extends Mailable
 {
-
-    public $user;
-
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      *
-     * @param $user
+     * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
         //
-        $this->user = $user;
     }
 
     /**
@@ -32,6 +28,6 @@ class UserCreated extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.user-created');
+        return $this->view('view.name');
     }
 }

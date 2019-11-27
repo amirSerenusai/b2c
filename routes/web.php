@@ -62,6 +62,8 @@ Route::get('/amir', function (){ return view('test'); });
 
 Route::get('/questionnaire', function (){ return view('questionnaire'); });
 Route::post('/validate-email' , 'Auth\RegisterController@emailExists');
+Route::post('/pwd-link' , 'Auth\RegisterController@pwdLink');
+
 Auth::routes();
 Route::get('/{any?}', function () {
 

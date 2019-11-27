@@ -19,10 +19,11 @@
                             {{--                        <a class="dropdown-item" onclick="goTo('knee replacement')"  >Knee Replacement</a>--}}
                             {{--                        <a class="dropdown-item" onclick="goTo('ventilation tubes')"  >Ventilation Tubes</a>--}}
                             <a class="dropdown-item" href="{{ url('procedures/tonsillectomy') }}"  >Tonsillectomy</a>
-                            <a class="dropdown-item"  >Knee Replacement</a>
-                            <a class="dropdown-item" href="{{ url('procedures/Ventilation Tubes')}} " >Ventilation Tubes</a>
+                            <a class="dropdown-item"  href="{{ url('procedures/knee-replacement') }}"  >Knee Replacement</a>
+                            <a class="dropdown-item" href="{{ url('procedures/ventilation-tubes')}} " >Ventilation Tubes</a>
                         </div>
                     </div>
+
 
 
 

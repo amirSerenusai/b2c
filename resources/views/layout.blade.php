@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<link>
 
     <meta charset="utf-8">
     <meta name="api-base-url" content="{{ url('/') }}" />
@@ -18,13 +18,15 @@
     <link rel="shortcut icon" href="{{asset('assets/images/logo/favicon.png')}}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{asset('assets/css/animate-3.7.0.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/font-awesome-4.7.0.min.css')}}">
+
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap-4.1.3.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/owl-carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/jquery.datetimepicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/linearicons.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/send_mail.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome-4.7.0.min.css')}}">
     <!--[if lt IE 9]>
     <script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark meter nav output progress section summary subline time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
     <![endif]-->

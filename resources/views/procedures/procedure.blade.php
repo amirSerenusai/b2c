@@ -2,12 +2,30 @@
 @section ('content')
 {{--        <img src="{{asset('assets/images/banner.jpg')}}" alt="" class="procedures-section">--}}
 {{--    </div>--}}
+<div class="flip-card border position-absolute "  style="bottom:30px;right: 200px;z-index: 100000">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            {{--                    <img src="img_avatar.png" alt="Avatar" style="width:300px;height:100px;">--}}
+            <i class="fa fa-envelope" aria-hidden="true" style="font-size: 80px"></i>
+        </div>
+        <div class="flip-card-back">
+            <h3>Mail Sent!</h3>
+            <p>Architect & Engineer</p>
+            <p>We love that guy</p>
+        </div>
+    </div>
+</div>
     <div class="card max-height-30" style="border:none; ">
         <img class="card-img banner-img max-height-30"  data-src="holder.js/100px260/" alt="100%x260" src="{{asset('assets/images/banners-1566213_1920.jpg')}}" data-holder-rendered="true" >
     </div>
     <section class="welcome-area section-padding3">
+
+
+
         <div class="container">
+
             <div class="row">
+
                 <div class="col-lg-5 align-self-center">
                     <div class="welcome-img">
                         <img src="{{asset('assets/images/welcome.png')}}" alt="" class="procedures-section">
@@ -15,7 +33,9 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="welcome-text mt-5 mt-lg-0">
+
                         <h2 class="procedures-section-title mb-1">  {{$procedure->title}} </h2>
+
                         <p class="pt-3">Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were.</p>
                         <p>Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were the boring.</p>
                         <h4 id='result'></h4>
@@ -23,7 +43,7 @@
 
 {{--                        <span id="info"></span>--}}
                         <input type="password" class="form-control w-75 mt-3 "  style="display: none" id="pwd" placeholder="Enter password" name="pwd">
-                      <div class="for-new-user w-75 mt-1" style="display: none;>
+                      <div class="for-new-user w-75 mt-1" style="display: none;">
                           <a class="btn btn-link ml-3" id="forgotPwd" href="http://localhost/b2c/public/password/reset">
                               Forgot Your Password?
                           </a>
@@ -37,16 +57,27 @@
                             </a>
                         </div>
 {{--                        <button id="pwdLink" class="template-btn mt-1 disabled w-75" style="display: none"><b style="color:white;font-size: 15px;">send me a password link</b></button>--}}
-                        <button id="pwdLink"  type="button" class="btn btn-outline-success w-75 mb-2 mt-3" > <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            send me a password link</button>
+{{--                        <button id="pwdLink"  type="button" class="btn btn-outline-success w-75 mb-2 mt-3" > <i class="fa fa-envelope-o" aria-hidden="true"></i>--}}
+{{--                            send me a password link</button>--}}
 {{--                        onclick="show('progressbar')"--}}
-                        <a  href="{{route('procedures.run', $procedure->id)}}" ><button id="getDecision"  class="template-btn mt-1 w-75 "  ><b style="color:white;font-size: 15px">Get immediate second opinion!</b></button></a>
+{{--                        href="{{route('procedures.run', $procedure->id)}}"--}}
+                        <a ><button id="getDecision"  class="template-btn mt-3 w-75 c-pointer"  >
+                                <b style="color:white;font-size: 15px">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    Send me a password link!</b>
+                            </button></a>
+
                     </div>
 
                     </div>
+
+
+
+
                 </div>
             </div>
-        </div>
+
+
     </section>
 <div class="local-preloader " style="display: none; left: 47% ;height: 60px">
     <div class="spinner"  ></div>

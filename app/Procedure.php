@@ -14,6 +14,7 @@ use PhpParser\Builder;
  * Class Procedure
  * @package App
  * @method static where(string $string, int $title)
+ * @method static find($id)
  */
 class Procedure extends Model
 {

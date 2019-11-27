@@ -839,13 +839,14 @@ try {
 /*!***********************************!*\
   !*** ./resources/js/api_calls.js ***!
   \***********************************/
-/*! exports provided: validateEmailDB, connectUser */
+/*! exports provided: validateEmailDB, connectUser, sendPwdLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateEmailDB", function() { return validateEmailDB; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "connectUser", function() { return connectUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sendPwdLink", function() { return sendPwdLink; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -875,30 +876,30 @@ function validateEmailDB(_x) {
 function _validateEmailDB() {
   _validateEmailDB = _asyncToGenerator(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(email) {
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(email) {
     var response, emailResponse;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
             if (!email) email = $("#email").val();
-            _context3.prev = 1;
-            _context3.next = 4;
+            _context4.prev = 1;
+            _context4.next = 4;
             return axios.post("/validate-email", {
               email: email
             });
 
           case 4:
-            response = _context3.sent;
+            response = _context4.sent;
             $("#info").text('');
             $("#forgotPwd").hide().delay(300).show(); // console.log(email+" exist");
 
-            return _context3.abrupt("return", true);
+            return _context4.abrupt("return", true);
 
           case 10:
-            _context3.prev = 10;
-            _context3.t0 = _context3["catch"](1);
-            emailResponse = _context3.t0.response.data.errors.email;
+            _context4.prev = 10;
+            _context4.t0 = _context4["catch"](1);
+            emailResponse = _context4.t0.response.data.errors.email;
             emailResponse = _.head(emailResponse);
             $("#forgotPwd").hide();
             console.log(emailResponse);
@@ -911,14 +912,14 @@ function _validateEmailDB() {
               $("#pwd").attr('placeholder');
             }
 
-            return _context3.abrupt("return", false);
+            return _context4.abrupt("return", false);
 
           case 18:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
-    }, _callee3, null, [[1, 10]]);
+    }, _callee4, null, [[1, 10]]);
   }));
   return _validateEmailDB.apply(this, arguments);
 }
@@ -1011,6 +1012,43 @@ function () {
   };
 }();
 
+var sendPwdLink =
+/*#__PURE__*/
+function () {
+  var _ref3 = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+    var userDetails;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            if (!g_email) g_email = $("#email").val();
+            console.log(g_email);
+            _context3.next = 4;
+            return axios.post("/pwd-link", {
+              email: g_email
+            });
+
+          case 4:
+            userDetails = _context3.sent;
+            console.log({
+              userDetails: userDetails
+            });
+
+          case 6:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function sendPwdLink() {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
 /***/ }),
 
 /***/ "./resources/js/custom_functions.js":
@@ -1062,12 +1100,14 @@ function validate() {
     $(".next-step").prop('disabled', false).css({
       cursor: 'pointer'
     });
+    return true;
   } else {
     $(".next-step").prop('disabled', true).css({
       cursor: 'not-allowed'
     });
     $result.text(email + " is not valid :(");
     $result.css("color", "red");
+    return false;
   }
 } // $("#email").on('input', validate );
 
@@ -1116,33 +1156,73 @@ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function 
     }
   }, _callee, this);
 })));
-$("#getDecision").on('click', function () {
-  console.log("getdecision");
-  validate();
-});
-$(".welcome-text").on('click', "#pwdLink",
+$("#getDecision").on('click',
 /*#__PURE__*/
 _asyncToGenerator(
 /*#__PURE__*/
 _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-  var checkEmail;
+  var isValid, userExists;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return validateEmail();
+          return validate();
 
         case 2:
-          checkEmail = _context2.sent;
-          console.log(checkEmail);
+          isValid = _context2.sent;
 
-          if (checkEmail) {
-            _context2.next = 6;
+          if (isValid) {
+            _context2.next = 7;
             break;
           }
 
-          return _context2.abrupt("return", $result.text("email is not valid"));
+          return _context2.abrupt("return", console.log("not Valid . stop."));
+
+        case 7:
+          _context2.next = 9;
+          return Object(_api_calls__WEBPACK_IMPORTED_MODULE_1__["validateEmailDB"])();
+
+        case 9:
+          userExists = _context2.sent;
+          console.log({
+            userExists: userExists
+          });
+
+        case 11:
+          _context2.next = 13;
+          return Object(_api_calls__WEBPACK_IMPORTED_MODULE_1__["sendPwdLink"])();
+
+        case 13:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, _callee2);
+})));
+$(".welcome-text").on('click', "#pwdLink",
+/*#__PURE__*/
+_asyncToGenerator(
+/*#__PURE__*/
+_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+  var checkEmail;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.next = 2;
+          return validateEmail();
+
+        case 2:
+          checkEmail = _context3.sent;
+          console.log(checkEmail);
+
+          if (checkEmail) {
+            _context3.next = 6;
+            break;
+          }
+
+          return _context3.abrupt("return", $result.text("email is not valid"));
 
         case 6:
           Object(_api_calls__WEBPACK_IMPORTED_MODULE_1__["validateEmailDB"])().then(function (res) {
@@ -1152,10 +1232,10 @@ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function 
 
         case 7:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
     }
-  }, _callee2);
+  }, _callee3);
 })));
 
 function shakeLoginUser(res) {

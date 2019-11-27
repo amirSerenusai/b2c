@@ -1,4 +1,4 @@
-import {connectUser, validateEmailDB} from './api_calls';
+import {connectUser, validateEmailDB , sendPwdLink} from './api_calls';
 var $result;
 function msg(msg){
 
@@ -13,6 +13,7 @@ function validateEmail(email) {
     return re.test(email);
 }
 var email = $("#email");
+
 function validate() {
     msg("inside validate");
       $result = $("#result");
@@ -26,12 +27,13 @@ function validate() {
         $result.text(email + " is valid :)");
         $result.css("color", "green");
         $(".next-step").prop('disabled', false).css({cursor:'pointer'});
+        return true
 
     } else {
         $(".next-step").prop('disabled', true).css({cursor:'not-allowed'});
         $result.text(email + " is not valid :(");
         $result.css("color", "red");
-
+        return false ;
     }
 
 }
@@ -58,9 +60,17 @@ $(".next-step").on("click",async function() {
     $(`.progressbar  li.c${cItem}`).addClass('active shadow');
 });
 
-$("#getDecision").on('click', function()  {
-    console.log("getdecision");
-    validate();
+$("#getDecision").on('click', async function()  {
+
+
+    let isValid = await validate();
+    if(!isValid) return console.log("not Valid . stop.");
+    else {
+        let userExists = await  validateEmailDB();
+        console.log({userExists})
+    }
+    await  sendPwdLink();
+
 });
 
 $(".welcome-text").on('click' , "#pwdLink" ,async  function () {
@@ -83,3 +93,4 @@ function shakeLoginUser(res) {
     setTimeout(() => { login.removeClass('animated shake')} , 2000 );
 
 }
+
