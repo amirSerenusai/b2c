@@ -75,10 +75,17 @@ let loginUser = async () => {
 };
 
 export let sendPwdLink = async () => {
+    $(".flip-card-inner").removeClass('link-sent');
+    await $(".flip-card").fadeIn(1000);
     if(!g_email) g_email = $("#email").val();
     console.log(g_email);
     let userDetails =    await  axios
         .post(`/pwd-link`, {email : g_email});
+    if(userDetails.status === 200) {
+        //alert("sent!");
+  $(".flip-card-inner").addClass('link-sent');
+       setTimeout(() => { $(".flip-card").fadeOut(1000);},1000);
+    }
     console.log({userDetails})
 };
 

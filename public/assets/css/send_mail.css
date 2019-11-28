@@ -15,7 +15,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card:hover .flip-card-inner , .link-sent {
     transform : translateX(200px) rotateY(180deg) ;
 
 }

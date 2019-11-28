@@ -2,7 +2,7 @@
 @section ('content')
 {{--        <img src="{{asset('assets/images/banner.jpg')}}" alt="" class="procedures-section">--}}
 {{--    </div>--}}
-<div class="flip-card border position-absolute "  style="bottom:30px;right: 200px;z-index: 100000">
+<div class="flip-card  position-absolute "  style="bottom:230px;right: 300px;z-index: 100000;display: none">
     <div class="flip-card-inner">
         <div class="flip-card-front">
             {{--                    <img src="img_avatar.png" alt="Avatar" style="width:300px;height:100px;">--}}
