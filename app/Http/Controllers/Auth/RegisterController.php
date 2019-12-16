@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Client;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\RedirectController;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 
 class RegisterController extends Controller
@@ -64,31 +67,32 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
+        $client_id = Client::where('client_code' , 'costumer')->first()->id;
 //        return User::create([
 //            'name' => $data['name'],
 //            'email' => $data['email'],
 //            'password' => Hash::make($data['password']),
 //        ]);
 
-        info("name!!{$data['name']}");
+      //  info("name!!{$data['name']}");
         $id =  User::create([
             'token' =>  '1234556',
-            'first_name' => $data['name'],
-            'client_id' => 30, //consumer
+            'first_name' =>  explode("@", $data['email'], 2)[0], //$data['name'],
+            'client_id' => $client_id, //consumer
             'last_name' => ' ',
             'category_id' => 1,
             'title' => ' ',
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make('serenusAI_password_Hash_key=0501'),
         ])->id;
 
         $user = User::find($id);
 
-        $user->secret_password = $data['password'];
+        $user->secret_password = 'secret password' ; //$data['password'];
         \Illuminate\Support\Facades\Mail::to('amir1004@gmail.com')->send( new \App\Mail\UserCreated($user));
 //        return redirect('/home');
         return $user;
@@ -99,17 +103,39 @@ class RegisterController extends Controller
             'exists' => 'new-user',
         ];
 
-       $request->validate([
-            'email' => 'regex:/^.+@.+$/i|exists:users,email'
+        $request->validate([
+//            'email' => 'regex:/^.+@.+$/i|exists:users,email'
+            'email' => 'regex:/^.+@.+$/i|unique:users,email'
         ], $messages);
       //  Validator::make($request->all(),$rules);
     }
 
     public function  pwdLink(Request $request){
-        $this->emailExists($request);
-        $user=User::find(227);
-        \Illuminate\Support\Facades\Mail::to('amir1004@gmail.com')->send( new \App\Mail\ProcedureLink(170));
+
+
+        try {
+            $this->emailExists($request);
+            $user = $this->create($request->all());
+        }
+        catch (ValidationException $e) {
+            if (isset($request->email)) {
+                $user = User::findWithEmail($request->email);
+                //$token = RedirectController::getToken($user->id);
+
+            }
+        //return collect($e->errors()['email'])->flip();
+        }
+
+        auth()->loginUsingId($user->id);
+
+        //dd($this->emailExists($request));
+        //$user=User::find(227);
+        /** @var TYPE_NAME $user */
+        $to = explode(",",env('WEBMASTERS') );
+        \Illuminate\Support\Facades\Mail::to($to)->send( new \App\Mail\ProcedureLink(103 ));
         return ['message' =>'we have sent you a password link!'];
+
+
     }
 
 }

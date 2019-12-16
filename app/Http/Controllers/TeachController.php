@@ -852,7 +852,7 @@ class TeachController extends ApiController
             if(empty($SingleSubAns_ChoosenDisplayGroupsArray)){
                 info("SingleSubAns_ChoosenDisplayGroupsArray is empty.");
             }else{
-                foreach($SingleSubAns_ChoosenDisplayGroupsArray as $SingleSubAns_ChoosenDisplayGroupsArray_i){
+                foreach ($SingleSubAns_ChoosenDisplayGroupsArray as $SingleSubAns_ChoosenDisplayGroupsArray_i) {
                     $single_sub_answer_DG_prob_vec = [];
                     foreach($ans_array as $ans_i){
                         if($ans_i['displayGroupName'] == $SingleSubAns_ChoosenDisplayGroupsArray_i){
@@ -867,6 +867,7 @@ class TeachController extends ApiController
                     info("The Not Choosen SingleSubAns ID = ".print_r($notChoosen,1));
                     $Choosen_SingleSubAns[] = $TheChoosenSingleSubAnsID;
                     $NotChoosen_SingleSubAns[] = $notChoosen;
+
                 }
                 $NotChoosen_SingleSubAns = collect($NotChoosen_SingleSubAns)->flatten()->toArray();
             }
@@ -881,7 +882,7 @@ class TeachController extends ApiController
             $Answer_ID = [];
             $EmptyAnswer_ID = [];
 
-            foreach($ans_array as $ans_i){
+            foreach($ans_array as $ans_i) {
                 //info("ans_i: ".print_r($ans_i,1));
                 if($ans_i['checkKeyForShowingAnswerTeach']){
                     if(empty($randomGroup) && !in_array($ans_i['Ans_ID'],$NotChoosen_SingleSubAns)){

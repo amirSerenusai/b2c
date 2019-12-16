@@ -6,23 +6,28 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use function GuzzleHttp\Psr7\str;
 
 class ProcedureLink extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $token;
+    public $combinationID;
+
     /**
      * Create a new message instance.
      *
-     * @param $proc_id
+     * @param $combinationID
      */
-    public function __construct($proc_id)
-    {
-        info($proc_id);
-        $this->proc_id = $proc_id;
+    public function __construct($combinationID)
 
+    {
+//        $proc_id
+        $this->combinationID = $combinationID;
+//        $this->token = $token;
     }
-    public $proc_id;
+
     /**
      * Build the message.
      *
@@ -30,6 +35,7 @@ class ProcedureLink extends Mailable
      */
     public function build()
     {
+
         return $this->markdown('mail.newProcedureLink');
     }
 }

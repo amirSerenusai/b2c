@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Client whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Client withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Client withoutTrashed()
+ * @method static where($client_code , $costumer)
+ *
  * @mixin \Eloquent
  */
 class Client extends Model {

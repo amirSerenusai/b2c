@@ -6,6 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @method static where(string $string, $email)
+ * @method static create(Array $data)
+ * @method static find($id)
+ * @method static \Illuminate\Database\Eloquent\Builder first()
+
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,6 +43,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * @param $email
+     * @return array
+     */
+    public static function findWithEmail($email)
+    {
+        return  static::where('email' , $email)->first();
+    }
+
     public function isLabeler()
     {
         return $this->id == 101;

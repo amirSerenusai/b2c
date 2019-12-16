@@ -37,7 +37,12 @@ Route::get('original', function () {
 });
 
 Route::get('index', 'HomeController@index')->name('home');
-
+Route::get('order' , function(){ return view('order');
+})->name('order');
+Route::get('order2' , function(){ return view('order2');
+})->name('order2');
+Route::get('paypal' , function(){ return view('paypal');
+});
 
 
 //Route::middleware(['Authenticate'])->group(function () {

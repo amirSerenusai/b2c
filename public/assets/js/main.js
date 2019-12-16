@@ -112,16 +112,16 @@
                 }
 
             });
-        
+
 
         // Header scroll class
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-            $('#header').addClass('header-scrolled');
-            } else {
-            $('#header').removeClass('header-scrolled');
-            }
-        });
+        // $(window).scroll(function() {
+        //     if ($(this).scrollTop() > 100) {
+        //     $('#header').addClass('header-scrolled');
+        //     } else {
+        //     $('#header').removeClass('header-scrolled');
+        //     }
+        // });
 
 
         // Department Slider
@@ -159,7 +159,7 @@
 
         // // Nice Select
         $('select').niceSelect();
-        
+
 
         // Google Map
         if ( $('#mapBox').length ){

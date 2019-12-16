@@ -1,19 +1,19 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<link>
+<head>
 
     <meta charset="utf-8">
     <meta name="api-base-url" content="{{ url('/') }}" />
-    <title>Colorlib | Free Bootstrap Website Template</title>
+    <title>B2c | Cosutmer </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
 {{--    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">--}}
 
 {{--    <link href="{{asset('assets/css/template.css')}}" rel="stylesheet" media="screen">--}}
-    <script type="e61d56bd17d79316e759fdbd-text/javascript">if ( top !== self ) top.location.replace( self.location.href );// Hey, don't iframe my iframe!</script>
+{{--    <script type="e61d56bd17d79316e759fdbd-text/javascript">if ( top !== self ) top.location.replace( self.location.href );// Hey, don't iframe my iframe!</script>--}}
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300" rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="{{asset('assets/images/logo/favicon.png')}}" type="image/x-icon">
 
@@ -31,7 +31,7 @@
     <script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark meter nav output progress section summary subline time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
     <![endif]-->
 </head>
-<body   @if (Request::path() == 'procedures')  background="assets/images/watercolor-939784_960_720.jpg" @endif style="background-size: 100%;" >
+<body   @if (Request::path() == 'procedures')  background="assets/images/watercolor-939784_960_720.jpg" style="background-size: 100%;"  @endif >
 
 <div class="preloader">
     <div class="spinner"></div>
@@ -92,7 +92,7 @@
     </div>
 </header>
 @yield('content')
-@if (Request::path() != 'procedures')
+@if (Request::path() != 'procedures' AND Request::path() != 'order')
 <section class="specialist-area section-padding" style="background-color: rgba(0,0,0,0)">
     <div class="container">
         <div class="row">
@@ -196,7 +196,7 @@
     </div>
 </section>
 @endif
-
+@if (  Request::path() != 'order')
 <section class="hotline-area text-center section-padding" style="background-color: rgba(0,0,0,0)">
     <div class="container">
         <div class="row">
@@ -337,6 +337,8 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
     </div>
 </footer>
 
+@endif
+{{--END if is order route--}}
 
 {{--<script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
 {{--<script src="{{asset('assets/js/vendor/bootstrap-4.1.3.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
@@ -360,9 +362,33 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 {{--function goTo(title){--}}
 {{--    goToSection(title);--}}
 {{--}--}}
+
+
+$(window).scroll(function () {
+
+    var $this = $(this),
+        $head = $('#header');
+    if ($this.scrollTop() > 120) {
+        $head.css({top:0});
+        $head.addClass('bg-white');
+
+    } else {
+        $head.css({top:"70px"});
+        $head.removeClass('bg-white');
+
+
+    }
+});
+
 $(document).ready(() => {
+
+    setTimeout(()=>{
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    },700);
+
     startEcho();
 });
+    // $("html, body").css('overflow','hidden') ;
 function startEcho(){
 
     window.Echo.channel('adminserenus').listen('QuestionAnswered', e => {
@@ -372,7 +398,7 @@ function startEcho(){
 
 }
 
-function validateEmailExists(myalert){alert(myalert)}
+// function validateEmailExists(myalert){alert(myalert)}
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -394,7 +420,7 @@ function validateEmailExists(myalert){alert(myalert)}
 </script>
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="ed77345db1d323e1b61dccec-|49" defer=""></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="e61d56bd17d79316e759fdbd-text/javascript"></script>
-{{--<script src="{{asset('assets/js/vendor/products.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>--}}I
+{{--<script src="{{asset('assets/js/vendor/products.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>--}}
 {{--<script src="{{asset('assets/js/vendor/application.min.js')}}" type="e61d56bd17d79316e759fdbd-text/javascript"></script>--}}
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="e61d56bd17d79316e759fdbd-|49" defer=""></script>
 </body>

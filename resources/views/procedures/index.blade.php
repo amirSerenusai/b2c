@@ -154,10 +154,10 @@
            // title = toTitleCase(title);
             $(".procedures-section-title").text(title);
 //alert($(location).attr("href"));
-            $('html,body').animate({
-                    // scrollTop: $("."+title).offset().top -300 },
-                    scrollTop: $("."+title).offset().top -100 },
-                'slow');
+//             $('html,body').animate({
+//                     // scrollTop: $("."+title).offset().top -300 },
+//                     // scrollTop: $("."+title).offset().top -100 },
+//                 'slow');
         }
     </script>
 @endsection

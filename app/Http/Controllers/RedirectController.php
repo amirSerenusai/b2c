@@ -9,7 +9,10 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 class RedirectController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function runPdf($test_id)
     {
 
@@ -29,15 +32,24 @@ class RedirectController extends Controller
     {
 
         // $token = session('api-token');
+        try {
+            $id = auth()->user()->id;
+        }catch(\Throwable $e){
+            $id = null;
+        }
         $token = $this->getToken();
         //
+
         $domain = request()->query('domain');
-        if($domain) return redirect("https://{$domain}.serenusai.com/run-test/{$procedure_id}?token={$token}");
+
+        if($domain) return redirect("https://{$domain}.serenusai.com/run-test/{$procedure_id}?token={$token}&chat=true");
         if (App::isLocal()) {
-            return redirect("http://localhost:8080/run-test/{$procedure_id}?token={$token}");
+
+            return redirect("http://localhost:8080/run-test/{$procedure_id}?token={$token}&chat=true");
         }
-        //return redirect("http://mybeta.medecide.net/run-test/{$procedure_id}?token={$token}");
-        //  return redirect("http://test.medecide.net/run-test/{$procedure_id}?token={$token}");
+
+
+
         if (RedirectController::isSerenusAI())
 
             return redirect("https://client.serenusai.com/run-test/{$procedure_id}?token={$token}");
@@ -50,6 +62,7 @@ class RedirectController extends Controller
         if (App::isLocal()) {
 
             return redirect("http://localhost:8080/run-procedures?token={$token}");
+
         }
         if (RedirectController::isSerenusAI())
         {
@@ -62,7 +75,7 @@ class RedirectController extends Controller
 
     public function runCombination(Request $request, $combination_id)
     {
-        //  dd($request->query()['user_id']);
+
 
         $token = $this->getToken();
 ////        if ( Auth::user()->isAdmin() ) {
@@ -126,25 +139,32 @@ class RedirectController extends Controller
             return redirect("https://mybeta.serenusai.com/teach/{$procedure_id}?token={$token}");
         return redirect("http://mybeta.medecide.net/teach/{$procedure_id}?token={$token}");
     }
-    public static function getToken($u_id=null)
+    public static function getToken()
 
     {
         $client = new Client();
-        try {
-//            $id = Auth::user()->id == 17 ? 25 : Auth::user()->id ; //Send Supervisor as Demo!
-//            $id = $u_id ?: $id;
-              $id = 245 ;
+
+            $id = auth()->user()->id   ; //Send Supervisor as Demo!
+
+
+
+
+           //   $id = $u_id ;
+
             $myQuery= $client->request('GET', static::getApiUrl().'/loginWithToken', [
-                'query' => ['id' => $id]])->getBody()->getContents();
-            return collect(json_decode($myQuery))['token'];
-        } catch (GuzzleException $exception) {
-            return $exception->getMessage();
-        }
+                'query' => ['id' => $id , 'serenus-ai-login-secret' => '496351b' ] ]) ; //->getContents();->getBody() ;
+
+        return json_decode($myQuery->getBody()->getContents() ,1)['token'] ;
+
+
+         //  return $exception->getMessage();
+
     }
 
     public static function getApiUrl()
     {
         if (App::isLocal()) {
+
             return  "http://localhost/medecide-api/public/"; //"http://medecide-api.localhost";
         }
         if (RedirectController::isSerenusAI())
@@ -155,6 +175,7 @@ class RedirectController extends Controller
 
     public static function isSerenusAI()
     {
+
         return  str_contains(url('/') , 'serenusai.com')  ;
     }
 }

@@ -67,9 +67,10 @@ $("#getDecision").on('click', async function()  {
     if(!isValid) return console.log("not Valid . stop.");
     else {
         let userExists = await  validateEmailDB();
-        console.log({userExists})
+        console.log({userExists});
+        await  sendPwdLink(userExists);
     }
-    await  sendPwdLink();
+
 
 });
 
@@ -79,6 +80,8 @@ $(".welcome-text").on('click' , "#pwdLink" ,async  function () {
   console.log(checkEmail);
   if(!checkEmail) return  $result.text("email is not valid");
    validateEmailDB().then( res =>  {
+
+
        shakeLoginUser(res);
        $result.text( res ? 'User exists in system' : 'sending mail.....');
    });

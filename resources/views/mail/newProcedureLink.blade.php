@@ -1,10 +1,12 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
-
-@component('mail::button', ['url' => route('procedures.run', $proc_id)] )"
-Button Text
+Hello Dear User, please link on The button bellow to start the case
+ {{time()}} , USER id   {{csrf_token()}}
+<div>{{$combinationID}}</div>
+{{--procedures run--}}
+@component('mail::button', ['url' => route( 'combination.run', $combinationID  )] )"
+Start Procedure
 @endcomponent
 
 Thanks,<br>

@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('create-payment' , function (){
+
+
+    var_dump('213412423');
+});
+
+//Route::post('paypal-transaction-complete' , function (){
+//
+//
+//    return ['completed'];
+//});
+
+Route::post('paypal-transaction-complete' , 'PayPalController@getOrder');
+

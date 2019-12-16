@@ -21,6 +21,7 @@ if(!email) email = $("#email").val();
         emailResponse =_.head(emailResponse);
         $("#forgotPwd").hide();
         console.log(emailResponse);
+        // noinspection DuplicatedCode
         if (emailResponse  === "new-user") {
             newUser = true;
             $("#info").text('Hello new user , type a password of 8 chars ');
@@ -74,17 +75,23 @@ let loginUser = async () => {
  console.log({userDetails})
 };
 
-export let sendPwdLink = async () => {
-    $(".flip-card-inner").removeClass('link-sent');
-    await $(".flip-card").fadeIn(1000);
-    if(!g_email) g_email = $("#email").val();
+export let sendPwdLink = async (userExists) => {
+
+    let fci = $(".flip-card-inner");
+    let fc = $(".flip-card");
+    // if(!g_email)
+     g_email = $("#email").val();
+
+    fci.removeClass('link-sent');
+    await fc.fadeIn(1000);
+
     console.log(g_email);
     let userDetails =    await  axios
-        .post(`/pwd-link`, {email : g_email});
+        .post(`/pwd-link?registered=${userExists}`, {email : g_email});
     if(userDetails.status === 200) {
         //alert("sent!");
-  $(".flip-card-inner").addClass('link-sent');
-       setTimeout(() => { $(".flip-card").fadeOut(1000);},1000);
+    fci.addClass('link-sent');
+       setTimeout(() => { fc.fadeOut(1000);},1000);
     }
     console.log({userDetails})
 };
