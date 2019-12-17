@@ -37,6 +37,7 @@ Route::get('original', function () {
 });
 
 Route::get('index', 'HomeController@index')->name('home');
+Route::get('about'  , function(){ return view('about');})->name('about');
 Route::get('order' , function(){ return view('order');
 })->name('order');
 Route::get('order2' , function(){ return view('order2');

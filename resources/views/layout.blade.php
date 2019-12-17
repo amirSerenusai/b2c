@@ -65,16 +65,16 @@
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="{{asset('assets/images/logo/logo.png')}}" alt="" title="" /></a>
+                    <a href="{{url('/')}}"><img src="{{asset('assets/images/logo/logo.png')}}" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li class="menu-active"><a href="index.html">Home</a></li>
+                        <li class="menu-active"><a href="{{url('/')}}">Home</a></li>
                         <li><a href="departments.html">departments</a></li>
                         <li><a href="doctors.html">doctors</a></li>
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
-                                <li><a href="about.html">about us</a></li>
+                                <li><a href="{{url('/about')}}">about us</a></li>
                                 <li><a href="elements.html">elements</a></li>
                             </ul>
                         </li>

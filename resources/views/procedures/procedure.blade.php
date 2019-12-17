@@ -26,19 +26,22 @@
 
             <div class="row">
 
-                <div class="col-lg-5 align-self-center">
-                    <div class="welcome-img">
-                        <img src="{{asset('assets/images/welcome.png')}}" alt="" class="procedures-section">
-                    </div>
-                </div>
-                <div class="col-lg-7">
+{{--                <div class="col-lg-5 align-self-center">--}}
+{{--                    <div class="welcome-img">--}}
+{{--                        <img src="{{asset('assets/images/welcome.png')}}" alt="" class="procedures-section">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <div class="col-lg-12">
                     <div class="welcome-text mt-5 mt-lg-0">
 
                         <h2 class="procedures-section-title mb-1">  {{$procedure->title}} </h2>
+
                          <p>
-                             Ventilation Tubes Insertion: 
+
                               
-                             General: 
+
+                        <img src="{{asset('assets/images/welcome.png')}}" alt="" class="procedures-section" style=" float: left;">
+                        <h4>  General: </h4>
                              The insertion of ventilating tubes also known as tympanostomy tubes is a simple operation 
                              and the most common procedure performed by ear, nose, throat (ENT) specialists. The main
                              goal of the operation is to equalize the pressure between the middle ear and the surrounding, 
@@ -50,7 +53,7 @@
                              includes small incision in the tympanic membrane (myringotomy) and the placement of
                              pressure equalizer tubes in the tympanic membrane.
 
-                             Indication:
+                        <h4>  Indication: </h4>
                              Chronic accumulation of fluid in the middle (Serous otitis media) with or without recurrent
                              infections of the middle ear). The condition of the tympanic membrane, the degree of hearing
                              loss, the delay in language development and the number of infections are among the variables
@@ -61,8 +64,8 @@
                              the ear drum. The fluid is removed and the ventilation tube is being placed in the hole in the
                              tympanic membranes. In children, the operation is usually being done under general
                              anesthesia. In adults, it may be performed in an office visit and under local anesthesia. 
+                        <h4>  Recovery Time:  </h4>
 
-                             Recovery Time: 
                              Usually the recovery time from the operation is a few hours depending on the influence of the
                              anesthesia on the patient. Following the surgery, antibiotic ear drops are usually prescribed
                              for a few days and the patient returns to full function.
@@ -79,13 +82,11 @@
                              occur due to water penetration,  and  a perforation of the TM may persist after the extrusion
                              of the tubes.
                               
-                             Alternative Care: 
+                           <h4>  Alternative Care: </h4>
                              An alternative to ear tube insertion is to continue consuming conventional antibiotics and
                              antihistamine medication while examining periodically the existence of fluid in the middle
                              ear by an ENT specialist and checking the degree of the hearing loss.
 
-
-                         </p>
                         <p class="pt-3">Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were.</p>
                         <p>Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were the boring.</p>
                         <h4 id='result'></h4>
