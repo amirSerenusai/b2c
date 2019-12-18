@@ -61,35 +61,17 @@
                         @component('components.start-process') @endcomponent
                         @component('components.tree')        @endcomponent
 
-{{--                        <h4>  General information: </h4>--}}
-
-{{--                        The insertion of ventilating tubes also known as tympanostomy tubes is a simple operation  and the most common procedure performed by ear,--}}
-{{--                        nose, throat (ENT) specialists.--}}
-{{--                        The main goal of the operation is to equalize the pressure between the middle ear and the surrounding,--}}
-{{--                        thus preventing the formation of negative pressure and accumulation of fluids in the middle ear of patients--}}
-{{--                        (particularly children) in which the Eustachian tube does not function well.--}}
-{{--                        This fluid in the middle ear is a potential ground for recurrent infections as well as a cause for conductive hearing loss,--}}
-{{--                        and as a result - speech and language delay.--}}
-{{--                        The procedure includes small incision in the tympanic membrane (myringotomy) and the placement of pressure equalizer tubes in the tympanic membrane.--}}
 
 
 
                     </div>
 
                     </div>
-
-{{--                <div class="col-lg-7">--}}
-{{--                    <div class="welcome-text mt-5 mt-lg-0">--}}
-{{--                        <h2 class="procedures-section-title">Welcome to our clinic</h2>--}}
-{{--                        <p class="pt-3">Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were.</p>--}}
-{{--                        <p>Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were the boring.</p>--}}
-{{--                        <a href="#" class="template-btn mt-3">learn more</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
 
 
 
                 </div>
+            @component('components.disclaimer')        @endcomponent
             </div>
 
 
@@ -119,6 +101,7 @@
 @section ('script')
 
 
+    <!--suppress VueDuplicateTag -->
     <script>
         const URL = "{{  substr(url()->current(), strrpos(url()->current(), '/') + 1)   }}"
 
@@ -192,5 +175,6 @@
 
 
     </script>
+    <!--suppress VueDuplicateTag -->
     <script src="{{asset('js/custom_functions.js')}}"></script>
 @endsection

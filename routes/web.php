@@ -39,7 +39,14 @@ Route::get('original', function () {
 Route::get('index', 'HomeController@index')->name('home');
 Route::get('about'  , function(){ return view('about');})->name('about');
 Route::get('order' , function(){ return view('order');
+
 })->name('order');
+Route::get('doctors' , function(){ return view('doctors');
+
+})->name('doctors');
+Route::get('blog' , function(){ return view('blog');
+
+})->name('blog');
 Route::get('order2' , function(){ return view('order2');
 })->name('order2');
 Route::get('paypal' , function(){ return view('paypal');

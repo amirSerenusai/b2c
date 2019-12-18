@@ -72,7 +72,7 @@
                     <ul class="nav-menu">
                         <li class="menu-active"><a href="{{url('/')}}">Home</a></li>
                         <li><a href="departments.html">departments</a></li>
-                        <li><a href="doctors.html">doctors</a></li>
+                        <li><a href="{{url('/doctors')}}">doctors</a></li>
                         <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                 <li><a href="{{url('/about')}}">about us</a></li>
@@ -81,7 +81,7 @@
                         </li>
                         <li class="menu-has-children"><a href="">blog</a>
                             <ul>
-                                <li><a href="blog-home.html">blog home</a></li>
+                                <li><a href="{{url('/blog')}}">blog home</a></li>
                                 <li><a href="blog-details.html">blog details</a></li>
                             </ul>
                         </li>
@@ -93,246 +93,31 @@
     </div>
 </header>
 @yield('content')
-@if (Request::path() != 'procedures' AND Request::route()->getName() != 'procedures.show')
-    {{Request::route()->getName()}}
 
-<section class="specialist-area section-padding" style="background-color: rgba(0,0,0,0)">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="section-top text-center">
-                    <h2>Our specialish</h2>
-                    <p>Green above he cattle god saw day multiply under fill in the cattle fowl a all, living, tree word link available in the service for subdue fruit.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-doctor mb-4 mb-lg-0">
-                    <div class="doctor-img">
-                        <img src="{{asset('assets/images/doctor1.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="content-area">
-                        <div class="doctor-name text-center">
-                            <h3>ethel davis</h3>
-                            <h6>sr. faculty data science</h6>
-                        </div>
-                        <div class="doctor-text text-center">
-                            <p>If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                            <ul class="doctor-icon">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-doctor mb-4 mb-lg-0">
-                    <div class="doctor-img">
-                        <img src="{{asset('assets/images/doctor2.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="content-area">
-                        <div class="doctor-name text-center">
-                            <h3>dand mories</h3>
-                            <h6>sr. faculty plastic surgery</h6>
-                        </div>
-                        <div class="doctor-text text-center">
-                            <p>If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                            <ul class="doctor-icon">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-doctor mb-4 mb-sm-0">
-                    <div class="doctor-img">
-                        <img src="{{asset('assets/images/doctor3.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="content-area">
-                        <div class="doctor-name text-center">
-                            <h3>align board</h3>
-                            <h6>sr. faculty data science</h6>
-                        </div>
-                        <div class="doctor-text text-center">
-                            <p>If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                            <ul class="doctor-icon">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single-doctor">
-                    <div class="doctor-img">
-                        <img src="{{asset('assets/images/doctor4.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="content-area">
-                        <div class="doctor-name text-center">
-                            <h3>jeson limit</h3>
-                            <h6>sr. faculty plastic surgery</h6>
-                        </div>
-                        <div class="doctor-text text-center">
-                            <p>If you are looking at blank cassettes on the web, you may be very confused at the.</p>
-                            <ul class="doctor-icon">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-@if (  Request::path() != 'order' AND  Request::route()->getName() != 'procedures.show')
-<section class="hotline-area text-center section-padding" style="background-color: rgba(0,0,0,0)">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>Emergency hotline</h2>
-                <span>(+01) – 256 567 550</span>
-                <p class="pt-3">We provide 24/7 customer support. Please feel free to contact us <br>for emergency case.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<footer class="footer-area  pt-2">
+{{--    <div class="footer-widget">--}}
+{{--        <div class="container">--}}
+{{--            <div class="card bg-dark">--}}
+{{--                <div title="Disclaimer:" type="info" class="disclaimer">--}}
+{{--                    <h4 class="text-white">Disclaimer</h4>--}}
+{{--                    <p>--}}
+{{--                        <strong>Serenus.AI™</strong> ("System") is a system designed to assist professionals with their control of the medical procedures decision-making process before medical procedures. In no way, shall the System be used as a decisive factor for a medical procedure and the medical practitioners shall always have sole discretion whether or not to perform a medical procedure. In no event shall Serenus.AI Ltd. be responsible or liable for any damage caused or sustained in connection with the performance or a decision not to perform a medical procedure connection with the use of the System. </p>--}}
 
+{{--                    <p>--}}
+{{--                        <strong>Intellectual Property retention:</strong> All rights, title and interest in and to the Serenus.AI™ trade name and the System, including without limitation,software, algorithm, reports , user interface, design , questionnaire and/or any material related thereto vest solely in Serenus.AI Ltd.--}}
+{{--                    </p>--}}
 
-<section class="news-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="section-top text-center">
-                    <h2>Recent medical news</h2>
-                    <p>Green above he cattle god saw day multiply under fill in the cattle fowl a all, living, tree word link available in the service for subdue fruit.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-news">
-                    <div class="news-img">
-                        <img src="{{asset('assets/images/news1.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="news-text">
-                        <div class="news-date">
-                            22 July 2018
-                        </div>
-                        <h3><a href="blog-details.html">chip to model coeliac disease</a></h3>
-                        <p>Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me.</p>
-                        <a href="blog-details.html" class="news-btn">read more <i class="fa fa-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-news mt-5 mt-md-0">
-                    <div class="news-img">
-                        <img src="{{asset('assets/images/news2.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="news-text">
-                        <div class="news-date">
-                            22 Oct 2018
-                        </div>
-                        <h3><a href="blog-details.html">Galectins An Ancient FaSi Future</a></h3>
-                        <p>Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me.</p>
-                        <a href="blog-details.html" class="news-btn">read more <i class="fa fa-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-news mt-5 mt-lg-0">
-                    <div class="news-img">
-                        <img src="{{asset('assets/images/news3.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                    <div class="news-text">
-                        <div class="news-date">
-                            22 Sep 2018
-                        </div>
-                        <h3><a href="blog-details.html">Getting the Most Out of the CLARI</a></h3>
-                        <p>Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me.</p>
-                        <a href="blog-details.html" class="news-btn">read more <i class="fa fa-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer class="footer-area section-padding">
-    <div class="footer-widget">
-        <div class="container">
-            <div class="card bg-dark">
-                <div title="Disclaimer:" type="info" class="disclaimer">
-                    <h4 class="text-white">Disclaimer</h4>
-                    <p>
-                        <strong>Serenus.AI™</strong> ("System") is a system designed to assist professionals with their control of the medical procedures decision-making process before medical procedures. In no way, shall the System be used as a decisive factor for a medical procedure and the medical practitioners shall always have sole discretion whether or not to perform a medical procedure. In no event shall Serenus.AI Ltd. be responsible or liable for any damage caused or sustained in connection with the performance or a decision not to perform a medical procedure connection with the use of the System. </p>
+{{--                    <p>--}}
+{{--                        <strong>Serenus.AI Confidential and Proprietary Information:</strong> The user undertakes to maintain in strict confidentiality all information relating to the system among others its technical data, its commercial data, its algorithm, its methods, its knowledge, its data, its machine learning methods and modules, its diagrams and any further information whether written or oral ("Confidential וnformation”). The confidential Information shall not be used in any way directly or indirectly or disclosed by the user. The user shall not make any copy of any part of the system and shall return any material connected with the system to the company upon the end of the usage.--}}
+{{--                    </p>--}}
+{{--                    <p>--}}
+{{--                        <strong>Any questions?</strong> Feel free to contact us at: +972-54-3155222 | info@serenusai.com--}}
+{{--                    </p>--}}
+{{--                </div></div>--}}
 
-                    <p>
-                        <strong>Intellectual Property retention:</strong> All rights, title and interest in and to the Serenus.AI™ trade name and the System, including without limitation,software, algorithm, reports , user interface, design , questionnaire and/or any material related thereto vest solely in Serenus.AI Ltd.
-                    </p>
-
-                    <p>
-                        <strong>Serenus.AI Confidential and Proprietary Information:</strong> The user undertakes to maintain in strict confidentiality all information relating to the system among others its technical data, its commercial data, its algorithm, its methods, its knowledge, its data, its machine learning methods and modules, its diagrams and any further information whether written or oral ("Confidential וnformation”). The confidential Information shall not be used in any way directly or indirectly or disclosed by the user. The user shall not make any copy of any part of the system and shall return any material connected with the system to the company upon the end of the usage.
-                    </p>
-                    <p>
-                        <strong>Any questions?</strong> Feel free to contact us at: +972-54-3155222 | info@serenusai.com
-                    </p>
-                </div></div>
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-2 col-lg-3">--}}
-{{--                    <div class="single-widget-home mb-5 mb-lg-0">--}}
-{{--                        <h3 class="mb-4">top products</h3>--}}
-{{--                        <ul>--}}
-{{--                            <li class="mb-2"><a href="#">managed website</a></li>--}}
-{{--                            <li class="mb-2"><a href="#">managed reputation</a></li>--}}
-{{--                            <li class="mb-2"><a href="#">power tools</a></li>--}}
-{{--                            <li><a href="#">marketing service</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-5 offset-xl-1 col-lg-6">--}}
-{{--                    <div class="single-widget-home mb-5 mb-lg-0">--}}
-{{--                        <h3 class="mb-4">newsletter</h3>--}}
-{{--                        <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>--}}
-{{--                        <form action="#">--}}
-{{--                            <input type="email" placeholder="Your email here" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Your email here'" required data-cf-modified-ed77345db1d323e1b61dccec-="">--}}
-{{--                            <button type="submit" class="template-btn">subscribe now</button>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-xl-3 offset-xl-1 col-lg-3">--}}
-{{--                    <div class="single-widge-home">--}}
-{{--                        <h3 class="mb-4">instagram feed</h3>--}}
-{{--                        <div class="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed1.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed2.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed3.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed4.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed5.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed6.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed7.jpg')}}" alt="feed">--}}
-{{--                            <img src="{{asset('assets/images/feed8.jpg')}}" alt="feed">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-        </div>
-    </div>
-    <div class="footer-copyright">
+{{--        </div>--}}
+{{--    </div>--}}
+    <div class="footer-copyright pb-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-6">
@@ -357,7 +142,7 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
     </div>
 </footer>
 
-@endif
+
 {{--END if is order route--}}
 
 {{--<script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
