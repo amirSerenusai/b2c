@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/send_mail.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/font-awesome-4.7.0.min.css')}}">
+    <link rel="stylesheet"  href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <!--[if lt IE 9]>
     <script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark meter nav output progress section summary subline time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
     <![endif]-->
@@ -92,7 +93,9 @@
     </div>
 </header>
 @yield('content')
-@if (Request::path() != 'procedures' AND Request::path() != 'order')
+@if (Request::path() != 'procedures' AND Request::route()->getName() != 'procedures.show')
+    {{Request::route()->getName()}}
+
 <section class="specialist-area section-padding" style="background-color: rgba(0,0,0,0)">
     <div class="container">
         <div class="row">
@@ -196,7 +199,7 @@
     </div>
 </section>
 @endif
-@if (  Request::path() != 'order')
+@if (  Request::path() != 'order' AND  Request::route()->getName() != 'procedures.show')
 <section class="hotline-area text-center section-padding" style="background-color: rgba(0,0,0,0)">
     <div class="container">
         <div class="row">
@@ -272,44 +275,61 @@
 <footer class="footer-area section-padding">
     <div class="footer-widget">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-2 col-lg-3">
-                    <div class="single-widget-home mb-5 mb-lg-0">
-                        <h3 class="mb-4">top products</h3>
-                        <ul>
-                            <li class="mb-2"><a href="#">managed website</a></li>
-                            <li class="mb-2"><a href="#">managed reputation</a></li>
-                            <li class="mb-2"><a href="#">power tools</a></li>
-                            <li><a href="#">marketing service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-5 offset-xl-1 col-lg-6">
-                    <div class="single-widget-home mb-5 mb-lg-0">
-                        <h3 class="mb-4">newsletter</h3>
-                        <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>
-                        <form action="#">
-                            <input type="email" placeholder="Your email here" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Your email here'" required data-cf-modified-ed77345db1d323e1b61dccec-="">
-                            <button type="submit" class="template-btn">subscribe now</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-xl-3 offset-xl-1 col-lg-3">
-                    <div class="single-widge-home">
-                        <h3 class="mb-4">instagram feed</h3>
-                        <div class="feed">
-                            <img src="{{asset('assets/images/feed1.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed2.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed3.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed4.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed5.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed6.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed7.jpg')}}" alt="feed">
-                            <img src="{{asset('assets/images/feed8.jpg')}}" alt="feed">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="card bg-dark">
+                <div title="Disclaimer:" type="info" class="disclaimer">
+                    <h4 class="text-white">Disclaimer</h4>
+                    <p>
+                        <strong>Serenus.AI™</strong> ("System") is a system designed to assist professionals with their control of the medical procedures decision-making process before medical procedures. In no way, shall the System be used as a decisive factor for a medical procedure and the medical practitioners shall always have sole discretion whether or not to perform a medical procedure. In no event shall Serenus.AI Ltd. be responsible or liable for any damage caused or sustained in connection with the performance or a decision not to perform a medical procedure connection with the use of the System. </p>
+
+                    <p>
+                        <strong>Intellectual Property retention:</strong> All rights, title and interest in and to the Serenus.AI™ trade name and the System, including without limitation,software, algorithm, reports , user interface, design , questionnaire and/or any material related thereto vest solely in Serenus.AI Ltd.
+                    </p>
+
+                    <p>
+                        <strong>Serenus.AI Confidential and Proprietary Information:</strong> The user undertakes to maintain in strict confidentiality all information relating to the system among others its technical data, its commercial data, its algorithm, its methods, its knowledge, its data, its machine learning methods and modules, its diagrams and any further information whether written or oral ("Confidential וnformation”). The confidential Information shall not be used in any way directly or indirectly or disclosed by the user. The user shall not make any copy of any part of the system and shall return any material connected with the system to the company upon the end of the usage.
+                    </p>
+                    <p>
+                        <strong>Any questions?</strong> Feel free to contact us at: +972-54-3155222 | info@serenusai.com
+                    </p>
+                </div></div>
+{{--            <div class="row">--}}
+{{--                <div class="col-xl-2 col-lg-3">--}}
+{{--                    <div class="single-widget-home mb-5 mb-lg-0">--}}
+{{--                        <h3 class="mb-4">top products</h3>--}}
+{{--                        <ul>--}}
+{{--                            <li class="mb-2"><a href="#">managed website</a></li>--}}
+{{--                            <li class="mb-2"><a href="#">managed reputation</a></li>--}}
+{{--                            <li class="mb-2"><a href="#">power tools</a></li>--}}
+{{--                            <li><a href="#">marketing service</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-5 offset-xl-1 col-lg-6">--}}
+{{--                    <div class="single-widget-home mb-5 mb-lg-0">--}}
+{{--                        <h3 class="mb-4">newsletter</h3>--}}
+{{--                        <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>--}}
+{{--                        <form action="#">--}}
+{{--                            <input type="email" placeholder="Your email here" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Your email here'" required data-cf-modified-ed77345db1d323e1b61dccec-="">--}}
+{{--                            <button type="submit" class="template-btn">subscribe now</button>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-xl-3 offset-xl-1 col-lg-3">--}}
+{{--                    <div class="single-widge-home">--}}
+{{--                        <h3 class="mb-4">instagram feed</h3>--}}
+{{--                        <div class="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed1.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed2.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed3.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed4.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed5.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed6.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed7.jpg')}}" alt="feed">--}}
+{{--                            <img src="{{asset('assets/images/feed8.jpg')}}" alt="feed">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
     <div class="footer-copyright">

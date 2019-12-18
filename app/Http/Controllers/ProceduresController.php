@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Procedure;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class ProceduresController extends Controller
 {
@@ -44,14 +46,14 @@ class ProceduresController extends Controller
      * Display the specified resource.
      *
      * @param  int  $title
-     * @return Response
+     * @return Factory|View
      */
     public function show($title)
     {
         if($title == "ventilation-tubes") $procedure = Procedure::find(155);
         else if($title == "knee-replacement") $procedure = Procedure::find(113);
         else $procedure =  Procedure::where('title', $title )->first();
-
+        $procedure->title = str_replace('(Patients)' , '', $procedure->title);
         return view('procedures.procedure')->with(compact('procedure'));
 
     }

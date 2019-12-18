@@ -60,18 +60,20 @@ $(".next-step").on("click",async function() {
     $(`.progressbar  li.c${cItem}`).addClass('active shadow');
 });
 
-$("#getDecision").on('click', async function()  {
+$(".start-process").on('click', "#getDecision" , async function() {
+
+    // $("#getDecision").on('click', async function () {
+
+        let isValid = await validate();
+        if (!isValid) return console.log("not Valid . stop.");
+        else {
+            let userExists = await validateEmailDB();
+            console.log({ userExists });
+            await sendPwdLink(userExists);
+        }
 
 
-    let isValid = await validate();
-    if(!isValid) return console.log("not Valid . stop.");
-    else {
-        let userExists = await  validateEmailDB();
-        console.log({userExists});
-        await  sendPwdLink(userExists);
-    }
-
-
+    // });
 });
 
 $(".welcome-text").on('click' , "#pwdLink" ,async  function () {
