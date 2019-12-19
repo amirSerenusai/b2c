@@ -36,7 +36,8 @@ Route::get('original', function () {
     return view('original');
 });
 
-Route::get('index', 'HomeController@index')->name('home');
+//Route::get('home', 'HomeController@index')->name('home');
+Route::get('/'  , function(){ return view('main');});
 Route::get('about'  , function(){ return view('about');})->name('about');
 Route::get('order' , function(){ return view('order');
 

@@ -16,7 +16,7 @@
 }
 
 .flip-card:hover .flip-card-inner , .link-sent {
-    transform : translateX(200px) rotateY(180deg) ;
+    transform : translateX(80px) rotateY(180deg) ;
 
 }
 

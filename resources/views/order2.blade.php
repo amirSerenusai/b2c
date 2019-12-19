@@ -21,7 +21,7 @@
                             <p><i class="fa fa-check"></i> Credit card (Credit card only customers)</p>
                             <p><i class="fa fa-check"></i> Once your ready to register for Online Banking simply follow our handy step-by-step guide below.</p>
                         </div>
-                        @component('paypal')
+                        @component('components.paypal')
                         @endcomponent
                     </div>
                 </div></div>

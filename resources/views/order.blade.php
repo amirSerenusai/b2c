@@ -52,7 +52,7 @@
                             <textarea name="message" cols="20" rows="7" placeholder="Message" onfocus="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = ''" onblur="if (!window.__cfRLUnblockHandlers) return false; this.placeholder = 'Message'" required data-cf-modified-ed77345db1d323e1b61dccec-=""></textarea>
                         </div>
 {{--                        <a href="#" class="template-btn">appointment now</a>--}}
-                        @component('paypal')
+                        @component('components.paypal')
                         @endcomponent
                     </form>
                     </div>
