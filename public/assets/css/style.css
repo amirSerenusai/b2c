@@ -347,3 +347,27 @@ transform: rotate(90deg);
     display: block;
 }
 /*</tree>*/
+
+.indent-first {
+
+    /*text-indent:-1em;*/
+
+}
+
+.indent-first::first-line {
+
+
+
+}
+
+.toggle-content {
+    overflow: hidden;
+    opacity: 0;
+
+    height: 0;
+    -webkit-transition: height 1s;
+    transition: height 1s;
+}
+.content-area {
+    min-height: 148px !important;
+}

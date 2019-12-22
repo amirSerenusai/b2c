@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/send_mail.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/font-awesome-4.7.0.min.css')}}">
     <link rel="stylesheet"  href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
+    <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+
     <!--[if lt IE 9]>
     <script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark meter nav output progress section summary subline time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
     <![endif]-->
@@ -146,8 +149,12 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 {{--END if is order route--}}
 
 {{--<script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
-{{--<script src="{{asset('assets/js/vendor/bootstrap-4.1.3.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="{{asset('assets/js/vendor/bootstrap-4.1.3.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>--}}
 <script src="{{asset('assets/js/vendor/wow.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
@@ -188,7 +195,10 @@ $(window).scroll(function () {
 $(document).ready(() => {
 
     setTimeout(()=>{
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("html, body").animate({ scrollTop: 0 });  //,slow
+
+            odometer.innerHTML = 1650324;
+
     },700);
 
     startEcho();

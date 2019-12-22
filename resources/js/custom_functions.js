@@ -1,5 +1,5 @@
 import {connectUser, validateEmailDB , sendPwdLink} from './api_calls';
-var $result;
+var $result , getPasswordLinkPressed;
 function msg(msg){
 
    return console.log('%c '+msg, 'background: white; color: green; display: block;');
@@ -19,7 +19,11 @@ function validate() {
       $result = $("#result");
     var email = $("#email").val();
     $result.text("");
-    if(email.length < 1) throw('EMAIL IS EMPTY');
+    if(email.length < 1){
+        if (getPasswordLinkPressed)  { $result.text('Email is empty :('); $result.css({color : 'red'}); }
+
+        throw('EMAIL IS EMPTY');}
+
     if (validateEmail(email)) {
 
 
@@ -64,6 +68,7 @@ $(".start-process").on('click', "#getDecision" , async function() {
 
     // $("#getDecision").on('click', async function () {
 
+        getPasswordLinkPressed = true;
         let isValid = await validate();
         if (!isValid) return console.log("not Valid . stop.");
         else {

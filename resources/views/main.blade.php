@@ -6,8 +6,12 @@
                 <div class="col-lg-5">
 
                     <h4>Caring for better life</h4>
-                    <h1>Leading the way in medical excellence</h1>
-                    <p>Earth greater grass for good. Place for divide evening yielding them that. Creeping beginning over gathered brought.</p>
+{{--                    <h1>Leading the way in medical excellence</h1>--}}
+                    <h1 style="font-size: 40px !important">  Are you considering a medical procedure?</h1>
+                    <h3>   Enhance your knowledge:</h3>
+                    <p style="font-size: 18px"> <i class="fa fa-check"></i> Know the critical factors for the decision-making </p>
+                    <p style="font-size: 18px"> <i class="fa fa-check"></i> Become updated with evidence based medical practices </p>
+                    <p style="font-size: 18px"> <i class="fa fa-check"></i> Be informed of alternative conservative measures, before going under a risky procedure. </p>
 {{--                    <a href="{{ url('procedures')}}" class="template-btn mt-3">take appointment</a>--}}
 
                     <div class="dropdown">

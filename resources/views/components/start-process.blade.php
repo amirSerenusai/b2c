@@ -13,8 +13,8 @@
         </button></a>
 
 
-<div class="start-process">
-<div class="sp-form-popup " id="myForm">
+<div class="start-process ">
+<div class="sp-form-popup" id="myForm">
     <div   class="sp-form-container">
         <h1>Login</h1>
 
@@ -40,15 +40,20 @@
 </div>
 </div>
 <script>
+    let myForm ;
     function openForm() {
-            console.log( document.getElementById("sp-open-a").style.display);
-        document.getElementById("myForm").style.display = "block";
+             // document.getElementById("sp-open-a").style.display;
+            document.getElementById("myForm").style.display = "block";
+        myForm = document.getElementById("myForm");
+        myForm.className = "sp-form-popup animated slideInRight";
         document.getElementById("sp-open-a").style.display = "none";
     }
 
     function closeForm() {
-        console.log( document.getElementById("sp-open-a").style.display);
-        document.getElementById("myForm").style.display = "none";
+        // console.log( document.getElementById("sp-open-a").style.display);
+        //document.getElementById("myForm").style.display = "none";
+        myForm = document.getElementById("myForm");
+        myForm.className = "sp-form-popup animated slideOutRight";
         document.getElementById("sp-open-a").style.display = "inline";
     }
 </script>
