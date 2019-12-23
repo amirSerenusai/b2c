@@ -371,3 +371,7 @@ transform: rotate(90deg);
 .content-area {
     min-height: 148px !important;
 }
+.img-b-n-w {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
