@@ -151,10 +151,10 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 {{--<script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{{--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />--}}
+{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
 
-<script src="{{asset('assets/js/vendor/bootstrap-4.1.3.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
+{{--<script src="{{asset('assets/js/vendor/bootstrap-4.1.3.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>--}}
 <script src="{{asset('assets/js/vendor/wow.min.js')}}" type="ed77345db1d323e1b61dccec-text/javascript"></script>
