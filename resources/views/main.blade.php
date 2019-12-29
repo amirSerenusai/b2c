@@ -41,3 +41,11 @@
 
     </section>
 @endsection
+
+@section ('script')
+
+   <script src="{{asset('js/custom_functions.js')}}"></script>
+
+@endsection
+
+

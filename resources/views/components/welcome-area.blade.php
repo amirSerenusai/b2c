@@ -21,7 +21,8 @@
                     <p><i class="fa fa-check"></i> Developed by world renowned specialists.</p>
                     <i class="fa fa-check float-left" style="line-height: 2.0">&nbsp; </i> <div class="indent-first ml-3"> <div id="odometer" class="odometer"   >0000001</div> ANALYZED CASES , 107,000 WORKED HOURS,100 PROCEDURES
                     </div>
-                    @component('components.start-process') @endcomponent
+{{--                    @component('components.start-process') @endcomponent--}}
+                    @component('components.new-start') @endcomponent
 
 
 

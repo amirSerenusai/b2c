@@ -201,7 +201,7 @@ class TeachController extends ApiController
         $force = "";
         // if already answered from same display_group, the sub_answer should match the other answer (but not for single_sub_answer cases)
         if (sizeof($answered)>0)
-            foreach($answered as $a){
+            foreach($answered as $a) {
 
                 // check if the display group is not single sub answer
                 $ANSWER_TYPE = strtolower(trim($randAnswer->getParam('answer_type'))) == 'single sub-answer' ? 'single_sub_answer' : false;
@@ -222,6 +222,8 @@ class TeachController extends ApiController
 
                 }
             }
+
+           ;
         if ($force == "" && $force_sub_answer != "") return $force_sub_answer;
 
         //info("randAnswer = ".print_r($randAnswer,1));

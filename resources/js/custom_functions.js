@@ -12,7 +12,8 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
-var email = $("#email");
+
+const email = $("#email");
 
 function validate() {
     msg("inside validate");
@@ -104,3 +105,21 @@ function shakeLoginUser(res) {
 
 }
 
+
+$('#getDecision').on('click' , async function() {
+
+    // $("#getDecision").on('click', async function () {
+
+    getPasswordLinkPressed = true;
+    let isValid = await validate();
+
+    if (!isValid) return console.log("not Valid . stop.");
+    else {
+        let userExists = await validateEmailDB();
+        console.log({ userExists });
+        await sendPwdLink(userExists);
+    }
+
+
+    // });
+});

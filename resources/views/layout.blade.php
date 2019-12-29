@@ -166,9 +166,11 @@ Copyright &copy;<script type="ed77345db1d323e1b61dccec-text/javascript">document
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="ed77345db1d323e1b61dccec-text/javascript"></script>
 <script src="{{asset('js/bootstrap.js')}}"></script>
+
 <script src="{{asset('js/api_calls.js')}}"></script>
 <script> axios.defaults.baseURL =  '{{ url("/") }}' </script>
-@yield('script')
+ @yield('script')
+
 <script>
     // type="ed77345db1d323e1b61dccec-text/javascript"
 {{--function goTo(title){--}}
@@ -193,6 +195,8 @@ $(window).scroll(function () {
 });
 
 $(document).ready(() => {
+
+
 
     setTimeout(()=>{
         $("html, body").animate({ scrollTop: 0 });  //,slow

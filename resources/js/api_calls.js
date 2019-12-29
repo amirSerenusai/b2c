@@ -1,6 +1,8 @@
 
 let newUser = false;
-let password , g_email =null;
+let addDotInterval = false;
+let password , g_email =null ;
+let dotLoop = 0;
 export async function validateEmailDB(email) {
 if(!email) email = $("#email").val();
 
@@ -75,7 +77,27 @@ let loginUser = async () => {
  console.log({userDetails})
 };
 
+function addDot() {
+            if (dotLoop < 10 ) {
+                let t =  $("#result").text();
+                t+=" . ";
+                $("#result").text(t);
+            }
+       else clearInterval(addDotInterval);
+dotLoop++;
+}
+
 export let sendPwdLink = async (userExists) => {
+    $('#progressive').show();
+    $(".progress-bar").animate({
+        width: "100%"
+    }, 250 ); // start in under a sec
+
+    $("#result").text('Sending you a password-link, please wait . . . ');
+    console.log($(".spinner-border"));
+    $(".spinner-border").removeClass("d-none");
+    dotLoop =true;
+    addDotInterval = setInterval(addDot, 1000);
 
     let fci = $(".flip-card-inner");
     let fc = $(".flip-card");

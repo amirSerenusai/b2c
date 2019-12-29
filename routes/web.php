@@ -77,6 +77,25 @@ Route::get('/amir', function (){ return view('test'); });
 Route::get('/questionnaire', function (){ return view('questionnaire'); });
 Route::post('/validate-email' , 'Auth\RegisterController@emailExists');
 Route::post('/pwd-link' , 'Auth\RegisterController@pwdLink');
+Route::get('/landing2' , function (){ return view('landing-2'); });
+
+Route::get('/create100' , function(){
+// (\Illuminate\Support\Facades\Mail::to(env('MAIL_UPLOAD_NOTIFY'))->send( new \App\Mail\LabelProcedureChanged(['array1'])) )->delay(now()->addSeconds(5)) ;
+
+//  dispatch()
+//  $job = (new  App\Jobs\CreateScenarios)->delay(Carbon::now()->addSeconds(45)) ;
+//   dispatch(App\Jobs\CreateScenarios);
+// App\Jobs\CreateScenarios::dispatch() ;
+    $user =App\User::find(227);
+    \Illuminate\Support\Facades\Mail::to('amir1004@gmail.com')->send( new \App\Mail\UserCreated($user));
+
+
+    return ["done"];
+});
+
+
+
+
 
 Auth::routes();
 Route::get('/{any?}', function () {
@@ -92,4 +111,3 @@ Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'Que
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
-

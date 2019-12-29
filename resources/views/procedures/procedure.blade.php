@@ -302,4 +302,5 @@
     </script>
     <!--suppress VueDuplicateTag -->
     <script src="{{asset('js/custom_functions.js')}}"></script>
+    <script src="{{asset('js/custom_functions.js')}}"></script>
 @endsection
