@@ -13,24 +13,25 @@
     <link rel="stylesheet" href="{{asset('css/swiper.css')}}" type="text/css" />
 
     <!-- Medical Demo Specific Stylesheet -->
-    <link rel="stylesheet" href="demos/medical.css" type="text/css" />
-    <!-- / -->
+{{--    <link rel="stylesheet" href="demos/medical.css" type="text/css" />--}}
+{{--    <!-- / -->--}}
 
-    <link rel="stylesheet" href="{{asset('/css/dark.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('/css/font-icons.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('demos/medical/css/medical-icons.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('/css/animate.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('/css/magnific-popup.css')}}" type="text/css" />
+{{--    <link rel="stylesheet" href="{{asset('/css/dark.css')}}" type="text/css" />--}}
+{{--    <link rel="stylesheet" href="{{asset('/css/font-icons.css')}}" type="text/css" />--}}
+{{--    <link rel="stylesheet" href="{{asset('demos/medical/css/medical-icons.css')}}" type="text/css" />--}}
+{{--    <link rel="stylesheet" href="{{asset('/css/animate.css')}}" type="text/css" />--}}
+{{--    <link rel="stylesheet" href="{{asset('/css/magnific-popup.css')}}" type="text/css" />--}}
 
-    <link rel="stylesheet" href="{{asset('/css/fonts.css')}}" type="text/css" />
+{{--    <link rel="stylesheet" href="{{asset('/css/fonts.css')}}" type="text/css" />--}}
 
-    <link rel="stylesheet" href="{{asset('/css/responsive.css')}}" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+{{--    <link rel="stylesheet" href="{{asset('/css/responsive.css')}}" type="text/css" />--}}
+{{--    <meta name="viewport" content="width=device-width, initial-scale=1" />--}}
+@component('medical.css')@endcomponent
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="{{asset('/css/colors.php?color=DE6262')}}" type="text/css" />
+{{--    <link rel="stylesheet" href="{{asset('/css/colors.php?color=DE6262')}}" type="text/css" />--}}
 
     <!-- Document Title
     ============================================= -->
@@ -96,92 +97,86 @@
 
     <!-- Header
     ============================================= -->
-    <header id="header">
+@component('medical.header')@endcomponent
+{{--    <header id="header">--}}
 
-        <div id="header-wrap">
+{{--        <div id="header-wrap">--}}
 
-            <div class="container clearfix">
+{{--            <div class="container clearfix">--}}
 
-                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+{{--                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>--}}
 
-                <!-- Logo
-                ============================================= -->
-                <div id="logo">
-                    <a href="{{asset('demos/demo-medical.html')}}" class="standard-logo"><img src="{{asset('demos/medical/images/logo-medical.png')}}" alt="Canvas Logo"></a>
-                    <a href="{{asset('demos/demo-medical.html')}}" class="retina-logo"><img src="{{asset('demos/medical/images/logo-medical@2x.png')}}" alt="Canvas Logo"></a>
-                </div><!-- #logo end -->
+{{--                <!-- Logo--}}
+{{--                ============================================= -->--}}
+{{--                <div id="logo">--}}
+{{--                    <a href="{{asset('demos/demo-medical.html')}}" class="standard-logo"><img src="{{asset('demos/medical/images/logo-medical.png')}}" alt="Canvas Logo"></a>--}}
+{{--                    <a href="{{asset('demos/demo-medical.html')}}" class="retina-logo"><img src="{{asset('demos/medical/images/logo-medical@2x.png')}}" alt="Canvas Logo"></a>--}}
+{{--                </div><!-- #logo end -->--}}
 
-                <!-- Primary Navigation
-                ============================================= -->
-                <nav id="primary-menu" class="style-3 with-arrows">
+{{--                <!-- Primary Navigation--}}
+{{--                ============================================= -->--}}
+{{--                <nav id="primary-menu" class="style-3 with-arrows">--}}
 
-                    <ul>
-                        <li><a href="/demo-medical.html"><div>Home</div></a></li>
-                        <li><a href="about-us.html"><div>About Us</div></a></li>
-                        <li class="current"><a href="departments.html"><div>Departments</div></a></li>
-                        <li><a href="appointment.html"><div>Appointment</div></a></li>
-                        <li><a href="doctors.html"><div>Doctors</div></a>
-                            <ul>
-                                <li><a href="doctors-lists.html"><div>2 columns - List style</div></a></li>
-                                <li><a href="doctors-3.html"><div>3 columns</div></a></li>
-                                <li><a href="doctors.html"><div>4 columns</div></a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html"><div>Blog</div></a></li>
-                        <li><a href="contact.html"><div>Contact</div></a></li>
-                    </ul>
+{{--                    <ul>--}}
+{{--                        <li><a href="{{url(('/medical'))}}"><div>Home</div></a></li>--}}
+{{--                        <li><a href="about-us.html"><div>About Us</div></a></li>--}}
+{{--                        <li class="current"><a href="departments.html"><div>Procedures</div></a></li>--}}
+{{--                        <li><a href="appointment.html"><div>Appointment</div></a></li>--}}
+{{--                        <li><a href="doctors.html"><div>Doctors</div></a>--}}
+{{--                            <ul>--}}
+{{--                                <li><a href="doctors-lists.html"><div>2 columns - List style</div></a></li>--}}
+{{--                                <li><a href="doctors-3.html"><div>3 columns</div></a></li>--}}
+{{--                                <li><a href="doctors.html"><div>4 columns</div></a></li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        <li><a href="blog.html"><div>Blog</div></a></li>--}}
+{{--                        <li><a href="contact.html"><div>Contact</div></a></li>--}}
+{{--                    </ul>--}}
 
-                </nav><!-- #primary-menu end -->
+{{--                </nav><!-- #primary-menu end -->--}}
 
-            </div>
+{{--            </div>--}}
 
-        </div>
+{{--        </div>--}}
 
-    </header><!-- #header end -->
+{{--    </header><!-- #header end -->--}}
 
     <!-- Page Title
     ============================================= -->
-    <section id="page-title" class="page-title-dark page-title-center nopadding">
+    <section id="page-title" class="bgcolor page-title-dark">
 
-        <div class="fslider" data-arrows="false" data-pagi="false" data-animation="fade" data-hover="false">
-            <div class="flexslider" style="height: 278.75px;">
-                <div class="slider-wrap">
-                    <div class="slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img src="{{asset('demos/medical/images/about-us/page-title/1.jpg')}}" alt="Page Title Image" draggable="false"></div>
-                    <div class="slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img src="{{asset('demos/medical/images/about-us/page-title/2.jpg')}}" alt="Page Title Image" draggable="false"></div>
-                    <div class="slide flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"><img src="{{asset('demos/medical/images/about-us/page-title/3.jpg')}}" alt="Page Title Image" draggable="false"></div>
-                    <div class="slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img src="{{asset('demos/medical/images/about-us/page-title/4.jpg')}}" alt="Page Title Image" draggable="false"></div>
+        <div class="container clearfix">
+{{--            <h1>Departments blade php</h1>--}}
+            <h1>Considering Ventilation Tubes Insertion ?</h1>
+{{--            <span>A Short Page Title Tagline</span>--}}
+            <span>ENHANCE YOUR KNOWLEDGE, BEFORE A RISKY MEDICAL PROCEDURE</span>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{url('/medical')}}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Departments</li>
+            </ol>
+            <br>
+            <div class="col_two_third" style="margin-bottom: 10px">
+
+                <div class="widget clearfix">
+
+                    <div class="widget-subscribe-form-result"></div>
+                    <form id="widget-subscribe-form" action="/include/subscribe.php" role="form" method="post" class="nobottommargin row clearfix">
+                        <div class="col-lg-9">
+                            <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">
+                        </div>
+                        <div class="col-lg-3">
+                            <button class="button button-rounded nomargin center btn-block template-btn" style="padding: 0 !important;" type="submit">Start process!</button>
+                        </div>
+                    </form>
+
+
+
                 </div>
 
-                <div class="vertical-middle" style="z-index: 2; position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px; margin-top: -51.5px;">
-
-                    <div class="container clearfix">
-                        <h1>Considering Ventilation Tubes Insertion ?</h1> Z
-                        <span>A Short Page Title Tagline</span>
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">About-us</li>
-                        </ol>
-                    </div>
-                </div>
             </div>
         </div>
 
-    </section>
-{{--    <section id="page-title" class="bgcolor page-title-dark">--}}
-
-
-{{--        <div class="container clearfix">--}}
-{{--            <h1>Departments blade php</h1>--}}
-{{--            <h1>Considering Ventilation Tubes Insertion ?</h1>--}}
-{{--            <span>A Short Page Title Tagline</span>--}}
-{{--            <span>ENHANCE YOUR KNOWLEDGE, BEFORE A RISKY MEDICAL PROCEDURE</span>--}}
-{{--            <ol class="breadcrumb">--}}
-{{--                <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
-{{--                <li class="breadcrumb-item active" aria-current="page">Departments</li>--}}
-{{--            </ol>--}}
-{{--        </div>--}}
-
-{{--    </section><!-- #page-title end -->--}}
+    </section><!-- #page-title end -->
 
     <!-- Content
     ============================================= -->
@@ -194,37 +189,45 @@
                 <div class="tabs tabs-tb tabs-responsive clearfix" id="tab" data-accordion-style="accordion-bg">
 
                     <ul class="tab-nav clearfix">
-                        <li><a href="#tabs-1"><i class="icon-medical-i-cardiology"></i> Health Care</a></li>
-                        <li><a href="#tabs-2"><i class="icon-medical-i-surgery"></i> Outpatient Surgery</a></li>
-                        <li><a href="#tabs-3"><i class="icon-medical-i-dental"></i> Dentist</a></li>
-                        <li><a href="#tabs-4"><i class="icon-medical-ophthalmology"></i> Ophthalmology Clinic</a></li>
+                        <li><a href="#tabs-1"><i class="icon-medical-i-cardiology"></i> General Infdrmation</a></li>
+                        <li><a href="#tabs-2"><i class="icon-medical-i-surgery"></i> Description of the Procedure</a></li>
+                        <li><a href="#tabs-3"><i class="icon-medical-i-dental"></i>Recovery Time </a></li>
+                        <li><a href="#tabs-4"><i class="icon-medical-ophthalmology"></i>  Alternative Care </a></li>
                     </ul>
 
                     <div class="tab-container">
                         <div class="tab-content clearfix" id="tabs-1">
-                            <blockquote class="quote"><p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing</p></blockquote>
+                            <blockquote class="quote"><p> The insertion of ventilating tubes also known as tympanostomy tubes is a simple operation  and the most common procedure performed by ear,
+                                nose, throat (ENT) specialists.
+                                The main goal of the operation is to equalize the pressure between the middle ear and the surrounding,
+                                thus preventing the formation of negative pressure and accumulation of fluids in the middle ear of patients
+                                (particularly children) in which the Eustachian tube does not function well.
+                                This fluid in the middle ear is a potential ground for recurrent infections as well as a cause for conductive hearing loss,
+                                and as a result - speech and language delay.
+                                The procedure includes small incision in the tympanic membrane (myringotomy) and the placement of pressure equalizer tubes in the tympanic membrane.
+                                </p></blockquote >
                             <div class="row clearfix">
                                 <div class="col-lg-4">
-                                    <h4 class="leftmargin-sm">Treatements</h4>
+                                    <h4 class="leftmargin-sm"> Indication</h4>
                                     <ul class="price-table leftmargin-sm nobottommargin">
                                         <li>
                                             <span>Tummy Tuck</span>
                                             <div class="value">$130</div>
                                         </li>
                                         <li>
-                                            <span>Liposuction</span>
+                                            <span>Description of the Procedure </span>
                                             <div class="value">$110</div>
                                         </li>
                                         <li>
-                                            <span>Colonoscopy</span>
+                                            <span>Recovery Time </span>
                                             <div class="value">$90</div>
                                         </li>
                                         <li>
-                                            <span>Cardiac ablation</span>
+                                            <span>  Risks associated with the procedure  </span>
                                             <div class="value">$173</div>
                                         </li>
                                         <li>
-                                            <span>Dermatology</span>
+                                            <span> Alternative Care</span>
                                             <div class="value">$124</div>
                                         </li>
                                     </ul>
@@ -263,7 +266,9 @@
                         </div>
 
                         <div class="tab-content clearfix" id="tabs-2">
-                            <blockquote class="quote"><p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing</p></blockquote>
+                            <blockquote class="quote"><p>
+                                The insertion of ventilating tubes is a quick and a simple procedure. The main risks of the procedure are the risks associated with general anesthesia, but rarely recurrent infections can occur due to water penetration,  and  a perforation of the TM may persist after the extrusion of the tubes.
+                                </p></blockquote>
                             <div class="row">
                                 <div class="col-lg-6 bottommargin">
 
@@ -321,6 +326,10 @@
                             </div>
                         </div>
                         <div class="tab-content clearfix" id="tabs-3">
+                            <blockquote class="quote"><p>Usually the recovery time from the operation is a few hours depending on the influence of the anesthesia on the patient. Following the surgery, antibiotic ear drops are usually prescribed for a few days and the patient returns to full function.
+                                    The tubes placed in the eardrums, in most cases, are gradually extruded into the external ear canals (usually in 6-12 months). In rare cases, should they have not fallen in two or three years - they should be removed in an additional short procedure. 
+                                    It is important to prevent water from entering into the middle ears through the tubes by using ear plugs during baths, showers and swimming, in order to prevent infections, until the tubes fall out. 
+                                </p></blockquote >
                             <div class="row clearfix">
                                 <div class="col-lg-7">
                                     <div class="masonry-thumbs grid-4" data-big="4" data-lightbox="gallery">
@@ -363,7 +372,7 @@
                                     </div>
                                     <div class="feature-box fbox-plain">
                                         <div class="fbox-icon">
-                                            <a href="#"><i class="icon-medical-i-dental"></i></a>
+                                            <a href="#"><i class="icon-medical-i-denotal"></i></a>
                                         </div>
                                         <h3>Dental Sciences</h3>
                                         <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
@@ -485,7 +494,7 @@
                             <div class="row">
                                 <div class="col-lg-3 col-6 bottommargin-sm widget_links">
                                     <ul>
-                                        <li><a href="#">Home</a></li>
+                                        <li><a href="{{url('/medical')}}">Home</a></li>
                                         <li><a href="#">About</a></li>
                                         <li><a href="#">FAQs</a></li>
                                         <li><a href="#">Support</a></li>
@@ -593,7 +602,7 @@
 
                 <div class="col_half col_last tright">
                     <div class="copyrights-menu copyright-links clearfix">
-                        <a href="#">Home</a>/<a href="#">About Us</a>/<a href="#">Team</a>/<a href="#">Clients</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
+                        <a href="{{url('/medical')}}">Home</a>/<a href="#">About Us</a>/<a href="#">Team</a>/<a href="#">Clients</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
                     </div>
                 </div>
 

@@ -40,6 +40,7 @@ Route::get('original', function () {
  Route::get('/old-main'  , function(){ return view('main');});
 Route::get('/medical'  , function(){ return view('medical.index');});
 Route::get('/departments'  , function(){ return view('medical.departments');});
+Route::get('/appointment'  , function(){ return view('medical.appointment');});
 
 Route::get('about'  , function(){ return view('about');})->name('about');
 Route::get('order' , function(){ return view('order');

@@ -7,27 +7,28 @@
 
 	<!-- Stylesheets
 	============================================= -->
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Montserrat:400,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    @component('medical.css')@endcomponent
+{{--	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Montserrat:400,700|Crete+Round:400i" rel="stylesheet" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="style.css" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="css/swiper.css" type="text/css" />--}}
 
-	<!-- Medical Demo Specific Stylesheet -->
-	<link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />
-	<!-- / -->
+{{--	<!-- Medical Demo Specific Stylesheet -->--}}
+{{--	<link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />--}}
+{{--	<!-- / -->--}}
 
-	<link rel="stylesheet" href="css/dark.css" type="text/css" />
-	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-	<link rel="stylesheet" href="demos/medical/css/medical-icons.css" type="text/css" />
-	<link rel="stylesheet" href="css/animate.css" type="text/css" />
-	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+{{--	<link rel="stylesheet" href="css/dark.css" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="demos/medical/css/medical-icons.css" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="css/animate.css" type="text/css" />--}}
+{{--	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />--}}
 
-	<link rel="stylesheet" href="demos/medical/fonts.css" type="text/css" />
+{{--	<link rel="stylesheet" href="demos/medical/fonts.css" type="text/css" />--}}
 
-	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+{{--	<link rel="stylesheet" href="css/responsive.css" type="text/css" />--}}
+{{--	<meta name="viewport" content="width=device-width, initial-scale=1" />--}}
 
-	<link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />
+{{--	<link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />--}}
 
 	<!-- Document Title
 	============================================= -->
@@ -115,7 +116,7 @@
 						<ul>
 							<li class="current"><a href="#"><div>Home</div></a></li>
 							<li><a href="demos/medical/about-us.html"><div>About Us</div></a></li>
-							<li><a href="{{url('departments')}}"><div>Departments</div></a></li>
+							<li><a href="{{url('departments')}}"><div>Procedures</div></a></li>
 {{--                            demos/medical/departments.html--}}
 							<li><a href="demos/medical/appointment.html"><div>Appointment</div></a></li>
 							<li><a href="demos/medical/doctors.html"><div>Doctors</div></a>
@@ -149,23 +150,7 @@
 								<h2 data-caption-animate="flipInX">Enhance your knowledge<span>.</span></h2>
                                 <p class="d-none d-sm-block" data-caption-animate="flipInX" data-caption-delay="250"> before a risky medical procedure </p>
 								<p class="d-none d-sm-block" data-caption-animate="flipInX" data-caption-delay="500">Our Team of Doctors are specialized in Various Disciplines to make sure you get the Best Treatment.</p>
-                                <div id="section-features" class="  title-center page-section">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-primary dropdown-toggle template-btn mt-3" data-toggle="dropdown">
-                                            <b> Pick a procedure</b>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" onclick="goTo('tonsillectomy')"  >Tonsillectomy</a>
-                                            <a class="dropdown-item" onclick="goTo('knee replacement')"  >Knee Replacement</a>
-                                            <a class="dropdown-item" onclick="goTo('ventilation tubes')"  >Ventilation Tubes</a>
-                                        </div>
-                                    </div>
-
-                                    <span>
-                    </span>
-
-
-                                </div>
+                                @component('medical.pick-a-procedure')@endcomponent
 							</div>
 						</div>
 					</div>
@@ -177,23 +162,7 @@
 								<p class="d-none d-sm-block" data-caption-animate="zoomIn" data-caption-delay="500">Become updated with evidence based medical practices.</p>
                                 <p class="d-none d-sm-block" data-caption-animate="zoomIn" data-caption-delay="1000"> Be informed of alternative conservative measures.</p>
                                 <p class="d-none d-sm-block" data-caption-animate="zoomIn" data-caption-delay="1500">Developed by world renowned specialists.</p>
-                                <div id="section-features" class="  title-center page-section">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-primary dropdown-toggle template-btn mt-3" data-toggle="dropdown">
-                                            <b> Pick a procedure</b>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" onclick="goTo('tonsillectomy')"  >Tonsillectomy</a>
-                                            <a class="dropdown-item" onclick="goTo('knee replacement')"  >Knee Replacement</a>
-                                            <a class="dropdown-item" onclick="goTo('ventilation tubes')"  >Ventilation Tubes</a>
-                                        </div>
-                                    </div>
-
-                                    <span>
-                    </span>
-
-
-                                </div>
+                            @component('medical.pick-a-procedure')@endcomponent
                             </div>
 
 						</div>
@@ -705,6 +674,11 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="js/functions.js"></script>
+    <script>
 
+        function  goTo(link){
+           location.href = link;
+        }
+    </script>
 </body>
 </html>
