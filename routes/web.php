@@ -37,7 +37,10 @@ Route::get('original', function () {
 });
 
 //Route::get('home', 'HomeController@index')->name('home');
-Route::get('/'  , function(){ return view('main');});
+ Route::get('/old-main'  , function(){ return view('main');});
+Route::get('/medical'  , function(){ return view('medical.index');});
+Route::get('/departments'  , function(){ return view('medical.departments');});
+
 Route::get('about'  , function(){ return view('about');})->name('about');
 Route::get('order' , function(){ return view('order');
 
@@ -98,10 +101,10 @@ Route::get('/create100' , function(){
 
 
 Auth::routes();
-Route::get('/{any?}', function () {
-
-    return view('main');
-});
+//Route::get('/{any?}', function () {
+//
+//    return view('main');
+//});
 
 
 Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'QuestionnaireReportsController@show']);
