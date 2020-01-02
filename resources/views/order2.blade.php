@@ -6,9 +6,7 @@
     <div class="transparent-gradient">
         <div style="height: 220px; top: 0; left:0;right:0; z-index: 0;" class="bg-white position-absolute">&nbsp;</div>
         <div class="container " style="margin-top: 220px; padding: 30px;">
-
-            <div class="row bg-white" style=" box-shadow: 5px 5px 29px 10px rgba(255, 255, 255, 1);
-">
+            <div class="row bg-white" style=" box-shadow: 5px 5px 29px 10px rgba(255, 255, 255, 1);">
                 <div class="col  ">  <img width="500" src="{{url('assets/images/order-doctor.png')}}"  class="img-fluid"> </div>
                 <div class="col  ">
                     <div class="slam template-btn mb-30">

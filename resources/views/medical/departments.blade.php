@@ -160,7 +160,7 @@
                 <div class="widget clearfix">
 
                     <div class="widget-subscribe-form-result"></div>
-                    <form id="widget-subscribe-form" action="/include/subscribe.php" role="form" method="post" class="nobottommargin row clearfix">
+                    <form id="widget-subscribe-form" action="{{url('/appointment')}}" role="form" method="get" class="nobottommargin row clearfix">
                         <div class="col-lg-9">
                             <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">
                         </div>

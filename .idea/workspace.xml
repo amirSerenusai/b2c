@@ -2,14 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a9d7c21-8ffb-4e59-a6b0-f77eab3041f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/images/logo/logo3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medical/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/_4444.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/_8202.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/__dr7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/__dr8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/__dr_michael_eldar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/__drelidan.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/demos/medical/images/brush.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/demos/reiter-3373451.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/medical/competitive-edge.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/medical/numbers-odometer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/doctor_images/4444.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/4444.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/doctor_images/8202.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/8202.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/doctor_images/dr7.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/dr7.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/doctor_images/dr8.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/dr8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/doctor_images/dr_michael_eldar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/dr_michael_eldar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/doctor_images/drelidan.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/doctor_images/drelidan.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/medical/appointment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/appointment.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/medical/departments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/departments.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/medical/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/order2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order2.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,18 +166,18 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/demos/medical/images/appointment" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/medical" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/demos/medical/images/appointment" />
       <recent name="$PROJECT_DIR$/resources/views/medical" />
+      <recent name="$PROJECT_DIR$/public/demos/medical/images" />
+      <recent name="$PROJECT_DIR$/public/demos/medical/images/appointment" />
       <recent name="$PROJECT_DIR$/public/assets/images/logo" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/assets/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views" />
@@ -228,7 +241,7 @@
       <workItem from="1575196735070" duration="13000" />
       <workItem from="1576490568451" duration="49803000" />
       <workItem from="1577000021058" duration="46127000" />
-      <workItem from="1577610898383" duration="53494000" />
+      <workItem from="1577610898383" duration="66732000" />
     </task>
     <servers />
   </component>
@@ -256,32 +269,32 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1577620882747" />
-    <state x="789" y="478" width="389" height="157" key="NewPhpFileDialog" timestamp="1577951501809">
+    <state x="789" y="478" width="389" height="157" key="NewPhpFileDialog" timestamp="1577961573595">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="789" y="478" width="389" height="157" key="NewPhpFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1577951501809" />
-    <state width="596" height="446" key="SwitcherDM" timestamp="1577953418277">
+    <state x="789" y="478" width="389" height="157" key="NewPhpFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1577961573595" />
+    <state width="596" height="446" key="SwitcherDM" timestamp="1577976177369">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="596" height="446" key="SwitcherDM/67.27.1853.1053@67.27.1853.1053" timestamp="1577953418277" />
+    <state width="596" height="446" key="SwitcherDM/67.27.1853.1053@67.27.1853.1053" timestamp="1577976177369" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1576490602828" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1576490602828" />
     <state x="600" y="166" width="776" height="772" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577791366950">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="600" y="166" width="776" height="772" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1577791366950" />
-    <state x="639" y="288" width="727" height="560" key="find.popup" timestamp="1577799807611">
+    <state x="639" y="288" width="727" height="560" key="find.popup" timestamp="1577971374881">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="639" y="288" width="727" height="560" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577799807611" />
+    <state x="639" y="288" width="727" height="560" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577971374881" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1577028174106">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577028174106" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1577952010348">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1577971104287">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577952010348" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577971104287" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

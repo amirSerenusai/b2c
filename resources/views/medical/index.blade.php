@@ -8,31 +8,11 @@
 	<!-- Stylesheets
 	============================================= -->
     @component('medical.css')@endcomponent
-{{--	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Montserrat:400,700|Crete+Round:400i" rel="stylesheet" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="style.css" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="css/swiper.css" type="text/css" />--}}
 
-{{--	<!-- Medical Demo Specific Stylesheet -->--}}
-{{--	<link rel="stylesheet" href="demos/medical/medical.css" type="text/css" />--}}
-{{--	<!-- / -->--}}
-
-{{--	<link rel="stylesheet" href="css/dark.css" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="demos/medical/css/medical-icons.css" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="css/animate.css" type="text/css" />--}}
-{{--	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />--}}
-
-{{--	<link rel="stylesheet" href="demos/medical/fonts.css" type="text/css" />--}}
-
-{{--	<link rel="stylesheet" href="css/responsive.css" type="text/css" />--}}
-{{--	<meta name="viewport" content="width=device-width, initial-scale=1" />--}}
-
-{{--	<link rel="stylesheet" href="css/colors.php?color=DE6262" type="text/css" />--}}
 
 	<!-- Document Title
 	============================================= -->
-	<title>Medical Demo | Canvas</title>
+	<title>Online Medical Procedures | Serenus AI.</title>
 
 	<style>
 		.form-control.error { border: 2px solid red; }
@@ -144,7 +124,8 @@
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" style="background-image: url('demos/medical/images/slider/1.jpg');">
+{{--					<div class="swiper-slide" style="background-image: url('demos/medical/images/slider/1.jpg');">--}}
+                    <div class="swiper-slide" style="background-image: url('demos/reiter-3373451.jpg');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-right" style="max-width: 700px;">
 								<h2 data-caption-animate="flipInX">Enhance your knowledge<span>.</span></h2>
@@ -183,153 +164,109 @@
 
 			<div class="content-wrap">
 
-				<div class="container clearfix">
+				 @component('medical.competitive-edge')@endcomponent
 
-					<div class="col_one_third">
-						<div class="feature-box fbox-plain">
-							<div class="fbox-icon" data-animate="bounceIn">
-								<a href="#"><i class="icon-medical-i-cardiology"></i></a>
-							</div>
-							<h3>Intensive Care</h3>
-							<p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
-						</div>
-					</div>
+{{--				<div class="section row nopadding common-height dark topmargin-sm">--}}
+{{--					<div class="col-lg-5" data-height-xl="597" data-height-lg="614" data-height-md="400" data-height-sm="300" data-height-xs="200" style="background: url('demos/medical/images/section-bg.jpg') center center no-repeat; background-size: cover;">--}}
+{{--						<div>&nbsp;</div>--}}
+{{--					</div>--}}
+{{--					<div id="booking-appointment-form" class="col-lg-7 nopadding">--}}
+{{--						<div class="bgcolor contact-widget col-padding" data-loader="button">--}}
+{{--							<h2>Book an Appointment.</h2>--}}
+{{--							<div class="contact-form-result"></div>--}}
+{{--							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="demos/medical/include/appointment.php" method="post">--}}
+{{--								<div class="col_two_third">--}}
+{{--									<label for="template-medical-name">Name:</label>--}}
+{{--									<input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required" value="">--}}
+{{--								</div>--}}
+{{--								<div class="col_one_third col_last">--}}
+{{--									<label for="template-medical-phone">Phone:</label>--}}
+{{--									<input type="text" id="template-medical-phone" name="template-medical-phone" class="form-control not-dark required" value="">--}}
+{{--								</div>--}}
+{{--								<div class="clear"></div>--}}
+{{--								<div class="col_two_third">--}}
+{{--									<label for="template-medical-email">Email Address:</label>--}}
+{{--									<input type="email" id="template-medical-email" name="template-medical-email" class="form-control not-dark required" value="">--}}
+{{--								</div>--}}
+{{--								<div class="col_one_third col_last">--}}
+{{--									<label for="template-medical-dob">Date of Birth:</label>--}}
+{{--									<input type="text" id="template-medical-dob" name="template-medical-dob" class="form-control not-dark required" value="" placeholder="DD/MM/YYYY">--}}
+{{--								</div>--}}
+{{--								<div class="clear"></div>--}}
+{{--								<div class="col_two_fifth nobottommargin">--}}
+{{--									<div class="col_full">--}}
+{{--										<label for="template-medical-appoint-date">Appointment Date:</label>--}}
+{{--										<input type="text" id="template-medical-appoint-date" name="template-medical-appoint-date" class="form-control not-dark required" value="" placeholder="DD/MM/YYYY">--}}
+{{--									</div>--}}
+{{--									<div class="col_full nobottommargin">--}}
+{{--										<label for="template-medical-second-booking">Booked with us Before?</label><br>--}}
+{{--										<label class="rightmargin-sm">--}}
+{{--											<input type="radio" id="template-medical-second-booking" name="template-medical-second-booking" value="yes">--}}
+{{--											Yes--}}
+{{--										</label>--}}
+{{--										<label>--}}
+{{--											<input type="radio" name="template-medical-second-booking" value="no" checked>--}}
+{{--											No--}}
+{{--										</label>--}}
+{{--									</div>--}}
+{{--								</div>--}}
+{{--								<div class="col_three_fifth nobottommargin col_last">--}}
+{{--									<label for="template-medical-message">Message:</label>--}}
+{{--									<textarea id="template-medical-message" name="template-medical-message" class="form-control not-dark required" cols="30" rows="5"></textarea>--}}
+{{--								</div>--}}
+{{--								<div class="clear"></div>--}}
+{{--								<div class="col_full hidden">--}}
+{{--									<input type="text" name="template-medical-botcheck" value="" />--}}
+{{--								</div>--}}
+{{--								<div class="col_full topmargin-sm nobottommargin">--}}
+{{--									<button class="button button-rounded button-white button-light nomargin" type="submit" value="submit">Confirm Booking</button>--}}
+{{--								</div>--}}
+{{--								<div class="clear"></div>--}}
+{{--							</form>--}}
 
-					<div class="col_one_third">
-						<div class="feature-box fbox-plain">
-							<div class="fbox-icon" data-animate="bounceIn" data-delay="200">
-								<a href="#"><i class="icon-medical-i-social-services"></i></a>
-							</div>
-							<h3>Family Planning</h3>
-							<p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
-						</div>
-					</div>
-
-					<div class="col_one_third col_last">
-						<div class="feature-box fbox-plain">
-							<div class="fbox-icon" data-animate="bounceIn" data-delay="400">
-								<a href="#"><i class="icon-medical-i-neurology"></i></a>
-							</div>
-							<h3>Expert Consultation</h3>
-							<p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
-						</div>
-					</div>
-
-					<div class="clear"></div>
-
-					<div class="col_one_third">
-						<div class="feature-box fbox-plain">
-							<div class="fbox-icon" data-animate="bounceIn">
-								<a href="#"><i class="icon-medical-i-dental"></i></a>
-							</div>
-							<h3>Dental Sciences</h3>
-							<p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
-						</div>
-					</div>
-
-					<div class="col_one_third">
-						<div class="feature-box fbox-plain">
-							<div class="fbox-icon" data-animate="bounceIn" data-delay="200">
-								<a href="#"><i class="icon-medical-i-imaging-root-category"></i></a>
-							</div>
-							<h3>X-Ray Services</h3>
-							<p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
-						</div>
-					</div>
-
-					<div class="col_one_third col_last">
-						<div class="feature-box fbox-plain">
-							<div class="fbox-icon" data-animate="bounceIn" data-delay="400">
-								<a href="#"><i class="icon-medical-i-ambulance"></i></a>
-							</div>
-							<h3>24x7 Emergency</h3>
-							<p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="section row nopadding common-height dark topmargin-sm">
-					<div class="col-lg-5" data-height-xl="597" data-height-lg="614" data-height-md="400" data-height-sm="300" data-height-xs="200" style="background: url('demos/medical/images/section-bg.jpg') center center no-repeat; background-size: cover;">
-						<div>&nbsp;</div>
-					</div>
-					<div id="booking-appointment-form" class="col-lg-7 nopadding">
-						<div class="bgcolor contact-widget col-padding" data-loader="button">
-							<h2>Book an Appointment.</h2>
-							<div class="contact-form-result"></div>
-							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="demos/medical/include/appointment.php" method="post">
-								<div class="col_two_third">
-									<label for="template-medical-name">Name:</label>
-									<input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required" value="">
-								</div>
-								<div class="col_one_third col_last">
-									<label for="template-medical-phone">Phone:</label>
-									<input type="text" id="template-medical-phone" name="template-medical-phone" class="form-control not-dark required" value="">
-								</div>
-								<div class="clear"></div>
-								<div class="col_two_third">
-									<label for="template-medical-email">Email Address:</label>
-									<input type="email" id="template-medical-email" name="template-medical-email" class="form-control not-dark required" value="">
-								</div>
-								<div class="col_one_third col_last">
-									<label for="template-medical-dob">Date of Birth:</label>
-									<input type="text" id="template-medical-dob" name="template-medical-dob" class="form-control not-dark required" value="" placeholder="DD/MM/YYYY">
-								</div>
-								<div class="clear"></div>
-								<div class="col_two_fifth nobottommargin">
-									<div class="col_full">
-										<label for="template-medical-appoint-date">Appointment Date:</label>
-										<input type="text" id="template-medical-appoint-date" name="template-medical-appoint-date" class="form-control not-dark required" value="" placeholder="DD/MM/YYYY">
-									</div>
-									<div class="col_full nobottommargin">
-										<label for="template-medical-second-booking">Booked with us Before?</label><br>
-										<label class="rightmargin-sm">
-											<input type="radio" id="template-medical-second-booking" name="template-medical-second-booking" value="yes">
-											Yes
-										</label>
-										<label>
-											<input type="radio" name="template-medical-second-booking" value="no" checked>
-											No
-										</label>
-									</div>
-								</div>
-								<div class="col_three_fifth nobottommargin col_last">
-									<label for="template-medical-message">Message:</label>
-									<textarea id="template-medical-message" name="template-medical-message" class="form-control not-dark required" cols="30" rows="5"></textarea>
-								</div>
-								<div class="clear"></div>
-								<div class="col_full hidden">
-									<input type="text" name="template-medical-botcheck" value="" />
-								</div>
-								<div class="col_full topmargin-sm nobottommargin">
-									<button class="button button-rounded button-white button-light nomargin" type="submit" value="submit">Confirm Booking</button>
-								</div>
-								<div class="clear"></div>
-							</form>
-
-						</div>
-					</div>
-				</div>
-
+{{--						</div>--}}
+{{--					</div>--}}
+{{--				</div>--}}
+                @component('medical.numbers-odometer')@endcomponent
 				<div class="container clearfix">
 
 					<div class="col_three_fifth">
 						<div class="accordion accordion-lg clearfix">
 
-							<div class="acctitle"><i class="acc-closed icon-medical-i-kidney color"></i><i class="acc-open icon-medical-kidney color"></i>Kidney Transplant</div>
-							<div class="acc_content clearfix">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</div>
+							<div class="acctitle"><i class="acc-closed icon-medical-i-kidney color"></i><i class="acc-open icon-medical-kidney color"></i>What is Serenus AI ?</div>
+							<div class="acc_content clearfix">
+                                Serenus AI is a leading innovator of advanced AI-based systems for the healthcare/insurance industry.
 
-							<div class="acctitle"><i class="acc-closed icon-medical-i-respiratory color"></i><i class="acc-open icon-medical-respiratory color"></i>Pulmonary Treament</div>
-							<div class="acc_content clearfix">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.</div>
+                                Serenus AI presents new standards of safety to insurers, employers and hospitals by providing leading edge solutions, improving patients’ medical care and saving valuable resources. The professional staff of Serenus AI, including top physicians from various fields and machine learning specialists, have the requisite experience, knowledge and resources to rapidly and effectively meet the diverse needs of customers by implementing appropriate science and technology.</div>
+
+							<div class="acctitle"><i class="acc-closed icon-medical-i-respiratory color"></i><i class="acc-open icon-medical-respiratory color"></i>Why Serenus AI ? </div>
+							<div class="acc_content clearfix"> The fast growth of Serenus AI is a result of its unique products, developed by Serenus AI’s R&D laboratories, to deliver leading innovations and state-of-the art technologies.
+
+                                Serenus AI is committed to providing effective solutions that improve the medical decision-making and save valuable resources.</div>
 
 							<div class="acctitle"><i class="acc-closed icon-medical-i-ophthalmology color"></i><i class="acc-open icon-medical-ophthalmology color"></i>Eye Care &amp; Lasik Surgery</div>
 							<div class="acc_content clearfix">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.</div>
 
-							<div class="acctitle"><i class="acc-closed icon-medical-i-ear-nose-throat color"></i><i class="acc-open icon-medical-ear-nose-throat color"></i>Ear, Nose &amp; Throat</div>
-							<div class="acc_content clearfix">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.</div>
+							<div class="acctitle"><i class="acc-closed icon-medical-i-ear-nose-throat color"></i><i class="acc-open icon-medical-ear-nose-throat color"></i>Partners</div>
+							<div class="acc_content clearfix">
+                                Serenus AI’s partners are essential to us.
 
-							<div class="acctitle"><i class="acc-closed icon-medical-i-cardiology color"></i><i class="acc-open icon-medical-cardiology color"></i>Cardiology Department</div>
-							<div class="acc_content clearfix">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.</div>
+                                Serenus AI’s partners are comprised of the most leading and influential players in the insurance/healthcare ecosystem including insurers, hospitals, HMOs and large employers.
+
+                                Serenus AIis committed to delivering cutting-edge technologies and uncompromised service to meet the growing needs of our partners.
+
+                                Our aim is to build strong, long-term relationships with our partners and offer win-win programs that will generate profits for all sides.
+                            </div>
+
+							<div class="acctitle"><i class="acc-closed icon-medical-i-cardiology color"></i><i class="acc-open icon-medical-cardiology color"></i>AI core</div>
+							<div class="acc_content clearfix">
+                                Serenus AI is an advanced AI-based system (worldwide patent pending), assisting insurers, employers and hospitals to make better decisions before medical procedures.
+
+                                Thus, saving lives and valuable resources.
+
+                                Serenus AI’s fast growth is a result of its unique products, developed by Serenus AI’s R&D laboratories, to deliver leading innovations and state-of-the art technologies.
+
+                                Serenus AI is committed to providing effective solutions that improve the medical decision-making process of professionals and patients.</div>
 
 						</div>
 					</div>
@@ -373,56 +310,7 @@
 
 				</div>
 
-				<div class="section notopmargin">
-					<div class="container clearfix">
 
-						<div class="row">
-							<div class="col-lg-3 col-md-6">
-								<div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-stack i-alt"></i></a>
-									</div>
-									<div class="counter counter-small"><span data-from="100" data-to="23331" data-refresh-interval="200" data-speed="2500"></span>+</div>
-									<h5 class="nomargin color">Clients Served</h5>
-									<div class="d-block d-md-block d-lg-none bottommargin"></div>
-								</div>
-							</div>
-
-							<div class="col-lg-3 col-md-6">
-								<div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-tint i-alt"></i></a>
-									</div>
-									<div class="counter counter-small"><span data-from="100" data-to="56841" data-refresh-interval="250" data-speed="2000"></span>+</div>
-									<h5 class="nomargin color">X-Rays Done</h5>
-									<div class="d-block d-md-block d-lg-none bottommargin"></div>
-								</div>
-							</div>
-
-							<div class="col-lg-3 col-md-6">
-								<div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-tint i-alt"></i></a>
-									</div>
-									<div class="counter counter-small"><span data-from="100" data-to="332" data-refresh-interval="50" data-speed="3000"></span>+</div>
-									<h5 class="nomargin color">Worldwide Staff</h5>
-									<div class="d-block d-md-none bottommargin"></div>
-								</div>
-							</div>
-
-							<div class="col-lg-3 col-md-6">
-								<div class="feature-box fbox-outline fbox-dark fbox-effect clearfix">
-									<div class="fbox-icon">
-										<a href="#"><i class="icon-text-width i-alt"></i></a>
-									</div>
-									<div class="counter counter-small"><span data-from="100" data-to="2213" data-refresh-interval="110" data-speed="3500"></span>+</div>
-									<h5 class="nomargin color">Lives Saved</h5>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
 
 				<div class="container clearfix">
 					<div class="heading-block center nobottomborder">
@@ -432,18 +320,29 @@
 
 					<div id="oc-team" class="owl-carousel team-carousel carousel-widget" data-margin="30" data-nav="true" data-pagi="true" data-items-xs="1" data-items-sm="2" data-items-lg="3" data-items-xl="4">
 
+                        <div class="team">
+                            <div class="team-image grayscale">
+                                <img src="{{asset('assets/images/doctor_images/drelidan.jpeg')}}" alt="" >
+                            </div>
+                            <div class="team-desc">
+                                <div class="team-title"><h4>Dr. Steven</h4><span>Cardiologist</span></div>
+                            </div>
+                        </div>
+
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/1.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+{{--								<img src="demos/medical/images/doctors/1.jpg" alt="Dr. John Doe"    class="img-fluid img-b-n-w"> >--}}
+                                <img src="{{asset('assets/images/doctor_images/dr_baniel.jpg')}}" alt="dr baniel" >
 							</div>
 							<div class="team-desc">
-								<div class="team-title"><h4>Dr. John Doe</h4><span>Cardiologist</span></div>
+								<div class="team-title"><h4>Dr. Baniel</h4><span>Cardiologist</span></div>
 							</div>
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/2.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+{{--								<img src="demos/medical/images/doctors/2.jpg" alt="" class="img-fluid img-b-n-w"   alt="Dr. John Doe">--}}
+                                    <img src="{{asset('assets/images/doctor_images/8202.jpg')}}">
 							</div>
 							<div class="team-desc">
 								<div class="team-title"><h4>Dr. Bryan Mcguire</h4><span>Orthopedist</span></div>
@@ -451,8 +350,9 @@
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/3.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+{{--								<img src="demos/medical/images/doctors/3.jpg" alt="Dr. John Doe">--}}
+                                <img src="{{asset('assets/images/doctor_images/dr9.jpeg')}}" alt="">
 							</div>
 							<div class="team-desc">
 								<div class="team-title"><h4>Dr. Mary Jane</h4><span>Neurologist</span></div>
@@ -460,8 +360,9 @@
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/4.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+{{--								<img src="demos/medical/images/doctors/4.jpg" alt="Dr. John Doe">--}}
+                                <img src="{{asset('assets/images/doctor_images/dr7.jpeg')}}" alt="" >
 							</div>
 							<div class="team-desc">
 								<div class="team-title"><h4>Dr. Silvia Bush</h4><span>Dentist</span></div>
@@ -469,17 +370,17 @@
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/6.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+                                <img src="{{asset('assets/images/doctor_images/steven.jpg')}}" alt="" >
 							</div>
 							<div class="team-desc">
-								<div class="team-title"><h4>Dr. Hugh Baldwin</h4><span>Cardiologist</span></div>
+								<div class="team-title"><h4>Dr. Steven</h4><span>Cardiologist</span></div>
 							</div>
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/7.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+                                <img src="{{asset('assets/images/doctor_images/dr8.png')}}" alt=""  >
 							</div>
 							<div class="team-desc">
 								<div class="team-title"><h4>Dr. Erika Todd</h4><span>Neurologist</span></div>
@@ -487,17 +388,18 @@
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/8.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale">
+                                <img src="{{asset('assets/images/doctor_images/dr_michael_eldar.jpg')}}" alt="" >
 							</div>
 							<div class="team-desc">
-								<div class="team-title"><h4>Dr. Randy Adams</h4><span>Dentist</span></div>
+								<div class="team-title"><h4>Dr. Michael eldar</h4><span>Dentist</span></div>
 							</div>
 						</div>
 
 						<div class="team">
-							<div class="team-image">
-								<img src="demos/medical/images/doctors/9.jpg" alt="Dr. John Doe">
+							<div class="team-image grayscale ">
+{{--								<img src="demos/medical/images/doctors/9.jpg" alt="Dr. John Doe">--}}
+                                <img src="{{asset('assets/images/doctor_images/4444.png')}}" alt="" >
 							</div>
 							<div class="team-desc">
 								<div class="team-title"><h4>Dr. Alan Freeman</h4><span>Eye Specialist</span></div>
