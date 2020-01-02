@@ -13603,5 +13603,15 @@ body:not(.no-transition) #wrapper,
     background-color: white !important;
 
 }
-
+.background-mount {
+    background-image: url(images/about/parallax.jpg);
+    padding: 51px 0px;
+    background-position: 0px -234.709px;
+    background-color: transparent;
+    /* background-image: url(images/parallax/parallax-bg.jpg); */
+    background-attachment: fixed;
+    background-size: cover;
+    /*background-position: 50% 0;*/
+    background-repeat: no-repeat;
+}
 
