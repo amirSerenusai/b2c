@@ -82,11 +82,11 @@
 
 					<!-- Logo
 					============================================= -->
-					<div id="logo">
+					<div id="logo" style="max-width: 300px">
 {{--						<a href="index.html" class="standard-logo"><img src="demos/medical/images/logo-medical.png" alt="Canvas Logo"></a>--}}
-                        <a href="index.html" class="standard-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/logo2.png')}}"    alt="Canvas Logo"></a>
+                        <a href="index.html" style="text-align: left;height: 90px" class="standard-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO2.png')}}"    alt="Canvas Logo"></a>
 {{--						<a href="index.html" class="retina-logo"><img src="demos/medical/images/logo-medical@2x.png" alt="Canvas Logo"></a>--}}
-                        <a href="index.html" class="retina-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/logo2.png')}}"    alt="Canvas Logo"></a>
+                        <a href="index.html" style="text-align: left" class="retina-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO2.png')}}"    alt="Canvas Logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
@@ -124,13 +124,14 @@
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
-{{--					<div class="swiper-slide" style="background-image: url('demos/medical/images/slider/1.jpg');">--}}
-                    <div class="swiper-slide" style="background-image: url('demos/reiter-3373451.jpg');">
+					<div class="swiper-slide" style="background-image: url('demos/medical/images/slider/flip-bg.jpg');">
+{{--                    <div class="swiper-slide" style="background-image: url('demos/reiter-3373451.jpg');">--}}
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-right" style="max-width: 700px;">
-								<h2 data-caption-animate="flipInX">Enhance your knowledge<span>.</span></h2>
-                                <p class="d-none d-sm-block" data-caption-animate="flipInX" data-caption-delay="250"> before a risky medical procedure </p>
-								<p class="d-none d-sm-block" data-caption-animate="flipInX" data-caption-delay="500">Our Team of Doctors are specialized in Various Disciplines to make sure you get the Best Treatment.</p>
+								<h2 data-caption-animate="flipInX">MYSERENUS<span>.</span></h2>
+{{--                                <h2 data-caption-animate="flipInX"><span>.</span></h2>--}}
+{{--                                <p class="d-none d-sm-block" data-caption-animate="flipInX" data-caption-delay="250">  </p>--}}
+								<p class="d-none d-sm-block" data-caption-animate="flipInX" data-caption-delay="500">Enhance your knowledge before a risky medical procedure</p>
                                 @component('medical.pick-a-procedure')@endcomponent
 							</div>
 						</div>
@@ -280,7 +281,8 @@
 										<a href="#"><img src="images/testimonials/1.jpg" alt="Customer Testimonails"></a>
 									</div>
 									<div class="testi-content">
-										<p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!</p>
+										<p>MySerenus gave me the facts and data I needed before my risky medical procedure. It was an extremely helpful tool and I highly recommend using it.
+                                        </p>
 										<div class="testi-meta">
 											John Doe
 											<span>XYZ Inc.</span>
@@ -294,7 +296,8 @@
 										<a href="#"><img src="images/testimonials/2.jpg" alt="Customer Testimonails"></a>
 									</div>
 									<div class="testi-content">
-										<p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+										<p>I was very anxious before my surgery and it was great to be able to use the platform to have an in-depth understanding of it. MySerenus gave me a personalized approach and I was able to enter the surgery with all the necessary knowledge.
+                                        </p>
 										<div class="testi-meta">
 											Collis Ta'eed
 											<span>Envato Inc.</span>
@@ -325,7 +328,7 @@
                                 <img src="{{asset('assets/images/doctor_images/drelidan.jpeg')}}" alt="" >
                             </div>
                             <div class="team-desc">
-                                <div class="team-title"><h4>Dr. Steven</h4><span>Cardiologist</span></div>
+                                <div class="team-title"><h4>Dr. Elidan</h4><span>Cardiologist</span></div>
                             </div>
                         </div>
 
@@ -348,6 +351,16 @@
 								<div class="team-title"><h4>Dr. Bryan Mcguire</h4><span>Orthopedist</span></div>
 							</div>
 						</div>
+
+                        <div class="team">
+                            <div class="team-image grayscale">
+                                {{--								<img src="demos/medical/images/doctors/2.jpg" alt="" class="img-fluid img-b-n-w"   alt="Dr. John Doe">--}}
+                                <img src="{{asset('assets/images/doctor_images/dr_shemesh.jpg')}}">
+                            </div>
+                            <div class="team-desc">
+                                <div class="team-title"><h4>Dr.Shemesh</h4><span>Orthopedist</span></div>
+                            </div>
+                        </div>
 
 						<div class="team">
 							<div class="team-image grayscale">

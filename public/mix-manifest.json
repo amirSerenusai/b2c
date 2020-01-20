@@ -1,5 +1,6 @@
 {
     "/js/api_calls.js": "/js/api_calls.js",
     "/js/app.js": "/js/app.js",
+    "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/custom_functions.js": "/js/custom_functions.js"
 }

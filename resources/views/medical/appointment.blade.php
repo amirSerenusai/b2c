@@ -44,76 +44,81 @@
 
     <!-- Content
     ============================================= -->
-    <section id="content">
+    <section id="content" style="margin-bottom: 0px;">
 
         <div class="content-wrap">
 
             <div class="container clearfix">
+                <ul class="process-steps process-5 clearfix">
+                    <li>
+                        <a href="#" class="i-bordered i-circled divcenter icon-shopping-cart"></a>
+                        <h5>Review Cart</h5>
+                    </li>
+                    <li>
+                        <a href="#" class="i-bordered i-circled divcenter icon-pencil2"></a>
+                        <h5>Enter Shipping Info</h5>
+                    </li>
+                    <li>
+                        <a href="#" class="i-bordered i-circled divcenter icon-money"></a>
+                        <h5>Enter Billing Info</h5>
+                    </li>
+                    <li class="active">
+                        <a href="#" class="i-circled i-alt divcenter bgcolor icon-like"></a>
+                        <h5>Complete Payment</h5>
+                    </li>
+                    <li>
+                        <a href="#" class="i-bordered i-circled divcenter icon-ok"></a>
+                        <h5>Order Complete</h5>
+                    </li>
+                </ul>
 
-                <div class="col_three_fifth nobottommargin">
+                 <div class="fancy-title title-dotted-border title-center">
+                    <h3>Claim your special offer today!</h3>
+                </div>
 
-                    <div class="fancy-title title-bottom-border">
-                        <h3>CLAIM MY SPECIAL OFFER AND GET MY REPORT</h3>
-                    </div>
+                <div class="pricing-box pricing-extended bottommargin clearfix">
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, natus voluptatibus adipisci porro magni dolore eos eius ducimus corporis quos perspiciatis quis iste, vitae autem libero ullam omnis cupiditate quam.</p>
-
-                    <div class="d-flex t600 ml-2 mb-0 p-2 h5 text-dark center justify-content-center align-items-center" style="background: url('demos/medical/images/brush.png')no-repeat center center / cover; width: 180px; height: 50px; margin-bottom: 20px !important;"><span class="align-self-center">
-                       <div class="product-price"><del >$599.99</del>&nbsp;   <ins>$59.99</ins></div>
-                        </span></div>
-
-                    <div class="accordion accordion-bg clearfix">
-
-                        <div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>What do you get?</div>
-                        <div class="acc_content clearfix">
-                            <ul class="iconlist iconlist-color nobottommargin">
-                                <li><i class="icon-ok"></i>A professional personalized report.</li>
-                                <li><i class="icon-ok"></i>A list of all the critical factors that you should consider before a risky procedure.</li>
-                                <li><i class="icon-ok"></i>A list of all the critical factors that you should consider before a risky procedure.</li>
-                                <li><i class="icon-ok"></i>Most updated evidence based medical practices.</li>
-                                <li><i class="icon-ok"></i>Information of alternative conservative measures.</li>
-                                <li><i class="icon-ok"></i>An analysis of AI-based awarded technology.</li>
-
+                    <div class="pricing-desc">
+                        <div class="pricing-title">
+                            <h3>What do you get ?</h3>
+                        </div>
+                        <div class="pricing-features">
+                            <ul class="clearfix">
+                                <li><i class="icon-desktop"></i> A professional personalized report.</li>
+                                <li><i class="icon-eye-open"></i> A list of all the critical factors that you should consider before a risky procedure.</li>
+                                <li><i class="icon-beaker"></i> A list of all the critical factors that you should consider before a risky procedure.</li>
+                                <li><i class="icon-magic"></i> Tons of Customization Options</li>
+                                <li><i class="icon-font"></i> Most updated evidence based medical practices.</li>
+                                <li><i class="icon-stack3"></i> Information of alternative conservative measures.</li>
+                                <li><i class="icon-file2"></i> An analysis of AI-based awarded technology.</li>
+                                <li><i class="icon-support"></i> 24x7 Priority Email Support</li>
                             </ul>
                         </div>
-
-                        <div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>What we Expect from you?</div>
-                        <div class="acc_content clearfix">
-                            <ul class="iconlist iconlist-color nobottommargin">
-                                <li><i class="icon-plus-sign"></i>Design and build applications/ components using open source technology.</li>
-                                <li><i class="icon-plus-sign"></i>Taking complete ownership of the deliveries assigned.</li>
-                                <li><i class="icon-plus-sign"></i>Collaborate with cross-functional teams to define, design, and ship new features.</li>
-                                <li><i class="icon-plus-sign"></i>Work with outside data sources and API's.</li>
-                                <li><i class="icon-plus-sign"></i>Unit-test code for robustness, including edge cases, usability, and general reliability.</li>
-                                <li><i class="icon-plus-sign"></i>Work on bug fixing and improving application performance.</li>
-                            </ul>
-                        </div>
-
-                        <div class="acctitle"><i class="acc-closed icon-ok-circle"></i><i class="acc-open icon-remove-circle"></i>What you've got?</div>
-                        <div class="acc_content clearfix">You'll be familiar with agile practices and have a highly technical background, comfortable discussing detailed technical aspects of system design and implementation, whilst remaining business driven. With 5+ years of systems analysis, technical analysis or business analysis experience, you'll have an expansive toolkit of communication techniques to enable shared, deep understanding of financial and technical concepts by diverse stakeholders with varying backgrounds and needs. In addition, you will have exposure to financial systems or accounting knowledge.</div>
-
                     </div>
 
-                    <p>Repudiandae quasi perspiciatis ea placeat nobis asperiores quod fuga ipsa facere enim ipsum expedita debitis, sit quia adipisci deserunt vitae hic obcaecati voluptates rerum nihil.</p>
-
-
-
-{{--                    <a href="#" data-scrollto="#job-apply" data-highlight="yellow" class="button button-3d button-black nomargin">Apply Now</a>--}}
+                    <div class="pricing-action-area">
+                        <div class="pricing-meta">
+                            As Low as
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-unit">€</span>39<span class="price-tenure">monthly</span>
+                        </div>
+                        <div class="pricing-action">
+{{--                            <a href="#" class="button button-3d button-xlarge btn-block nomargin">Get Started</a>--}}
+                            @component('components.paypal')@endcomponent
+                        </div>
+                    </div>
 
                 </div>
 
-                <div class="col_two_fifth nobottommargin col_last">
 
-                   @component('components.paypal')@endcomponent
 
-                </div>
 
             </div>
 
         </div>
 
-    </section><!-- #content end -->
-
+    </section>
     <!-- Footer
     ============================================= -->
     @component('medical.footer')@endcomponent

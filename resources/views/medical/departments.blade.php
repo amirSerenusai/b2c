@@ -98,48 +98,7 @@
     <!-- Header
     ============================================= -->
 @component('medical.header')@endcomponent
-{{--    <header id="header">--}}
 
-{{--        <div id="header-wrap">--}}
-
-{{--            <div class="container clearfix">--}}
-
-{{--                <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>--}}
-
-{{--                <!-- Logo--}}
-{{--                ============================================= -->--}}
-{{--                <div id="logo">--}}
-{{--                    <a href="{{asset('demos/demo-medical.html')}}" class="standard-logo"><img src="{{asset('demos/medical/images/logo-medical.png')}}" alt="Canvas Logo"></a>--}}
-{{--                    <a href="{{asset('demos/demo-medical.html')}}" class="retina-logo"><img src="{{asset('demos/medical/images/logo-medical@2x.png')}}" alt="Canvas Logo"></a>--}}
-{{--                </div><!-- #logo end -->--}}
-
-{{--                <!-- Primary Navigation--}}
-{{--                ============================================= -->--}}
-{{--                <nav id="primary-menu" class="style-3 with-arrows">--}}
-
-{{--                    <ul>--}}
-{{--                        <li><a href="{{url(('/medical'))}}"><div>Home</div></a></li>--}}
-{{--                        <li><a href="about-us.html"><div>About Us</div></a></li>--}}
-{{--                        <li class="current"><a href="departments.html"><div>Procedures</div></a></li>--}}
-{{--                        <li><a href="appointment.html"><div>Appointment</div></a></li>--}}
-{{--                        <li><a href="doctors.html"><div>Doctors</div></a>--}}
-{{--                            <ul>--}}
-{{--                                <li><a href="doctors-lists.html"><div>2 columns - List style</div></a></li>--}}
-{{--                                <li><a href="doctors-3.html"><div>3 columns</div></a></li>--}}
-{{--                                <li><a href="doctors.html"><div>4 columns</div></a></li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-{{--                        <li><a href="blog.html"><div>Blog</div></a></li>--}}
-{{--                        <li><a href="contact.html"><div>Contact</div></a></li>--}}
-{{--                    </ul>--}}
-
-{{--                </nav><!-- #primary-menu end -->--}}
-
-{{--            </div>--}}
-
-{{--        </div>--}}
-
-{{--    </header><!-- #header end -->--}}
 
     <!-- Page Title
     ============================================= -->
@@ -155,29 +114,71 @@
                 <li class="breadcrumb-item active" aria-current="page">Departments</li>
             </ol>
             <br>
-            <div class="col_two_third" style="margin-bottom: 10px">
-
-                <div class="widget clearfix">
-
-                    <div class="widget-subscribe-form-result"></div>
-                    <form id="widget-subscribe-form" action="{{url('/appointment')}}" role="form" method="get" class="nobottommargin row clearfix">
-                        <div class="col-lg-9">
-                            <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">
-                        </div>
-                        <div class="col-lg-3">
-                            <button class="button button-rounded nomargin center btn-block template-btn" style="padding: 0 !important;" type="submit">Start process!</button>
-                        </div>
-                    </form>
 
 
+            </div>
 
+
+    </section><!-- #page-title end -->
+    <div class="container clearfix" style="margin-top : 60px">
+        <div class="row ">
+
+            <div class="col-lg-5 col-sm-9 offset-sm-2 offset-lg-0  " style="padding-left: 30px">
+                <div class= "topmargin">
+                    <h1>Start process.<br>Get online result now.</h1>
+                </div>
+                <div  style="margin-bottom: 10px">
+
+                    <div class="widget clearfix">
+
+
+                        <form id="widget-subscribe-form"  role="form" method="get" class="nobottommargin row clearfix">
+{{--                            action="{{url('/appointment')}}"--}}
+                            <div class="col-lg-12  ">
+                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">
+                            </div>
+
+                                <br><br><br>
+{{--                                <button class="button button-rounded nomargin center btn-block template-btn" style="padding: 0 !important;" type="submit">Start process!</button>--}}
+                                <button  data-toggle="modal" data-target=".bs-example-modal-lg"   type="button" class="t400 capitalize button button-dark button-large button-circle " value="submit">Register Now</button>
+                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-body">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">Wev'e just sent you a link!</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                                <p class="nobottommargin">Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                    </div>
+            </div>
+
+            <div class="col-lg-7 col-md-10  offset-md-2 col-sm-12 offset-lg-0">
+
+                <div style="position: relative; margin-bottom: -60px; height: 226px;" class="ohidden" data-height-xl="426" data-height-lg="567" data-height-md="470" data-height-xs="183">
+{{--                    <img src="images/services/main-fbrowser.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="100" alt="Chrome" class="fadeInUp animated">--}}
+{{--                    <img src="images/services/main-fmobile.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="400" alt="iPad" class="fadeInUp animated">--}}
+                    <img src="{{asset('assets/images/welcome.png')}}"data-animate="fadeInUp" data-delay="400" alt="Chrome" class="fadeInUp animated">
                 </div>
 
             </div>
+
         </div>
-
-    </section><!-- #page-title end -->
-
+    </div>
     <!-- Content
     ============================================= -->
     <section id="content">
@@ -484,7 +485,9 @@
 <script src="{{asset('/js/functions.js')}}"></script>
 
 <script>
-
+    document.getElementById("widget-subscribe-form").addEventListener("click", function(event){
+        event.preventDefault()
+    });
     jQuery( '.tabs' ).on( 'tabsactivate', function( event, ui ) {
         var mThumbsAvailable = jQuery( ui.newPanel ).find('.masonry-thumbs');
 

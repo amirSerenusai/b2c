@@ -13615,3 +13615,9 @@ body:not(.no-transition) #wrapper,
     background-repeat: no-repeat;
 }
 
+#header, #header-wrap, #logo img {
+    height: 90px;
+    -webkit-transition: height .4s ease, opacity .3s ease;
+    -o-transition: height .4s ease, opacity .3s ease;
+    transition: height .4s ease, opacity .3s ease;
+}

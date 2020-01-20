@@ -10,39 +10,28 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class QuestionAnswered implements  ShouldBroadcast
+class TestEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-
-
-    public $data ;
-
-
+    public $update;
     /**
      * Create a new event instance.
      *
-     * @param $data
+     * @return void
      */
-    public function __construct($data)
+    public function __construct()
     {
-        // dd($data);
-        $this->data = $data ;
-//        $this->dontBroadcastToCurrentUser();
-
-       $this->dontBroadcastToCurrentUser();
-
+        //
     }
 
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
-//        return new PrivateChannel('channel-name');
-
+     //   return new PrivateChannel('channel-name');
         return new Channel('adminserenus');
     }
 }

@@ -290,7 +290,8 @@
                                     <a href="#"><img src="images/testimonials/1.jpg" alt="Customer Testimonails"></a>
                                 </div>
                                 <div class="testi-content">
-                                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!</p>
+                                    <p>"MySerenus gave me the facts and data I needed before my risky medical procedure. It was an extremely helpful tool and I highly recommend using it."
+                                    </p>
                                     <div class="testi-meta">
                                         John Doe
                                         <span>XYZ Inc.</span>

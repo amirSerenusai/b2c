@@ -27,14 +27,27 @@
 |
 */
 
+use App\Events\AnswerUpdate;
 use App\Events\QuestionAnswered;
 use Illuminate\Support\Facades\Auth;
-
+use Pusher\Pusher;
 
 Route::get('original', function () {
 
     return view('original');
 });
+
+
+Route::get('test-event', function () {
+    AnswerUpdate::dispatch(['amirarray' => rand(1,1000)]);
+
+//    $pusher = new Pusher( '64d4fa2735e28609907d' , 'a32e4d7e54e5d2061727' , '822869' );
+//
+//    $pusher->trigger('adminserenus',  'AnswerUpdate', ['message' => '123123']);
+    dd("end");
+
+});
+
 
 //Route::get('home', 'HomeController@index')->name('home');
  Route::get('/old-main'  , function(){ return view('main');});
