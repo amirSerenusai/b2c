@@ -1,4 +1,4 @@
-    <div id="progressive">
+    <div id="progressive" style="min-width: 200px">
 {{--        <div>--}}
 {{--            <h1 class="loadFont text-center">Please Wait...</h1>--}}
 {{--        </div>--}}

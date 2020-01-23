@@ -141,6 +141,7 @@
                                 <br><br><br>
 {{--                                <button class="button button-rounded nomargin center btn-block template-btn" style="padding: 0 !important;" type="submit">Start process!</button>--}}
                                 <button  data-toggle="modal" data-target=".bs-example-modal-lg"   type="button" class="t400 capitalize button button-dark button-large button-circle " value="submit">Register Now</button>
+                            @component('components.new-start') @endcomponent
                             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-body">
@@ -504,6 +505,7 @@
     });
 
 </script>
-
+<script src="{{asset('js/api_calls.js')}}"></script>
+<script src="{{asset('js/custom_functions.js')}}"></script>
 </body>
 </html>

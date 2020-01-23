@@ -66,7 +66,7 @@ $(".next-step").on("click",async function() {
 });
 
 $(".start-process").on('click', "#getDecision" , async function() {
-
+        alert("2354")
     // $("#getDecision").on('click', async function () {
 
         getPasswordLinkPressed = true;
@@ -108,6 +108,7 @@ function shakeLoginUser(res) {
 
 $('#getDecision').on('click' , async function() {
 
+
     // $("#getDecision").on('click', async function () {
 
     getPasswordLinkPressed = true;
@@ -115,7 +116,9 @@ $('#getDecision').on('click' , async function() {
 
     if (!isValid) return console.log("not Valid . stop.");
     else {
+
         let userExists = await validateEmailDB();
+
         console.log({ userExists });
         await sendPwdLink(userExists);
     }

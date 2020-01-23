@@ -18,7 +18,10 @@ if(!email) email = $("#email").val();
         return true;
 
     //}catch({ response :{data :{message}} }){
-  }catch({ response :{data :{errors : {email : emailResponse}}} }){
+  }catch(emailResponse){  //{ response :{data :{errors : {email : emailResponse}}} }){
+
+            return console.error(emailResponse)
+
 
         emailResponse =_.head(emailResponse);
         $("#forgotPwd").hide();

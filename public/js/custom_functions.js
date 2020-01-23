@@ -879,7 +879,7 @@ function _validateEmailDB() {
   _validateEmailDB = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(email) {
-    var response, emailResponse;
+    var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -901,20 +901,7 @@ function _validateEmailDB() {
           case 10:
             _context4.prev = 10;
             _context4.t0 = _context4["catch"](1);
-            emailResponse = _context4.t0.response.data.errors.email;
-            emailResponse = _.head(emailResponse);
-            $("#forgotPwd").hide();
-            console.log(emailResponse); // noinspection DuplicatedCode
-
-            if (emailResponse === "new-user") {
-              newUser = true;
-              $("#info").text('Hello new user , type a password of 8 chars ');
-              $("#pwd").attr("placeholder", "Type a password");
-              password = $("#pwd").val();
-              $("#pwd").attr('placeholder');
-            }
-
-            return _context4.abrupt("return", false);
+            return _context4.abrupt("return", console.error(_context4.t0));
 
           case 18:
           case "end":
@@ -1215,34 +1202,35 @@ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function 
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          // $("#getDecision").on('click', async function () {
+          alert("2354"); // $("#getDecision").on('click', async function () {
+
           getPasswordLinkPressed = true;
-          _context2.next = 3;
+          _context2.next = 4;
           return validate();
 
-        case 3:
+        case 4:
           isValid = _context2.sent;
 
           if (isValid) {
-            _context2.next = 8;
+            _context2.next = 9;
             break;
           }
 
           return _context2.abrupt("return", console.log("not Valid . stop."));
 
-        case 8:
-          _context2.next = 10;
+        case 9:
+          _context2.next = 11;
           return Object(_api_calls__WEBPACK_IMPORTED_MODULE_1__["validateEmailDB"])();
 
-        case 10:
+        case 11:
           userExists = _context2.sent;
           console.log({
             userExists: userExists
           });
-          _context2.next = 14;
+          _context2.next = 15;
           return Object(_api_calls__WEBPACK_IMPORTED_MODULE_1__["sendPwdLink"])(userExists);
 
-        case 14:
+        case 15:
         case "end":
           return _context2.stop();
       }

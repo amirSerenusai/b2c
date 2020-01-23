@@ -879,7 +879,7 @@ function _validateEmailDB() {
   _validateEmailDB = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(email) {
-    var response, emailResponse;
+    var response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -901,20 +901,7 @@ function _validateEmailDB() {
           case 10:
             _context4.prev = 10;
             _context4.t0 = _context4["catch"](1);
-            emailResponse = _context4.t0.response.data.errors.email;
-            emailResponse = _.head(emailResponse);
-            $("#forgotPwd").hide();
-            console.log(emailResponse); // noinspection DuplicatedCode
-
-            if (emailResponse === "new-user") {
-              newUser = true;
-              $("#info").text('Hello new user , type a password of 8 chars ');
-              $("#pwd").attr("placeholder", "Type a password");
-              password = $("#pwd").val();
-              $("#pwd").attr('placeholder');
-            }
-
-            return _context4.abrupt("return", false);
+            return _context4.abrupt("return", console.error(_context4.t0));
 
           case 18:
           case "end":

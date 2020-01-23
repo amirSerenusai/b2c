@@ -1,8 +1,8 @@
 
-<button class="btn btn-primary" type="button" disabled>
-    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    <span class="sr-only">Loading...</span>
-</button>
+{{--<button class="btn btn-primary" type="button" disabled>--}}
+{{--    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>--}}
+{{--    <span class="sr-only">Loading...</span>--}}
+{{--</button>--}}
     <div class="input-group mb-3 w-75 mt-4">
         <label for="email"></label><input type="email" class="form-control" placeholder="Your Email" style="height: 50px" id="email">
         <div class="input-group-append">
@@ -23,6 +23,7 @@
     </div>
 
     <h4 id='result'></h4>
+
         @component('components.pre-loader')@endcomponent
 
 
