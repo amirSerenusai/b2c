@@ -97,7 +97,8 @@
 
     <!-- Header
     ============================================= -->
-@component('medical.header')@endcomponent
+{{--@component('medical.header')@endcomponent--}}
+@component('medical.new-header')@endcomponent
 
 
     <!-- Page Title
