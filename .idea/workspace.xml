@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a9d7c21-8ffb-4e59-a6b0-f77eab3041f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/images/logo/MySerenusLOGO3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/api_calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/api_calls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/api_calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/api_calls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/custom_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/custom_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/new-start.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/new-start.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/pre-loader.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/pre-loader.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/departments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/departments.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/medical/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,10 +261,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="789" y="478" width="389" height="157" key="NewPhpFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578308086442" />
-    <state width="596" height="446" key="SwitcherDM" timestamp="1579794190141">
+    <state width="596" height="446" key="SwitcherDM" timestamp="1580032946715">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="596" height="446" key="SwitcherDM/67.27.1853.1053@67.27.1853.1053" timestamp="1579794190141" />
+    <state width="596" height="446" key="SwitcherDM/67.27.1853.1053@67.27.1853.1053" timestamp="1580032946715" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1576490602828" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1576490602828" />
     <state x="600" y="166" width="776" height="772" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578302613850">
@@ -289,11 +283,11 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577028174106" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1579794129753">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1580032810266">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="2378" y="96" width="1393" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1579533098932" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1579794129753" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1580032810266" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

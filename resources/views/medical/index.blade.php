@@ -84,9 +84,9 @@
 					============================================= -->
 					<div id="logo" style="max-width: 300px">
 {{--						<a href="index.html" class="standard-logo"><img src="demos/medical/images/logo-medical.png" alt="Canvas Logo"></a>--}}
-                        <a href="index.html" style="text-align: left;height: 90px" class="standard-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO2.png')}}"    alt="Canvas Logo"></a>
+                        <a href="index.html" style="text-align: left;height: 90px" class="standard-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO3.jpg')}}"    alt="Canvas Logo"></a>
 {{--						<a href="index.html" class="retina-logo"><img src="demos/medical/images/logo-medical@2x.png" alt="Canvas Logo"></a>--}}
-                        <a href="index.html" style="text-align: left" class="retina-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO2.png')}}"    alt="Canvas Logo"></a>
+                        <a href="index.html" style="text-align: left" class="retina-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO3.jpg')}}"    alt="Canvas Logo"></a>
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
