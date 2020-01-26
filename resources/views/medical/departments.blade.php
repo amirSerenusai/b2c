@@ -4,6 +4,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="SemiColonWeb" />
+    <meta name="api-base-url" content="{{ url('/') }}" />
 
     <!-- Stylesheets
     ============================================= -->
@@ -12,30 +13,14 @@
     <link rel="stylesheet" href="{{asset('style.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{asset('css/swiper.css')}}" type="text/css" />
 
-    <!-- Medical Demo Specific Stylesheet -->
-{{--    <link rel="stylesheet" href="demos/medical.css" type="text/css" />--}}
-{{--    <!-- / -->--}}
-
-{{--    <link rel="stylesheet" href="{{asset('/css/dark.css')}}" type="text/css" />--}}
-{{--    <link rel="stylesheet" href="{{asset('/css/font-icons.css')}}" type="text/css" />--}}
-{{--    <link rel="stylesheet" href="{{asset('demos/medical/css/medical-icons.css')}}" type="text/css" />--}}
-{{--    <link rel="stylesheet" href="{{asset('/css/animate.css')}}" type="text/css" />--}}
-{{--    <link rel="stylesheet" href="{{asset('/css/magnific-popup.css')}}" type="text/css" />--}}
-
-{{--    <link rel="stylesheet" href="{{asset('/css/fonts.css')}}" type="text/css" />--}}
-
-{{--    <link rel="stylesheet" href="{{asset('/css/responsive.css')}}" type="text/css" />--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1" />--}}
 @component('medical.css')@endcomponent
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
 
-{{--    <link rel="stylesheet" href="{{asset('/css/colors.php?color=DE6262')}}" type="text/css" />--}}
-
     <!-- Document Title
     ============================================= -->
-    <title>Departments - Medical | Canvas</title>
+    <title>Procedures - Medical | Canvas</title>
 
     <style>
         .device-md .accordion.accordion-bg .acc_content,
@@ -103,7 +88,10 @@
 
     <!-- Page Title
     ============================================= -->
-    <section id="page-title" class="bgcolor page-title-dark background-mount">
+    <section id="page-title" class="bgcolor page-title-dark background-mount" style="background-image: url(images/about/parallax.jpg) ;      background-size: cover; /* Resize the background image to cover the entire container */
+
+ background-position: 0px -250px;
+">
 
         <div class="container clearfix">
 {{--            <h1>Departments blade php</h1>--}}
@@ -112,7 +100,7 @@
             <span>ENHANCE YOUR KNOWLEDGE, BEFORE A RISKY MEDICAL PROCEDURE</span>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('/medical')}}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                <li class="breadcrumb-item active" aria-current="page">Procedures</li>
             </ol>
             <br>
 
@@ -135,13 +123,13 @@
 
                         <form id="widget-subscribe-form"  role="form" method="get" class="nobottommargin row clearfix">
 {{--                            action="{{url('/appointment')}}"--}}
-                            <div class="col-lg-12  ">
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">
-                            </div>
+{{--                            <div class="col-lg-12  ">--}}
+{{--                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">--}}
+{{--                            </div>--}}
 
-                                <br><br><br>
+{{--                                <br><br><br>--}}
 {{--                                <button class="button button-rounded nomargin center btn-block template-btn" style="padding: 0 !important;" type="submit">Start process!</button>--}}
-                                <button  data-toggle="modal" data-target=".bs-example-modal-lg"   type="button" class="t400 capitalize button button-dark button-large button-circle " value="submit">Register Now</button>
+{{--                                <button  data-toggle="modal" data-target=".bs-example-modal-lg"   type="button" class="t400 capitalize button button-dark button-large button-circle " value="submit">Register Now</button>--}}
                             @component('components.new-start') @endcomponent
                             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
@@ -479,14 +467,18 @@
 
 <!-- External JavaScripts
 ============================================= -->
+<script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('/js/jquery.js')}}"></script>
 <script src="{{asset('/js/plugins.js')}}"></script>
+
 
 <!-- Footer Scripts
 ============================================= -->
 <script src="{{asset('/js/functions.js')}}"></script>
 
 <script>
+    $('nav ul').removeClass('current');
+    $('li:contains("Procedures")').addClass('current')
     document.getElementById("widget-subscribe-form").addEventListener("click", function(event){
         event.preventDefault()
     });

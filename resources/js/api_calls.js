@@ -81,7 +81,7 @@ let loginUser = async () => {
 };
 
 function addDot() {
-            if (dotLoop < 10 ) {
+            if (dotLoop < 3 ) {
                 let t =  $("#result").text();
                 t+=" . ";
                 $("#result").text(t);
@@ -91,7 +91,7 @@ dotLoop++;
 }
 
 export let sendPwdLink = async (userExists) => {
-    $('#progressive').show();
+    $('#progressive').css({display:"block"});
     $(".progress-bar").animate({
         width: "100%"
     }, 250 ); // start in under a sec
@@ -114,9 +114,16 @@ export let sendPwdLink = async (userExists) => {
     let userDetails =    await  axios
         .post(`/pwd-link?registered=${userExists}`, {email : g_email});
     if(userDetails.status === 200) {
-        //alert("sent!");
+        // $(".progress-bar").animate({
+        //     width: "100%"
+        // }, 250 ); // start in under a sec
+         $("#result").text('Link  sent successfully! ');
+
     fci.addClass('link-sent');
-       setTimeout(() => { fc.fadeOut(1000);},1000);
+       setTimeout(() => { fc.fadeOut(1000);
+
+           $("#progressive").fadeOut()
+       },1000);
     }
     console.log({userDetails})
 };

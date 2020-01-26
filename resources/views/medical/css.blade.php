@@ -19,3 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" href="css/colors.php?color=007bff" type="text/css" />
+<style>
+    .form-control.error { border: 2px solid red; }
+    #primary-menu.style-3 > ul > li.current > a, .bgcolor { background: linear-gradient(to right, #244cfd, #15e4fd);}
+</style>

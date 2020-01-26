@@ -66,7 +66,7 @@ $(".next-step").on("click",async function() {
 });
 
 $(".start-process").on('click', "#getDecision" , async function() {
-        alert("2354")
+
     // $("#getDecision").on('click', async function () {
 
         getPasswordLinkPressed = true;

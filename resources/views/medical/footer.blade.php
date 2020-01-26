@@ -16,7 +16,7 @@
                             <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="sm-form-control required email" placeholder="Enter your Email to Subscribe to our Newsletter">
                         </div>
                         <div class="col-lg-3">
-                            <button class="button button-rounded nomargin center btn-block" type="submit">Subscribe</button>
+                            <button class=" button button-rounded nomargin center btn-block   template-btn " type="submit" style="padding: 0px !important;">Subscribe</button>
                         </div>
                     </form>
 

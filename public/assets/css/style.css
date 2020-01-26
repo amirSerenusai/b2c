@@ -64,6 +64,9 @@
     bottom: -20px;
     opacity: 0.7;
 }
+.getDecision:hover {
+    cursor: pointer;
+}
 .c-pointer {
     cursor: pointer;
 }

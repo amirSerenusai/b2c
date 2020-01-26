@@ -14,10 +14,7 @@
 	============================================= -->
 	<title>Online Medical Procedures | Serenus AI.</title>
 
-	<style>
-		.form-control.error { border: 2px solid red; }
-        #primary-menu.style-3 > ul > li.current > a, .bgcolor { background: linear-gradient(to right, #244cfd, #15e4fd);}
-	</style>
+
 
 </head>
 
@@ -403,7 +400,8 @@
 	============================================= -->
 	<script src="js/functions.js"></script>
     <script>
-
+        $('nav ul').removeClass('current');
+        $('li:contains("Home")').addClass('current');
         function  goTo(link){
            location.href = link;
         }
