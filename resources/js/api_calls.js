@@ -1,4 +1,4 @@
-
+let ok = $("#ok");
 let newUser = false;
 let addDotInterval = false;
 let password , g_email =null ;
@@ -92,9 +92,13 @@ dotLoop++;
 
 export let sendPwdLink = async (userExists) => {
     $('#progressive').css({display:"block"});
-    $(".progress-bar").animate({
-        width: "100%"
-    }, 250 ); // start in under a sec
+    $(".progress-bar").css({ width: "1%"});
+    setTimeout(() => {
+        $(".progress-bar").animate({
+            width: "100%"
+        }, 250 );
+
+    },1000)
 
     $("#result").text('Sending you a password-link, please wait . . . ');
     console.log($(".spinner-border"));
@@ -118,12 +122,19 @@ export let sendPwdLink = async (userExists) => {
         //     width: "100%"
         // }, 250 ); // start in under a sec
          $("#result").text('Link  sent successfully! ');
+        ok.removeClass('d-none');
+        ok.removeClass('zoomOut');
+        ok.addClass('zoomIn');
 
     fci.addClass('link-sent');
-       setTimeout(() => { fc.fadeOut(1000);
+       setTimeout(() => {
+           ok.addClass('zoomOut');
+           // ok.addClass('d-none');
+           //fc.fadeOut(1000);
 
-           $("#progressive").fadeOut()
-       },1000);
+           // $("#progressive").fadeOut()
+
+       },3000);
     }
     console.log({userDetails})
 };

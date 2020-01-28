@@ -31,7 +31,7 @@ use App\Events\AnswerUpdate;
 use App\Events\QuestionAnswered;
 use Illuminate\Support\Facades\Auth;
 use Pusher\Pusher;
-
+Auth::routes();
 Route::get('original', function () {
 
     return view('original');
@@ -53,13 +53,14 @@ Route::get('test-event', function () {
  Route::get('/old-main'  , function(){ return view('main');});
 Route::get('/medical'  , function(){ return view('medical.index');});
 Route::get('/departments'  , function(){ return view('medical.departments');});
-Route::get('/appointment'  , function(){ return view('medical.appointment');});
+Route::get('/appointment'  , function(){ return view('medical.appointment');})->name('link.order');;
 
 Route::get('about'  , function(){ return view('about');})->name('about');
-Route::get('order' , function(){ return view('order');
+Route::get('order_old' , function(){ return view('order');
 
 })->name('order');
-Route::get('doctors' , function(){ return view('doctors');
+//Route::get('doctors' , function(){ return view('doctors');
+Route::get('doctors' , function(){ return view('medical.doctors');
 
 })->name('doctors');
 Route::get('blog' , function(){ return view('blog');
@@ -114,7 +115,7 @@ Route::get('/create100' , function(){
 
 
 
-Auth::routes();
+
 //Route::get('/{any?}', function () {
 //
 //    return view('main');

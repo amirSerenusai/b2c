@@ -24,6 +24,7 @@
 {{--        <label for="psw"><b>Password</b></label>--}}
 {{--        <input type="password" placeholder="Enter Password" name="psw" required>--}}
         @component('components.start-process-sendmail')@endcomponent
+
         <a><button id="getDecision"  class="template-btn mt-3   c-pointer" style="    width: 100%;padding:16px 20px !important;" >
         <b style="color:white;font-size: 15px">
         <i class="fa fa-envelope-o" aria-hidden="true"></i>

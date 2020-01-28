@@ -1,4 +1,4 @@
-
+<div  >&nbsp;<b style="margin-bottom: 0;font-size: 1.3em" id='result'></b></div>
 {{--<button class="btn btn-primary" type="button" disabled>--}}
 {{--    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>--}}
 {{--    <span class="sr-only">Loading...</span>--}}
@@ -28,7 +28,10 @@
 
 
 
-<div>@component('components.pre-loader')@endcomponent</div>
-<div style="position:absolute"><h4 id='result'></h4></div>
+ @component('components.pre-loader')@endcomponent
+
+  &nbsp;&nbsp;  <i  id="ok" style="font-size: 1.3em;color:green"  class="fas fa-check animated d-none "></i>
+
+
 
 

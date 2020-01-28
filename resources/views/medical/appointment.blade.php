@@ -1,4 +1,5 @@
 
+
 <html dir="ltr" lang="en-US">
 <head>
 
@@ -24,8 +25,8 @@
 
     <!-- Header
     ============================================= -->
-@component('medical.header')@endcomponent
-
+{{--@component('medical.header')@endcomponent--}}
+@component('medical.new-header')@endcomponent
     <!-- Page Title
     ============================================= -->
     <section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('images/about/parallax.jpg'); padding: 80px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
@@ -51,20 +52,24 @@
             <div class="container clearfix">
                 <ul class="process-steps process-5 clearfix">
                     <li>
-                        <a href="#" class="i-bordered i-circled divcenter icon-shopping-cart"></a>
-                        <h5>Review Cart</h5>
-                    </li>
-                    <li>
-                        <a href="#" class="i-bordered i-circled divcenter icon-pencil2"></a>
-                        <h5>Enter Shipping Info</h5>
-                    </li>
-                    <li>
-                        <a href="#" class="i-bordered i-circled divcenter icon-money"></a>
-                        <h5>Enter Billing Info</h5>
+                        <a href="#" class="  i-circled divcenter  icon-shopping-cart"></a>
+{{--                        <h5>Review Cart</h5>--}}
+                        <h5>Get Access Link </h5>
                     </li>
                     <li class="active">
-                        <a href="#" class="i-circled i-alt divcenter bgcolor icon-like"></a>
+                        <a href="#" class="i-bordered i-circled divcenter bgcolor   icon-money"></a>
+{{--                        <h5>Pa Shipping Info</h5>--}}
                         <h5>Complete Payment</h5>
+                    </li>
+                    <li>
+                        <a href="#" class="i-bordered i-circled divcenter  icon-pencil2"></a>
+                        <h5>Fill Your Case details</h5>
+                    </li>
+                    <li >
+                        <a href="#" class=" i-bordered  i-circled   divcenter  icon-like"></a>
+{{--                        bgcolor--}}
+{{--                        <h5>Complete Payment</h5>--}}
+                            <h5>Get immediate results</h5>
                     </li>
                     <li>
                         <a href="#" class="i-bordered i-circled divcenter icon-ok"></a>

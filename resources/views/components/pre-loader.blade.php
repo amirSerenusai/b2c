@@ -1,4 +1,4 @@
-    <div id="progressive" style=" width: 280px;display: none">
+    <div id="progressive" style=" width: 92%; display: none">
 {{--        <div>--}}
 {{--            <h1 class="loadFont text-center">Please Wait...</h1>--}}
 {{--        </div>--}}
@@ -7,6 +7,7 @@
 
             style="background: linear-gradient(to right, #244cfd, #15e4fd) "></div>
         </div>
+
     </div>
 
 
