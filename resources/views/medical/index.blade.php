@@ -26,46 +26,7 @@
 
 		<!-- Top Bar
 		============================================= -->
-		<div id="top-bar">
 
-			<div class="container clearfix">
-
-				<div class="col_half d-none d-md-block nobottommargin">
-
-					<!-- Top Links
-					============================================= -->
-					<div class="top-links">
-						<ul>
-							<li><a href="#"><i class="icon-time"></i> Timings</a></li>
-							<li><a href="#"><i class="icon-phone3"></i> +91-800-9876-221</a></li>
-							<li><a href="#" class="nott"><i class="icon-envelope2"></i> medical@canvas.com</a></li>
-						</ul>
-					</div><!-- .top-links end -->
-
-				</div>
-
-				<div class="col_half col_last fright nobottommargin">
-
-					<!-- Top Links
-					============================================= -->
-					<div class="top-links">
-						<ul>
-							<li><a href="#">EN</a>
-								<ul>
-									<li><a href="#"><img src="images/icons/flags/french.png" alt="French"> FR</a></li>
-									<li><a href="#"><img src="images/icons/flags/italian.png" alt="Italian"> IT</a></li>
-									<li><a href="#"><img src="images/icons/flags/german.png" alt="German"> DE</a></li>
-								</ul>
-							</li>
-							<li><a href="#" data-scrollto="#booking-appointment-form" data-offset="100" data-easing="easeInOutExpo" data-speed="1200" class="bgcolor" style="color:#fff;">Book an Appointment</a></li>
-						</ul>
-					</div><!-- .top-links end -->
-
-				</div>
-
-			</div>
-
-		</div><!-- #top-bar end -->
 
 		<!-- Header
 		============================================= -->
@@ -121,67 +82,6 @@
 
 				 @component('medical.competitive-edge')@endcomponent
 
-{{--				<div class="section row nopadding common-height dark topmargin-sm">--}}
-{{--					<div class="col-lg-5" data-height-xl="597" data-height-lg="614" data-height-md="400" data-height-sm="300" data-height-xs="200" style="background: url('demos/medical/images/section-bg.jpg') center center no-repeat; background-size: cover;">--}}
-{{--						<div>&nbsp;</div>--}}
-{{--					</div>--}}
-{{--					<div id="booking-appointment-form" class="col-lg-7 nopadding">--}}
-{{--						<div class="bgcolor contact-widget col-padding" data-loader="button">--}}
-{{--							<h2>Book an Appointment.</h2>--}}
-{{--							<div class="contact-form-result"></div>--}}
-{{--							<form class="nobottommargin" id="template-medical-form" name="template-medical-form" action="demos/medical/include/appointment.php" method="post">--}}
-{{--								<div class="col_two_third">--}}
-{{--									<label for="template-medical-name">Name:</label>--}}
-{{--									<input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required" value="">--}}
-{{--								</div>--}}
-{{--								<div class="col_one_third col_last">--}}
-{{--									<label for="template-medical-phone">Phone:</label>--}}
-{{--									<input type="text" id="template-medical-phone" name="template-medical-phone" class="form-control not-dark required" value="">--}}
-{{--								</div>--}}
-{{--								<div class="clear"></div>--}}
-{{--								<div class="col_two_third">--}}
-{{--									<label for="template-medical-email">Email Address:</label>--}}
-{{--									<input type="email" id="template-medical-email" name="template-medical-email" class="form-control not-dark required" value="">--}}
-{{--								</div>--}}
-{{--								<div class="col_one_third col_last">--}}
-{{--									<label for="template-medical-dob">Date of Birth:</label>--}}
-{{--									<input type="text" id="template-medical-dob" name="template-medical-dob" class="form-control not-dark required" value="" placeholder="DD/MM/YYYY">--}}
-{{--								</div>--}}
-{{--								<div class="clear"></div>--}}
-{{--								<div class="col_two_fifth nobottommargin">--}}
-{{--									<div class="col_full">--}}
-{{--										<label for="template-medical-appoint-date">Appointment Date:</label>--}}
-{{--										<input type="text" id="template-medical-appoint-date" name="template-medical-appoint-date" class="form-control not-dark required" value="" placeholder="DD/MM/YYYY">--}}
-{{--									</div>--}}
-{{--									<div class="col_full nobottommargin">--}}
-{{--										<label for="template-medical-second-booking">Booked with us Before?</label><br>--}}
-{{--										<label class="rightmargin-sm">--}}
-{{--											<input type="radio" id="template-medical-second-booking" name="template-medical-second-booking" value="yes">--}}
-{{--											Yes--}}
-{{--										</label>--}}
-{{--										<label>--}}
-{{--											<input type="radio" name="template-medical-second-booking" value="no" checked>--}}
-{{--											No--}}
-{{--										</label>--}}
-{{--									</div>--}}
-{{--								</div>--}}
-{{--								<div class="col_three_fifth nobottommargin col_last">--}}
-{{--									<label for="template-medical-message">Message:</label>--}}
-{{--									<textarea id="template-medical-message" name="template-medical-message" class="form-control not-dark required" cols="30" rows="5"></textarea>--}}
-{{--								</div>--}}
-{{--								<div class="clear"></div>--}}
-{{--								<div class="col_full hidden">--}}
-{{--									<input type="text" name="template-medical-botcheck" value="" />--}}
-{{--								</div>--}}
-{{--								<div class="col_full topmargin-sm nobottommargin">--}}
-{{--									<button class="button button-rounded button-white button-light nomargin" type="submit" value="submit">Confirm Booking</button>--}}
-{{--								</div>--}}
-{{--								<div class="clear"></div>--}}
-{{--							</form>--}}
-
-{{--						</div>--}}
-{{--					</div>--}}
-{{--				</div>--}}
                 @component('medical.numbers-odometer')@endcomponent
 				<div class="container clearfix">
 
@@ -261,7 +161,7 @@
 							</li>
 						</ul>
 						<div class="clear"></div>
-						<a href="#" class="button button-mini button-rounded norightmargin fright">More Patient Feedbacks...</a>
+{{--						<a href="#" class="button button-mini button-rounded norightmargin fright">More Patient Feedbacks...</a>--}}
 						<div class="clear"></div>
 					</div>
 
@@ -394,12 +294,15 @@
 	<!-- External JavaScripts
 	============================================= -->
 	<script src="js/jquery.js"></script>
+    <script src="js/contact.js"></script>
 	<script src="js/plugins.js"></script>
+
 
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="js/functions.js"></script>
     <script>
+        let $ =  jQuery;
         $('nav ul').removeClass('current');
         $('li:contains("Home")').addClass('current');
         function  goTo(link){

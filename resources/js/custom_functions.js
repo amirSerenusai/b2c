@@ -64,23 +64,32 @@ $(".next-step").on("click",async function() {
     $(this).addClass(`step${cItem}`);
     $(`.progressbar  li.c${cItem}`).addClass('active shadow');
 });
-
-$(".start-process").on('click', "#getDecision" , async function() {
-
-    // $("#getDecision").on('click', async function () {
-
-        getPasswordLinkPressed = true;
-        let isValid = await validate();
-        if (!isValid) return console.log("not Valid . stop.");
-        else {
-            let userExists = await validateEmailDB();
-            console.log({ userExists });
-            await sendPwdLink(userExists);
-        }
-
-
-    // });
+$(".make-jello").on('click' , function () {
+ if(($(this).next()[0]).style.display == "none") {
+     $("#getDecision").removeClass('jello');
+     $("#getDecision").removeClass('pulse');
+     setTimeout(() => {
+         $("#getDecision").addClass('pulse');
+     } , 100)
+ }
 });
+// $(".start-process").on('click', "#getDecision" , async function() {
+//
+//     // $("#getDecision").on('click', async function () {
+//
+//         getPasswordLinkPressed = true;
+//         let isValid = await validate();
+//         if (!isValid) return console.log("not Valid . stop.");
+//         else {
+//             let userExists = await validateEmailDB();
+//             console.log({ userExists });
+//             return alert(userExists);
+//             await sendPwdLink(userExists);
+//         }
+//
+//
+//     // });
+// });
 
 $(".welcome-text").on('click' , "#pwdLink" ,async  function () {
 
@@ -110,7 +119,11 @@ $('#getDecision').on('click' , async function() {
 
 
     // $("#getDecision").on('click', async function () {
+    // $(this).attr('data-notify-msg' ,"mtr massagw");
 
+
+
+    // SEMICOLON.widget.notifications(this);
     getPasswordLinkPressed = true;
     let isValid = await validate();
 
@@ -120,9 +133,21 @@ $('#getDecision').on('click' , async function() {
         let userExists = await validateEmailDB();
 
         console.log({ userExists });
+
         await sendPwdLink(userExists);
     }
 
 
     // });
 });
+//
+// $(window).scroll(function (event) {
+//     var scroll = $(window).scrollTop();
+//     // Do something
+//     console.log(scroll);
+//     if(scroll > 30 && scroll < 502 ) $("img.fadeInUp").addClass('grayscale');
+//     else $("img.fadeInUp").removeClass('grayscale');
+//
+// });
+
+

@@ -18,7 +18,8 @@ class ProceduresController extends Controller
      */
     public function index()
     {
-        return view('procedures.index');
+        //return view('procedures.index');
+        return view('medical.departments');
     }
 
     /**

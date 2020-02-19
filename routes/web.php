@@ -52,10 +52,12 @@ Route::get('test-event', function () {
 //Route::get('home', 'HomeController@index')->name('home');
  Route::get('/old-main'  , function(){ return view('main');});
 Route::get('/medical'  , function(){ return view('medical.index');});
-Route::get('/departments'  , function(){ return view('medical.departments');});
+//Route::get('/departments'  , function(){ return view('medical.departments');});
 Route::get('/appointment'  , function(){ return view('medical.appointment');})->name('link.order');;
+Route::get('/contact'  , function(){ return view('medical.contact');})->name('link.contact');;
 
-Route::get('about'  , function(){ return view('about');})->name('about');
+Route::get('_about'  , function(){ return view('about');})->name('_about');
+Route::get('about'  , function(){   return view('medical.about');})->name('about');
 Route::get('order_old' , function(){ return view('order');
 
 })->name('order');
@@ -70,6 +72,7 @@ Route::get('order2' , function(){ return view('order2');
 })->name('order2');
 Route::get('paypal' , function(){ return view('paypal');
 });
+
 
 
 //Route::middleware(['Authenticate'])->group(function () {
@@ -125,6 +128,10 @@ Route::get('/create100' , function(){
 Route::get('tests/{test}/reports', ['as' => 'tests.reports.show', 'uses' => 'QuestionnaireReportsController@show']);
 
 
+Route::group(['prefix' => 'include' ], function ()   {
+    Route::post('sendemail' , 'MailController@getMessageFromCostumer');
+    Route::post('subscribe' , 'MailController@getMessageFromCostumer');
+});
 
 
 

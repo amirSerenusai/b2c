@@ -11,20 +11,29 @@ if(!email) email = $("#email").val();
         let  response =
         await  axios
             .post(`/validate-email`, {email});
-        $("#info").text('');
-        $("#forgotPwd").hide().delay(300).show();
+       // $("#info").text('');
+      //  $("#forgotPwd").hide().delay(300).show();
 
       // console.log(email+" exist");
         return true;
 
     //}catch({ response :{data :{message}} }){
-  }catch(emailResponse){  //{ response :{data :{errors : {email : emailResponse}}} }){
+  }catch(emailResponse){
+        //{ response :{data :{errors : {email : emailResponse}}} }){
 
-            return console.error(emailResponse)
+        try { if(emailResponse.response.data.errors.email[0] == "The email has already been taken.")
+
+        {
+            console.error("Existing USER");
+            return true;}
+        }catch (e) {
+
+        }
+           // return console.error(emailResponse);
 
 
         emailResponse =_.head(emailResponse);
-        $("#forgotPwd").hide();
+       // $("#forgotPwd").hide();
         console.log(emailResponse);
         // noinspection DuplicatedCode
         if (emailResponse  === "new-user") {
@@ -121,20 +130,26 @@ export let sendPwdLink = async (userExists) => {
         // $(".progress-bar").animate({
         //     width: "100%"
         // }, 250 ); // start in under a sec
-         $("#result").text('Link  sent successfully! ');
+         $("#result").text('We just sent you an email with the login instructions');
         ok.removeClass('d-none');
         ok.removeClass('zoomOut');
         ok.addClass('zoomIn');
 
     fci.addClass('link-sent');
        setTimeout(() => {
-           ok.addClass('zoomOut');
+           ok.removeClass('zoomIn');
+           ok.addClass('fadeOut');
            // ok.addClass('d-none');
            //fc.fadeOut(1000);
 
            // $("#progressive").fadeOut()
 
-       },3000);
+       },700);
+
+        // setTimeout(() => {
+        //     $('#progressive').fadeOut(500);
+        //     $("#result").text(' ');
+        // },2500);
     }
     console.log({userDetails})
 };

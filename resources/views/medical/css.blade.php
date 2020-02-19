@@ -25,4 +25,37 @@
     }
     .form-control.error { border: 2px solid red; }
     #primary-menu.style-3 > ul > li.current > a, .bgcolor { background: linear-gradient(to right, #244cfd, #15e4fd);}
+    .no-bg {
+        background: none !important;
+    }
+    div.sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 60px;
+        right: 0;
+        z-index:100;
+        height:110px;
+        margin-bottom: 20px;
+        background-color: rgba(255,255,255,0.5);
+
+        /*padding: 50px;*/
+
+        /*font-size: 20px;*/
+
+
+    }
+    /*@media (min-width: 1335px) {*/
+    /*    .before-last {*/
+    /*        border: 2px solid #1d68a7;*/
+    /*        margin-right: 120px !important;*/
+    /*    }*/
+    /*}*/
+    @media (min-width: 768px) {
+
+    .before-last {
+        border: 2px solid yellow;
+        margin-left: 0 !important;
+    }
+    }
+
 </style>

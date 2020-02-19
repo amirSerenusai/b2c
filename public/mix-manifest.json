@@ -2,5 +2,8 @@
     "/js/api_calls.js": "/js/api_calls.js",
     "/js/app.js": "/js/app.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/js/custom_functions.js": "/js/custom_functions.js"
+    "/js/contact.js": "/js/contact.js",
+    "/js/custom_functions.js": "/js/custom_functions.js",
+    "/js/functions.js": "/js/functions.js",
+    "/js/paypal.js": "/js/paypal.js"
 }

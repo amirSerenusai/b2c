@@ -4,6 +4,7 @@
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="api-base-url" content="<?php echo e(url('/')); ?>" />
     <meta name="author" content="SemiColonWeb" />
 
     <!-- Stylesheets
@@ -30,7 +31,6 @@
     <!-- Page Title
     ============================================= -->
     <section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('images/about/parallax.jpg'); padding: 80px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
-
         <div class="container clearfix">
             <h1>Special offer</h1>
             <span>Join our Fabulous Team of Intelligent Individuals</span>
@@ -40,7 +40,6 @@
                 <li class="breadcrumb-item active" aria-current="page">Order</li>
             </ol>
         </div>
-
     </section><!-- #page-title end -->
 
     <!-- Content
@@ -50,7 +49,7 @@
         <div class="content-wrap">
 
             <div class="container clearfix">
-                <ul class="process-steps process-5 clearfix">
+                <ul class="process-steps process-5 clearfix d-none d-sm-block">
                     <li>
                         <a href="#" class="  i-circled divcenter  icon-shopping-cart"></a>
 {{--                        <h5>Review Cart</h5>--}}
@@ -78,7 +77,7 @@
                 </ul>
 
                  <div class="fancy-title title-dotted-border title-center">
-                    <h3>Claim your special offer today!</h3>
+                    <h3>Claim my ******** medical report!</h3>
                 </div>
 
                 <div class="pricing-box pricing-extended bottommargin clearfix">
@@ -136,6 +135,7 @@
 
 <!-- External JavaScripts
 ============================================= -->
+<script src="js/bootstrap.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 
@@ -145,38 +145,43 @@
 <script
     src="https://www.paypal.com/sdk/js?client-id=AWWvO4Q-DF5tlKHNHyYbswCtg-XupvenY2I-bzixwH3ICH_j_K29bsQWAFryXlt5Iifmn6-kol_dGam8"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
 </script>
-<script>
 
-    // $('body').addClass('body-order');
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '0.01'
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('Transaction completed by ' + details.payer.name.given_name);
-                // Call your server to save the transaction
-                return fetch('{{url("/api/paypal-transaction-complete")}}', {
-                    method: 'post',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        orderID: data.orderID
-                    })
-                });
-            });
-        }
-    }).render('#paypal-button-container');
+<script src="js/paypal.js"></script>
+{{--<script>--}}
+
+{{--    // $('body').addClass('body-order');--}}
+{{--    paypal.Buttons({--}}
+{{--        createOrder: function(data, actions) {--}}
+{{--            return actions.order.create({--}}
+{{--                purchase_units: [{--}}
+{{--                    amount: {--}}
+{{--                        value: '0.01'--}}
+{{--                    }--}}
+{{--                }]--}}
+{{--            });--}}
+{{--        },--}}
+{{--        onApprove: function(data, actions) {--}}
+{{--            return actions.order.capture().then(function(details) {--}}
+{{--                console.log({data , details})--}}
+{{--                alert('Transaction completed by ' + details.payer.name.given_name);--}}
+{{--                // Call your server to save the transaction--}}
+{{--                return fetch('{{url("/api/paypal-transaction-complete")}}', {--}}
+{{--                    method: 'post',--}}
+{{--                    headers: {--}}
+{{--                        'content-type': 'application/json' ,--}}
+{{--                     //'X-CSRF-TOKEN':document.querySelector('meta[name="csrf-token"]').getAttribute('content')--}}
+{{--                    },--}}
+{{--                    body: JSON.stringify({--}}
+{{--                        orderID: data.orderID,--}}
+{{--                        --}}{{--token :  '{!! csrf_token() !!}'--}}
+{{--                    })--}}
+{{--                });--}}
+{{--            });--}}
+{{--        }--}}
+{{--    }).render('#paypal-button-container');--}}
 
 
-</script>
+{{--</script>--}}
 
 </body>
 </html>
