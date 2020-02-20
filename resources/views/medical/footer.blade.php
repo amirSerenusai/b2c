@@ -49,7 +49,7 @@
 
                                 {{--                    <li><a href="demos/medical/about-us.html"><div>About Us</div></a></li>--}}
 
-                                {{--                            demos/medical/departments.html--}}
+                                {{--                            demos/medical/departmentss.html--}}
 
 
                                 {{--                    <li><a href="demos/medical/doctors.html"><div>Doctors</div></a>--}}
@@ -67,7 +67,8 @@
                                 <ul>
                                     <li><a href="{{url('/about')}}"><div>About Us</div></a></li>
                                     <li><a href="{{url('/contact')}}"><div>Contact</div></a></li>
-                                    @auth   <li><a href="{{url('appointment')}}"><div>Order</div></a></li> @endauth
+                                    @auth   <li><a href="{{url('order')}}"><div>Order</div></a></li> @endauth
+{{--                                    appointment--}}
 {{--                                    <li><a href="#">Portfolio</a></li>--}}
 {{--                                    <li><a href="#">Blog</a></li>--}}
 {{--                                    <li><a href="#">Events</a></li>--}}
@@ -78,8 +79,8 @@
                             <div class="col-lg-3 col-6 bottommargin-sm widget_links">
                                 <ul>
                                     <li style="margin-left:-3px" ><i class="fa fa-caret-down" aria-hidden="true"></i>
-                                        <a href="{{url('departments')}} " class="no-bg"><div style="margin-left:-9px">Procedures</div></a></li>
-                                    <li><a href="{{url('departments')}}">Ventilation-tubes</a></li>
+                                        <a href="{{url('procedures?ventilation-tubes')}} " class="no-bg"><div style="margin-left:-9px">Procedures</div></a></li>
+                                    <li><a href="{{url('procedures?ventilation-tubes')}}">Ventilation-tubes</a></li>
                                     <li><a href="#">Knee replacment</a></li>
                                     <li><a href="#">Tonsillectomy</a></li>
 {{--                                    <li><a href="#">One Page</a></li>--}}
@@ -174,7 +175,7 @@
                     /
                     <a href="{{url(('/about'))}}">About Us</a>
                     /
-              @auth <a href="{{url('appointment')}}"><div>Order</div></a>
+              @auth <a href="{{url('order')}}"><div>Order</div></a>
                     / @endauth
                     <a href="{{url('doctors')}}"><div>Doctors</div></a>
                     /

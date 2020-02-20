@@ -10,11 +10,14 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+
      */
     public function index()
     {
-        //
+        $rememberToken = auth()->user()->getRememberToken() ;
+
+
+        return view('medical.appointment' , compact('rememberToken'));
     }
 
     /**

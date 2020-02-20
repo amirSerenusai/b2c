@@ -49,7 +49,7 @@
 
             <!-- Logo
             ============================================= -->
-            <div id="logo" style="max-width: 300px">
+            <div id="logo" >
                 {{--						<a href="index.html" class="standard-logo"><img src="demos/medical/images/logo-medical.png" alt="Canvas Logo"></a>--}}
                 <a href="index.html" style="text-align: left;height: 90px" class="standard-logo" data-dark-logo="assets/images/serenus logo _left.svg"><img src="{{asset('assets/images/logo/MySerenusLOGO3.jpg')}}"    alt="Canvas Logo"></a>
                 {{--						<a href="index.html" class="retina-logo"><img src="demos/medical/images/logo-medical@2x.png" alt="Canvas Logo"></a>--}}
@@ -63,15 +63,24 @@
                 <ul>
                     <li><a href="{{url(('/medical'))}}"><div>Home</div></a></li>
                     <li><a href="{{url('/about')}}"><div>About Us</div></a></li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        </li>
+                    @endauth
 {{--                    <li><a href="demos/medical/about-us.html"><div>About Us</div></a></li>--}}
-{{--                    <li><a href="{{url('departments')}}"><div>Procedures</div></a></li>--}}
-{{--                            demos/medical/departments.html--}}
+{{--                    <li><a href="{{url('procedures')}}"><div>Procedures</div></a></li>--}}
+{{--                            demos/medical/procedures.html--}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                             Procedures
                         </a>
                         <ul class="dropdown-menu" role="menu" x-placement="bottom-start" style="padding:5px;width:80px;position: absolute; transform: translate3d(0px, 70px, 0px); top: 0px; left: -5px; will-change: transform;">
-                            <a class="dropdown-item"  href="{{url('departments')}}">Ventilation tubes</a>
+                            <a class="dropdown-item"  href="{{url('procedures?n=ventilation-tubes-insertion')}}">Ventilation tubes</a>
                             <a class="dropdown-item" href="#">Knee replacement</a>
                             <a class="dropdown-item" href="#">Tonsillectomy</a>
 {{--                            <div class="dropdown-divider"></div>--}}
@@ -80,7 +89,8 @@
                     </li>
                     @auth
 {{--                        // The user is authenticated...--}}
-                        <li><a href="{{url('appointment')}}"><div>Order</div></a></li>
+                        <li><a href="{{url('order'."?n=".app('request')->input('n') )}}"><div>Order</div></a></li>
+{{--                        appointement--}}
                     @endauth
                     <li><a href="{{url('doctors')}}"><div>Doctors</div></a>
 {{--                    <li><a href="demos/medical/doctors.html"><div>Doctors</div></a>--}}
@@ -100,5 +110,7 @@
         </div>
 
     </div>
-
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 </header>

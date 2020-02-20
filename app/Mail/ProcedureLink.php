@@ -14,17 +14,19 @@ class ProcedureLink extends Mailable
 
     public $token;
     public $combinationID;
+    public $procedure_name;
 
     /**
      * Create a new message instance.
      *
      * @param $combinationID
      */
-    public function __construct($combinationID)
+    public function __construct($combinationID,$procedure_name)
 
     {
 //        $proc_id
         $this->combinationID = $combinationID;
+        $this->procedure_name = $procedure_name;
 //        $this->token = $token;
     }
 

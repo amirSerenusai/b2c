@@ -6,7 +6,10 @@ namespace App\Http\Controllers;
 //1. Import the PayPal SDK client that was created in `Set up Server-Side SDK`.
 
 use App\Order;
+use App\User;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Sample\PayPalClient;
 use PayPalCheckoutSdk\Orders\OrdersGetRequest;
 
@@ -17,12 +20,14 @@ class PayPalController extends  ApiController
     /**
      *You can use this function to retrieve an order by passing order ID as an argument.
      * @param Request $request
-     * @return string
+     * @return ResponseFactory|Response
      */
     public static function getOrder(Request $request)
     {
 
-            return [auth()->user()->id];
+            $user = User::where('remember_token', $request->paypalHash)->first();
+
+//            return [auth()->user()->id];
             $orderId = $request->get('orderID');
 //            info("order id : ");
 //        info($orderId);
@@ -51,19 +56,31 @@ class PayPalController extends  ApiController
         }
         // 4. Save the transaction in your database. Implement logic to save transaction to your database for future reference.
         $print .= "Gross Amount: {$response->result->purchase_units[0]->amount->currency_code} {$response->result->purchase_units[0]->amount->value}\n";
-//        Order::create([
-//
-//            'user_id' => auth()->user()->id,
-//            'proc_id' => 159,
-//            'comb_id' => 0,
-//            'paypal_id' => $orderId,
-//            'amount'  => 1,
-//             'tests_left' => 1,
-//             'expires_at' =>   date("l jS \of F Y h:i:s A")
-//        ]);
+        Order::create([
+
+            'user_id' => $user->id,
+            'proc_id' => 159,
+            'comb_id' => 0,
+            'paypal_id' => $orderId,
+            'amount'  => 1,
+             'tests_left' => 1,
+            'tests_paid' => 1,
+             'expires_at' =>  date('Y-m-d H:i:s')// date("l jS \of F Y h:i:s A")
+        ]);
         // To print the whole response body, uncomment the following line
         // echo json_encode($response->result, JSON_PRETTY_PRINT);
-        return $print ;
+        return response(['info' => json_encode($print)
+        ,'heading' => self::afterPayMessage($user,'heading'),
+         'body' => self::afterPayMessage($user,'body'),
+            ]);
+    }
+
+    protected static function afterPayMessage($user , $section)
+    {
+        if($section =="heading") return  "Hello again , Dear {$user->first_name} !";
+        else if ($section =="body") return "You have completed the registration steps , and now ready to make fill out your first case!";
+//        $return .= "<p> Click to proceed </p>";
+//        return $return;
     }
 }
 

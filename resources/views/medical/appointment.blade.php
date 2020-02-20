@@ -77,7 +77,7 @@
                 </ul>
 
                  <div class="fancy-title title-dotted-border title-center">
-                    <h3>Claim my ******** medical report!</h3>
+                    <h3>Claim my {{s_title( app('request')->input('n') ) }} medical report!</h3>
                 </div>
 
                 <div class="pricing-box pricing-extended bottommargin clearfix">
@@ -137,6 +137,13 @@
 ============================================= -->
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.js"></script>
+<script>
+    $('nav ul').removeClass('current');
+    $('li:contains("Order")').addClass('current');
+    function  goTo(link){
+        location.href = link;
+    }
+</script>
 <script src="js/plugins.js"></script>
 
 <!-- Footer Scripts
@@ -145,8 +152,9 @@
 <script
     src="https://www.paypal.com/sdk/js?client-id=AWWvO4Q-DF5tlKHNHyYbswCtg-XupvenY2I-bzixwH3ICH_j_K29bsQWAFryXlt5Iifmn6-kol_dGam8"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
 </script>
-
+<script> window.paypalHash = "{{ $rememberToken }}" </script>
 <script src="js/paypal.js"></script>
+@component('medical.after-order-modal')@endcomponent
 {{--<script>--}}
 
 {{--    // $('body').addClass('body-order');--}}

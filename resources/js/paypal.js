@@ -16,9 +16,14 @@ paypal.Buttons({
             console.log({data , details})
             alert('Transaction completed by ' + details.payer.name.given_name);
 
-            return axios.post("/api/paypal-transaction-complete", {
-                orderID: data.orderID
-            });
+           return  axios.post("/api/paypal-transaction-complete", {
+                orderID: data.orderID ,
+                paypalHash : window.paypalHash
+            }) .then( ({data : response}) => {
+                $("#afterOrderModal").click();
+               $("#afterOrderModalHeading").text(response.heading);
+               $("#afterModalBody").text(response.body);
+                console.log(response)});
             // Call your server to save the transaction
         //     return fetch('{{url("/api/paypal-transaction-complete")}}', {
         //         method: 'post',

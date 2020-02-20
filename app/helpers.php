@@ -18,3 +18,15 @@ if (!function_exists('str_contains')) {
 
     }
 }
+
+if (!function_exists('s_title')) {
+
+    /**
+     * @param $string
+     * @return string
+     */
+    function s_title($string) {
+
+        return  str_replace("_" , ' ',   str_replace("-" , ' ',  Str::title($string) )  ) ;
+    }
+}

@@ -9,7 +9,7 @@
     <div class="input-group-append">
         <a id="sp-open-a" style="bottom: 373px;margin: 0;padding: 0;
                  right: 228px;">
-            <button id="getDecision" class="template-btn c-pointer animated jello">
+            <button id="getDecision" data-procedure ="{{ app('request')->input('n')}}" class="template-btn c-pointer animated jello">
 
                 {{--
                 <div class="spinner spinner-sending text-white d-inline-block" style=""></div>--}}

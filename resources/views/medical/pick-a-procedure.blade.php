@@ -4,9 +4,9 @@
             <b> Pick a procedure</b>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" onclick="goTo('tonsillectomy')"  >Tonsillectomy</a>
-            <a class="dropdown-item" onclick="goTo('knee replacement')"  >Knee Replacement</a>
-            <a class="dropdown-item" onclick="goTo(`{{url('departments')}}`)"> Ventilation-tubes</a>
+            <a class="dropdown-item"  href="{{url('procedures?n=ventilation-tubes-insertion')}}">Ventilation tubes</a>
+            <a class="dropdown-item" href="#">Knee replacement</a>
+            <a class="dropdown-item" href="#">Tonsillectomy</a>
         </div>
     </div>
 

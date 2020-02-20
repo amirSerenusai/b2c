@@ -99,7 +99,7 @@ function addDot() {
 dotLoop++;
 }
 
-export let sendPwdLink = async (userExists) => {
+export let sendPwdLink = async (userExists , procedureName) => {
     $('#progressive').css({display:"block"});
     $(".progress-bar").css({ width: "1%"});
     setTimeout(() => {
@@ -107,7 +107,7 @@ export let sendPwdLink = async (userExists) => {
             width: "100%"
         }, 250 );
 
-    },1000)
+    },1000);
 
     $("#result").text('Sending you a password-link, please wait . . . ');
     console.log($(".spinner-border"));
@@ -125,7 +125,7 @@ export let sendPwdLink = async (userExists) => {
 
     console.log(g_email);
     let userDetails =    await  axios
-        .post(`/pwd-link?registered=${userExists}`, {email : g_email});
+        .post(`/pwd-link?registered=${userExists}`, {email : g_email , procedureName });
     if(userDetails.status === 200) {
         // $(".progress-bar").animate({
         //     width: "100%"

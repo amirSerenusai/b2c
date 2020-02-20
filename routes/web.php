@@ -32,9 +32,17 @@ use App\Events\QuestionAnswered;
 use Illuminate\Support\Facades\Auth;
 use Pusher\Pusher;
 Auth::routes();
+Route::get('/', function () {
+    return redirect('medical');
+});
 Route::get('original', function () {
 
     return view('original');
+});
+
+Route::get('check-mail-button', function () {
+
+    return view('vendor/mail/html/layout');
 });
 
 
@@ -87,7 +95,11 @@ Route::resource('procedures', 'ProceduresController', [
         'index' => 'procedures',
         'store' => 'faq.new',
     ]   ]);
-
+Route::resource('order', 'OrderController', [
+    'names' => [
+            'index' => 'link.order'
+//        'store' => 'faq.new',
+    ]   ]);
 Route::get('create-scenario/{proc_id}', ['as' => 'createScenario', 'uses' => 'TeachController@createScenario']);
 Route::get('q-answered', function (){ QuestionAnswered::dispatch(['amirarray' => rand(1,1000)]);
 

@@ -117,6 +117,8 @@ function shakeLoginUser(res) {
 
 $('#getDecision').on('click' , async function() {
 
+   let procedureName   = $(this).attr('data-procedure');
+
 
     // $("#getDecision").on('click', async function () {
     // $(this).attr('data-notify-msg' ,"mtr massagw");
@@ -134,7 +136,7 @@ $('#getDecision').on('click' , async function() {
 
         console.log({ userExists });
 
-        await sendPwdLink(userExists);
+        await sendPwdLink(userExists , procedureName);
     }
 
 

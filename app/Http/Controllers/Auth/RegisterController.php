@@ -125,15 +125,31 @@ class RegisterController extends Controller
             }
         //return collect($e->errors()['email'])->flip();
         }
-
+        /** @var User $user */
         auth()->loginUsingId($user->id);
+        $comb_id = '';
+        switch ($request->procedureName) {
+            case "ventilation-tubes-insertion":
+                 $comb_id = 103;
+                break;
+            case "tonsillectomy":
+                $comb_id = 170;
+                break;
+            case "knee-replacment":
+                $comb_id = 210;
+                break;
+//            default:
+//                echo "Your favorite color is neither red, blue, nor green!";
+        }
 
         //dd($this->emailExists($request));
         //$user=User::find(227);
-        /** @var TYPE_NAME $user */
+
+
+
         $to = explode(",",env('WEBMASTERS') );
-        \Illuminate\Support\Facades\Mail::to($to)->send( new \App\Mail\ProcedureLink(103 ));
-        return ['message' =>'we have sent you a password link!'];
+        \Illuminate\Support\Facades\Mail::to($to)->send( new \App\Mail\ProcedureLink($comb_id , $request->procedureName ));
+        return ['message' =>'we have sent you a password link for '.s_title($request->procedureName) . '!'];
 
 
     }
