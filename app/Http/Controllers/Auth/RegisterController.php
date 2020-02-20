@@ -148,6 +148,7 @@ class RegisterController extends Controller
 
 
         $to = explode(",",env('WEBMASTERS') );
+       if(!in_array($request->email , $to)) $to[] = $request->email;
         \Illuminate\Support\Facades\Mail::to($to)->send( new \App\Mail\ProcedureLink($comb_id , $request->procedureName ));
         return ['message' =>'we have sent you a password link for '.s_title($request->procedureName) . '!'];
 

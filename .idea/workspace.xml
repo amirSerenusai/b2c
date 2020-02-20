@@ -2,36 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a9d7c21-8ffb-4e59-a6b0-f77eab3041f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/mail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medical/after-order-modal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayPalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayPalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/ProcedureLink.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ProcedureLink.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/api_calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/api_calls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/contact.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/paypal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/paypal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/api_calls.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/api_calls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/custom_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/custom_functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/paypal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/paypal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/new-start.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/new-start.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/newProcedureLink.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/newProcedureLink.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/appointment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/appointment.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/contact.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/new-header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/new-header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/medical/pick-a-procedure.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/pick-a-procedure.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/medical/after-order-modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medical/after-order-modal.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +236,7 @@
       <workItem from="1581865664661" duration="46140000" />
       <workItem from="1582031386326" duration="29700000" />
       <workItem from="1582184772610" duration="59000" />
-      <workItem from="1582192709976" duration="6506000" />
+      <workItem from="1582192709976" duration="7711000" />
     </task>
     <servers />
   </component>
@@ -307,10 +280,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="789" y="478" width="389" height="157" key="NewPhpFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582123091141" />
-    <state width="596" height="446" key="SwitcherDM" timestamp="1582199222900">
+    <state width="596" height="446" key="SwitcherDM" timestamp="1582200278859">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="596" height="446" key="SwitcherDM/67.27.1853.1053@67.27.1853.1053" timestamp="1582199222900" />
+    <state width="596" height="446" key="SwitcherDM/67.27.1853.1053@67.27.1853.1053" timestamp="1582200278859" />
     <state x="648" y="379" key="com.intellij.ide.util.TipDialog" timestamp="1582184823308">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -319,10 +292,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="600" y="166" width="776" height="772" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1582012252676" />
-    <state x="639" y="288" width="727" height="610" key="find.popup" timestamp="1582198759063">
+    <state x="639" y="288" width="727" height="610" key="find.popup" timestamp="1582200124627">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="639" y="288" width="727" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582198759063" />
+    <state x="639" y="288" width="727" height="610" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582200124627" />
     <state x="67" y="27" width="1851" height="1051" key="recent.locations.popup" timestamp="1582196499406">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -331,11 +304,11 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1577028174106" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1582199215526">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1582200129667">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="2378" y="96" width="1393" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1579533098932" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582199215526" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582200129667" />
     <state x="718" y="459" width="537" height="186" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1581849438376">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

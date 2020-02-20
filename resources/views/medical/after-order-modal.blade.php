@@ -18,7 +18,7 @@
                      @if (auth()->user()->client_id)
                         <a href="{{ route( 'combination.run', 109  )}}" role="button" class="btn btn-secondary">button</a>
                          @else
-                            <a href="{{ route( 'procedures.run', 109  )}}" role="button" class="btn btn-secondary">button</a>
+                            <a href="{{ route( 'procedures.run', 109  )}}" style="border: 1px solid gray" role="button" class="btn btn-block template-btn">Start Now!</a>
                      @endif
                     </div>
                     {{--@component('mail::button', ['url' => route( 'combination.run', $combinationID  )] )"--}}
